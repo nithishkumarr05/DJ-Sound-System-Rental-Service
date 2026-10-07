@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Equipment &middot; BeatBox — DJ &amp; Sound System Rentals</title>
+    <link rel="icon" type="image/png" href="assests/favicon.png">
+    <meta name="description" content="BeatBox equipment inventory — DJ controllers, speakers, subwoofers, microphones, and lighting. Pro-grade gear ready to rent.">
+
+      <script src="tailwind.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        display: ['"Bebas Neue"', 'Impact', 'sans-serif'],
+                        heading: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
+                        body: ['"Inter"', 'system-ui', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'marquee': 'marquee 30s linear infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-12px)' },
+                        },
+                        marquee: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        :root, html[data-theme='light'] {
+            --color-background: #FFFFFF;
+            --color-primary-text: #0F172A;
+            --color-secondary-text: #475569;
+            --color-accent: #A855F7;
+            --color-accent-light: #C084FC;
+            --color-pink: #EC4899;
+            --color-border: #E2E8F0;
+            --color-hover: #F8FAFC;
+            --color-card-bg: #FFFFFF;
+            --nav-bg-scrolled: #0A0A0F;
+            --nav-text-scrolled: #FFFFFF;
+        }
+        html[data-theme='dark'] {
+            --color-background: #0A0A0F;
+            --color-primary-text: #F8FAFC;
+            --color-secondary-text: #94A3B8;
+            --color-accent: #C084FC;
+            --color-accent-light: #A855F7;
+            --color-pink: #F472B6;
+            --color-border: #1E293B;
+            --color-hover: #131320;
+            --color-card-bg: #131320;
+            --nav-bg-scrolled: #000000;
+            --nav-text-scrolled: #FFFFFF;
+        }
+
+        * { box-sizing: border-box; }
+        body {
+            background-color: var(--color-background);
+            color: var(--color-primary-text);
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        .text-primary-text { color: var(--color-primary-text); }
+        .text-secondary-text { color: var(--color-secondary-text); }
+        .text-accent { color: var(--color-accent); }
+        .text-pink { color: var(--color-pink); }
+        .bg-background { background-color: var(--color-background); }
+        .bg-hover { background-color: var(--color-hover); }
+        .bg-card { background-color: var(--color-card-bg); }
+        .border-border { border-color: var(--color-border); }
+
+        .bg-purple-gradient { background: linear-gradient(135deg, #A855F7 0%, #EC4899 100%); }
+        .bg-dark-gradient { background: linear-gradient(135deg, #0A0A0F 0%, #1E1B4B 100%); }
+        .text-gradient {
+            background: linear-gradient(135deg, #A855F7 0%, #EC4899 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .font-display { font-family: 'Bebas Neue', Impact, sans-serif; letter-spacing: 0.02em; }
+        .font-heading { font-family: 'Space Grotesk', system-ui, sans-serif; }
+
+        /* ============ NAVBAR ============ */
+        .navbar-fixed {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            padding: 14px 0;
+            background: transparent;
+            transition: background 0.35s ease, padding 0.35s ease, box-shadow 0.35s ease;
+        }
+        .navbar-fixed.scrolled {
+            padding: 10px 0;
+            background: var(--nav-bg-scrolled);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+            backdrop-filter: blur(8px);
+        }
+        .navbar-fixed.scrolled .nav-logo-text { color: var(--nav-text-scrolled); }
+        .navbar-fixed.scrolled .nav-link { color: rgba(255,255,255,0.85); }
+        .navbar-fixed.scrolled .nav-link:hover,
+        .navbar-fixed.scrolled .nav-link.active { color: #C084FC !important; }
+        .navbar-fixed.scrolled .icon-btn {
+            background: rgba(255,255,255,0.08);
+            color: #FFFFFF;
+            border-color: rgba(255,255,255,0.15);
+        }
+        .navbar-fixed .nav-link { color: rgba(255,255,255,0.85); }
+        .navbar-fixed .nav-logo-text { color: #FFFFFF; }
+        .navbar-fixed .icon-btn {
+            background: rgba(255,255,255,0.10);
+            color: #FFFFFF;
+            border-color: rgba(255,255,255,0.15);
+        }
+        .navbar-fixed .icon-btn:hover,
+        .navbar-fixed.scrolled .icon-btn:hover {
+            background: linear-gradient(135deg,#A855F7,#EC4899);
+            border-color: transparent;
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.25s;
+            padding: 0.4rem 0;
+            font-weight: 500;
+            font-size: 0.875rem;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            left: 0; right: 0; bottom: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #A855F7, #EC4899);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+            border-radius: 2px;
+        }
+        .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); }
+        .nav-link.active, .nav-link:hover { color: #C084FC !important; }
+
+        .dropdown-wrapper { position: relative; }
+        .dropdown-wrapper::before {
+            content: ''; position: absolute;
+            left: 0; right: 0; height: 20px;
+            bottom: 100%; z-index: 100; background: transparent;
+        }
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            background-color: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 1rem;
+            box-shadow: 0 20px 40px -12px rgba(0,0,0,0.35);
+            min-width: 200px;
+            z-index: 1000;
+            opacity: 0; visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        .dropdown-wrapper:hover .dropdown-menu {
+            opacity: 1; visibility: visible;
+            transform: translateY(0); display: block;
+        }
+        .dropdown-menu a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: var(--color-primary-text);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid var(--color-border);
+        }
+        .dropdown-menu a:last-child { border-bottom: none; }
+        .dropdown-menu a:hover {
+            background-color: var(--color-hover);
+            color: var(--color-accent);
+            padding-left: 1.25rem;
+        }
+
+        .book-btn {
+            background: linear-gradient(135deg, #A855F7, #EC4899);
+            color: white;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .book-btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+            transition: left 0.5s ease;
+        }
+        .book-btn:hover::before { left: 100%; }
+        .book-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px -8px rgba(168, 85, 247, 0.6);
+        }
+
+        .icon-btn {
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--color-hover);
+            color: var(--color-primary-text);
+            transition: all 0.25s ease;
+            border: 1px solid var(--color-border);
+            cursor: pointer;
+        }
+        .icon-btn:hover {
+            background: linear-gradient(135deg, #A855F7, #EC4899);
+            color: white;
+            border-color: transparent;
+            transform: scale(1.08);
+        }
+
+        body::-webkit-scrollbar { width: 8px; }
+        body::-webkit-scrollbar-track { background: var(--color-hover); }
+        body::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #A855F7, #EC4899);
+            border-radius: 8px;
+        }
+
+        .section-pad { padding-top: 5rem; padding-bottom: 5rem; }
+        @media (min-width: 768px) {
+            .section-pad { padding-top: 7rem; padding-bottom: 7rem; }
+        }
+
+        [dir="rtl"] .dropdown-menu { left: auto; right: 0; }
+        [dir="rtl"] .nav-link::after { left: auto; right: 0; }
+        [dir="rtl"] .fa-arrow-right { transform: scaleX(-1); }
+
+        /* ============ HERO ============ */
+        @keyframes spinSlow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .vinyl-spin { animation: spinSlow 14s linear infinite; }
+
+        @keyframes eq {
+            0%, 100% { height: 20%; }
+            50% { height: 100%; }
+        }
+        .eq-bar {
+            width: 4px;
+            border-radius: 2px;
+            background: linear-gradient(to top, #A855F7, #EC4899);
+            animation: eq 1.1s ease-in-out infinite;
+        }
+
+        /* ============ DJ CONTROLLERS — Horizontal Scroll Cards ============ */
+        .dj-scroll {
+            display: flex;
+            gap: 1.25rem;
+            overflow-x: auto;
+            padding-bottom: 1rem;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+        }
+        .dj-scroll::-webkit-scrollbar { height: 6px; }
+        .dj-scroll::-webkit-scrollbar-thumb {
+            background: linear-gradient(90deg, #A855F7, #EC4899);
+            border-radius: 6px;
+        }
+        .dj-card {
+            min-width: 260px;
+            flex-shrink: 0;
+            scroll-snap-align: start;
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 1.5rem;
+            overflow: hidden;
+            transition: all 0.35s ease;
+        }
+        .dj-card:hover {
+            border-color: var(--color-accent);
+            transform: translateY(-6px);
+            box-shadow: 0 25px 50px -18px rgba(168, 85, 247, 0.35);
+        }
+
+        /* ============ SPEAKERS — Overlay Grid ============ */
+        .spk-tile {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1.5rem;
+            min-height: 260px;
+            transition: all 0.4s ease;
+        }
+        .spk-tile:hover {
+            transform: scale(1.02);
+            box-shadow: 0 25px 50px -18px rgba(168, 85, 247, 0.4);
+        }
+        .spk-tile img {
+            transition: transform 0.7s ease;
+        }
+        .spk-tile:hover img {
+            transform: scale(1.08);
+        }
+
+        /* ============ SUBWOOFERS — Side-by-side Comparison ============ */
+        .sub-card {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 1.75rem;
+            padding: 1.75rem;
+            transition: all 0.35s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .sub-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #A855F7, #EC4899);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+        .sub-card:hover::before { transform: scaleX(1); }
+        .sub-card:hover {
+            border-color: var(--color-accent);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px -18px rgba(168, 85, 247, 0.3);
+        }
+
+        /* ============ MICROPHONES — Dark Feature Card ============ */
+        .mic-card {
+            background: linear-gradient(135deg, #0A0A0F 0%, #1E1B4B 100%);
+            border-radius: 1.75rem;
+            padding: 1.75rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.35s ease;
+        }
+        .mic-card::after {
+            content: '';
+            position: absolute;
+            bottom: -40px; right: -40px;
+            width: 180px; height: 180px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(168,85,247,0.35) 0%, transparent 70%);
+            transition: transform 0.5s ease;
+        }
+        .mic-card:hover::after { transform: scale(1.4); }
+        .mic-card:hover {
+            box-shadow: 0 25px 50px -18px rgba(168, 85, 247, 0.5);
+        }
+
+        /* ============ LIGHTING — Small Icon Tile Grid ============ */
+        .light-tile {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 1.25rem;
+            padding: 1.25rem;
+            transition: all 0.35s ease;
+        }
+        .light-tile:hover {
+            border-color: var(--color-accent);
+            transform: translateY(-4px);
+            box-shadow: 0 15px 30px -14px rgba(168, 85, 247, 0.3);
+        }
+
+        /* Marquee */
+        .marquee-track {
+            display: flex;
+            width: max-content;
+            animation: marquee 32s linear infinite;
+        }
+    
+        ::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+        }
+    </style>
+</head>
+
+<body class="antialiased bg-background">
+
+    <!-- ================= NAVBAR ================= -->
+    <header class="navbar-fixed" id="mainNav">
+        <nav class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between gap-3">
+
+                <a href="index.html" class="flex items-center gap-2.5 flex-shrink-0">
+                    <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center shadow-lg" style="background:linear-gradient(135deg,#A855F7,#EC4899);">
+                        <i class="fas fa-headphones text-white text-base sm:text-lg"></i>
+                    </div>
+                    <div class="flex flex-col leading-none">
+                        <span class="nav-logo-text font-display text-xl sm:text-2xl tracking-wider">BEAT<span style="color:#C084FC;">BOX</span></span>
+                        <span class="text-[9px] tracking-[0.25em] uppercase font-semibold" style="color:rgba(255,255,255,0.55);">DJ &amp; Sound Rentals</span>
+                    </div>
+                </a>
+
+                <div class="hidden xl:flex items-center justify-center flex-1 gap-6 mx-4">
+                    <div class="dropdown-wrapper">
+                        <button class="nav-link flex items-center font-semibold">
+                            Home
+                            <svg class="w-3 h-3 ml-1 relative top-[2.5px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a href="index.html">Home 1</a>
+                            <a href="home2.html">Home 2</a>
+                        </div>
+                    </div>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="services.html" class="nav-link">Services</a>
+                    <a href="equipment.html" class="nav-link active">Equipment</a>
+                    <a href="packages.html" class="nav-link">Packages</a>
+                    <a href="gallery.html" class="nav-link">Gallery</a>
+                    <a href="events.html" class="nav-link">Event</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </div>
+
+                <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+                    <button id="lang-icon" class="hidden xl:flex icon-btn items-center justify-center" title="Toggle RTL" aria-label="Toggle RTL">
+                          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" /></svg>
+                      </button>
+                      <button id="theme-toggle" class="hidden xl:flex icon-btn items-center justify-center" title="Toggle Theme" aria-label="Toggle Theme">
+                          <svg class="w-4 h-4 light-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                          <svg class="w-4 h-4 dark-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                      </button>
+                      <a href="contact.html" class="hidden xl:inline-flex book-btn px-5 sm:px-6 py-2.5 rounded-full text-xs sm:text-sm">
+                        <i class="fas fa-calendar-check mr-1.5"></i> Book Now
+                    </a>
+                    <button id="mobile-menu-open" class="xl:hidden icon-btn" aria-label="Open menu">
+                        <i class="fas fa-bars text-base"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ================= MOBILE DRAWER ================= -->
+    <div id="mobile-menu-drawer" class="fixed inset-0 z-[110] pointer-events-none transition-all duration-300">
+        <div id="drawer-backdrop" class="absolute inset-0 bg-black/60 backdrop-blur-sm opacity-0 transition-opacity duration-300 pointer-events-none"></div>
+        <div id="drawer-content" class="absolute top-0 right-0 h-full w-80 max-w-[85vw] bg-background shadow-2xl transform translate-x-full transition-transform duration-300 ease-out overflow-y-auto">
+            <div class="p-5">
+                <div class="flex justify-between items-center pb-4 border-b border-border mb-4">
+                    <a href="index.html" class="flex items-center gap-2.5">
+                        <div class="w-9 h-9 rounded-lg flex items-center justify-center" style="background:linear-gradient(135deg,#A855F7,#EC4899);">
+                            <i class="fas fa-headphones text-white text-sm"></i>
+                        </div>
+                        <span class="font-display text-lg tracking-wider text-primary-text">BEAT<span style="color:var(--color-accent);">BOX</span></span>
+                    </a>
+                    <button id="mobile-menu-close" class="p-2 rounded-lg hover:bg-hover transition">
+                        <i class="fas fa-times text-primary-text"></i>
+                    </button>
+                </div>
+                <nav class="flex flex-col space-y-1">
+                    <div>
+                        <button class="w-full flex justify-between items-center py-3 px-3 rounded-xl font-semibold text-accent hover:bg-hover transition" id="mobile-home-toggle">
+                            Home
+                            <svg class="w-4 h-4 transform transition-transform duration-200" id="home-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div id="mobile-home-menu" class="hidden pl-3 flex flex-col space-y-1 mt-1">
+                            <a href="index.html" class="py-2 px-3 text-sm text-primary-text hover:text-accent transition">Home 1</a>
+                            <a href="home2.html" class="py-2 px-3 text-sm text-primary-text hover:text-accent transition">Home 2</a>
+                        </div>
+                    </div>
+                    <a href="about.html" class="py-3 px-3 rounded-xl font-medium text-primary-text hover:bg-hover hover:text-accent transition">About</a>
+                    <a href="services.html" class="py-3 px-3 rounded-xl font-medium text-primary-text hover:bg-hover hover:text-accent transition">Services</a>
+                    <a href="equipment.html" class="py-3 px-3 rounded-xl font-medium text-accent bg-hover transition">Equipment</a>
+                    <a href="packages.html" class="py-3 px-3 rounded-xl font-medium text-primary-text hover:bg-hover hover:text-accent transition">Packages</a>
+                    <a href="gallery.html" class="py-3 px-3 rounded-xl font-medium text-primary-text hover:bg-hover hover:text-accent transition">Gallery</a>
+                    <a href="events.html" class="py-3 px-3 rounded-xl font-medium text-primary-text hover:bg-hover hover:text-accent transition">Event</a>
+                    <a href="contact.html" class="py-3 px-3 rounded-xl font-medium text-primary-text hover:bg-hover hover:text-accent transition">Contact</a>
+                </nav>
+                <div class="mt-6 pt-6 border-t border-border">
+                    <a href="contact.html" class="block w-full book-btn text-center py-3.5 rounded-xl font-bold text-sm">
+                        <i class="fas fa-calendar-check mr-2"></i> Book Now
+                    </a>
+                </div>
+                <div class="mt-5 flex justify-around items-center pt-5 border-t border-border">
+                    <button id="mobile-lang-toggle" class="flex flex-col items-center text-primary-text hover:text-accent p-2 transition">
+                        <svg class="w-5 h-5 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" /></svg>
+                        <span class="text-[10px] uppercase tracking-wider">RTL</span>
+                    </button>
+                    <button id="mobile-theme-toggle" class="flex flex-col items-center text-primary-text hover:text-accent p-2 transition">
+                        <svg class="w-5 h-5 mb-1 light-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                        <svg class="w-5 h-5 mb-1 dark-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+                        <span class="text-[10px] uppercase tracking-wider">Theme</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         SECTION 1 · HERO
+    ============================================================ -->
+    <section class="relative min-h-[90vh] flex items-center overflow-hidden bg-dark-gradient pt-[100px]">
+        <div class="absolute inset-0">
+            <img src="assests/s8.jpg"
+                 alt="Studio sound equipment"
+                 class="w-full h-full object-cover opacity-25">
+            <div class="absolute inset-0 bg-gradient-to-r from-[#0A0A0F]/95 via-[#0A0A0F]/85 to-[#1E1B4B]/75"></div>
+        </div>
+
+        <!-- Rotating vinyl right -->
+        <div class="hidden lg:block absolute -right-40 -bottom-40 pointer-events-none">
+            <div class="vinyl-spin relative w-[560px] h-[560px] rounded-full opacity-15">
+                <div class="absolute inset-0 rounded-full border-4 border-[#A855F7]/40"></div>
+                <div class="absolute inset-16 rounded-full border-2 border-[#EC4899]/40"></div>
+                <div class="absolute inset-32 rounded-full border-2 border-[#A855F7]/30"></div>
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <div class="w-32 h-32 rounded-full flex items-center justify-center" style="background:linear-gradient(135deg,#A855F7,#EC4899);">
+                        <i class="fas fa-sliders text-white text-3xl"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="relative z-10 max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 w-full">
+            <div class="max-w-3xl">
+                <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full mb-6">
+                    <span class="w-2 h-2 rounded-full bg-pink animate-pulse"></span>
+                    <span class="text-white text-[10px] sm:text-xs font-semibold tracking-widest uppercase">250+ Pieces · Fully Serviced · Ready To Ship</span>
+                </div>
+
+                <h1 class="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[110px] text-white leading-[0.88] tracking-wide mb-6">
+                    The Gear <br>
+                    That Makes <br>
+                    <span class="text-gradient">The Night.</span>
+                </h1>
+
+              
+
+                <!-- Quick category nav -->
+                <div class="flex flex-wrap gap-2 sm:gap-3 mb-10">
+                    <a href="#controllers" class="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-xs sm:text-sm hover:bg-white/20 transition">
+                        <i class="fas fa-compact-disc mr-1.5 text-[#C084FC]"></i> DJ Controllers
+                    </a>
+                    <a href="#speakers" class="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-xs sm:text-sm hover:bg-white/20 transition">
+                        <i class="fas fa-volume-high mr-1.5 text-[#C084FC]"></i> Speakers
+                    </a>
+                    <a href="#subwoofers" class="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-xs sm:text-sm hover:bg-white/20 transition">
+                        <i class="fas fa-wave-square mr-1.5 text-[#C084FC]"></i> Subwoofers
+                    </a>
+                    <a href="#microphones" class="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-xs sm:text-sm hover:bg-white/20 transition">
+                        <i class="fas fa-microphone mr-1.5 text-[#C084FC]"></i> Mics
+                    </a>
+                    <a href="#lighting" class="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-xs sm:text-sm hover:bg-white/20 transition">
+                        <i class="fas fa-lightbulb mr-1.5 text-[#C084FC]"></i> Lighting
+                    </a>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="contact.html" class="book-btn px-8 py-4 rounded-full text-sm sm:text-base text-center">
+                        <i class="fas fa-calendar-check mr-2"></i> Rent Equipment
+                    </a>
+                    <a href="packages.html" class="px-8 py-4 rounded-full border-2 border-white/40 text-white font-semibold text-sm sm:text-base hover:bg-white/10 hover:border-white transition text-center">
+                        <i class="fas fa-box-open mr-2"></i> View Packages
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marquee -->
+    <section class="bg-gradient-to-r from-[#A855F7] via-[#EC4899] to-[#A855F7] py-3.5 overflow-hidden">
+        <div class="marquee-track">
+            <div class="flex items-center gap-8 sm:gap-12 px-6">
+                <span class="font-display text-base sm:text-xl text-white tracking-widest">PIONEER</span>
+                <span class="text-white/60">◆</span>
+                <span class="font-display text-base sm:text-xl text-white tracking-widest">SHURE</span>
+                <span class="text-white/60">◆</span>
+                <span class="font-display text-base sm:text-xl text-white tracking-widest">JBL</span>
+                <span class="text-white/60">◆</span>
+                <span class="font-display text-base sm:text-xl text-white tracking-widest">QSC</span>
+                <span class="text-white/60">◆</span>
+                <span class="font-display text-base sm:text-xl text-white tracking-widest">FUNKTION-ONE</span>
+                <span class="text-white/60">◆</span>
+                <span class="font-display text-base sm:text-xl text-white tracking-widest">SENNHEISER</span>
+                <span class="text-white/60">◆</span>
+                <span class="font-display text-base sm:text-xl text-white tracking-widest">CHAUVET</span>
+                <span class="text-white/60">◆</span>
+            </div>
+            <div class="flex items-center gap-8 sm:gap-12 px-6" aria-hidden="true">
+                <span class="font-display text-base sm:text-xl text-white tracking-widest">PIONEER</span>
+                <span class="text-white/60">◆</span>
+                <span class="font-display text-base sm:text-xl text-white tracking-widest">SHURE</span>
+                <span class="text-white/60">◆</span>
+                <span class="font-display text-base sm:text-xl text-white tracking-widest">JBL</span>
+                <span class="text-white/60">◆</span>
+                <span class="font-display text-base sm:text-xl text-white tracking-widest">QSC</span>
+                <span class="text-white/60">◆</span>
+                <span class="font-display text-base sm:text-xl text-white tracking-widest">FUNKTION-ONE</span>
+                <span class="text-white/60">◆</span>
+                <span class="font-display text-base sm:text-xl text-white tracking-widest">SENNHEISER</span>
+                <span class="text-white/60">◆</span>
+                <span class="font-display text-base sm:text-xl text-white tracking-widest">CHAUVET</span>
+                <span class="text-white/60">◆</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 2 · DJ CONTROLLERS — Horizontal Scroll
+    ============================================================ -->
+    <section class="section-pad bg-background transition-colors" id="controllers">
+        <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
+                <div>
+                    <span class="text-accent text-xs font-bold uppercase tracking-[0.25em]">DJ Controllers</span>
+                    <h2 class="font-display text-4xl sm:text-5xl md:text-6xl text-primary-text mt-3">
+                        Club-Ready <span class="text-gradient">Decks</span>
+                    </h2>
+                </div>
+                <p class="text-secondary-text text-sm max-w-xs sm:text-right">Scroll →</p>
+            </div>
+
+            <!-- Horizontal scroll cards -->
+            <div class="dj-scroll">
+                <div class="dj-card">
+                    <div class="h-44 overflow-hidden">
+                        <img src="assests/e1.jpg" alt="Pioneer CDJ-3000" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-heading font-bold text-base text-primary-text mb-1">Pioneer CDJ-3000</h3>
+                        <p class="text-xs text-secondary-text mb-3">Club-standard media player</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-accent text-xs font-bold">From $79/day</span>
+                            <a href="contact.html" class="text-primary-text text-xs font-bold hover:text-accent transition">Rent →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dj-card">
+                    <div class="h-44 overflow-hidden">
+                        <img src="assests/e2.jpg" alt="DJM-900 mixer" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-heading font-bold text-base text-primary-text mb-1">DJM-900 Nexus</h3>
+                        <p class="text-xs text-secondary-text mb-3">4-channel digital mixer</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-accent text-xs font-bold">From $69/day</span>
+                            <a href="contact.html" class="text-primary-text text-xs font-bold hover:text-accent transition">Rent →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dj-card">
+                    <div class="h-44 overflow-hidden">
+                        <img src="assests/e3.jpg" alt="DDJ-FLX10" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-heading font-bold text-base text-primary-text mb-1">DDJ-FLX10</h3>
+                        <p class="text-xs text-secondary-text mb-3">4-channel all-in-one</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-accent text-xs font-bold">From $59/day</span>
+                            <a href="contact.html" class="text-primary-text text-xs font-bold hover:text-accent transition">Rent →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dj-card">
+                    <div class="h-44 overflow-hidden">
+                        <img src="assests/e4.jpg" alt="Turntables" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-heading font-bold text-base text-primary-text mb-1">Technics SL-1200</h3>
+                        <p class="text-xs text-secondary-text mb-3">Professional vinyl turntable</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-accent text-xs font-bold">From $49/day</span>
+                            <a href="contact.html" class="text-primary-text text-xs font-bold hover:text-accent transition">Rent →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dj-card">
+                    <div class="h-44 overflow-hidden">
+                        <img src="assests/e5.jpg" alt="Controller" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-heading font-bold text-base text-primary-text mb-1">DDJ-1000 SRT</h3>
+                        <p class="text-xs text-secondary-text mb-3">Serato-ready controller</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-accent text-xs font-bold">From $59/day</span>
+                            <a href="contact.html" class="text-primary-text text-xs font-bold hover:text-accent transition">Rent →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 3 · SPEAKERS — Overlay Grid
+    ============================================================ -->
+    <section class="section-pad bg-hover transition-colors" id="speakers">
+        <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-accent text-xs font-bold uppercase tracking-[0.25em]">Speakers</span>
+                <h2 class="font-display text-4xl sm:text-5xl md:text-6xl text-primary-text mt-3 mb-3">
+                    Sound You Can <span class="text-gradient">Feel</span>
+                </h2>
+                <p class="text-secondary-text text-base">From intimate venues to open fields — we've got the right cab.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <!-- Tile 1 -->
+                <div class="spk-tile md:col-span-2">
+                    <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=1200&q=80" alt="Line array system" class="absolute inset-0 w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+                    <div class="relative p-6 h-full flex flex-col justify-end min-h-[300px]">
+                        <span class="text-[10px] uppercase tracking-widest font-bold text-[#C084FC]">Line Array</span>
+                        <h3 class="font-display text-3xl text-white mt-2 mb-2">Funktion-One Evo</h3>
+                        <p class="text-white/80 text-sm max-w-md">Concert-grade coverage up to 5,000 guests. Crystal highs, tight mids, and thunderous lows.</p>
+                    </div>
+                </div>
+
+                <!-- Tile 2 -->
+                <div class="spk-tile">
+                    <img src="assests/e6.jpg" alt="Active PA speaker" class="absolute inset-0 w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent"></div>
+                    <div class="relative p-5 h-full flex flex-col justify-end min-h-[300px]">
+                        <span class="text-[10px] uppercase tracking-widest font-bold text-[#C084FC]">Active PA</span>
+                        <h3 class="font-display text-xl text-white mt-1 mb-1">QSC K12.2</h3>
+                        <p class="text-white/75 text-xs">Perfect for mid-size venues and weddings.</p>
+                    </div>
+                </div>
+
+                <!-- Tile 3 -->
+                <div class="spk-tile">
+                    <img src="assests/h3.jpg" alt="Monitor speaker" class="absolute inset-0 w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent"></div>
+                    <div class="relative p-5 h-full flex flex-col justify-end min-h-[240px]">
+                        <span class="text-[10px] uppercase tracking-widest font-bold text-[#C084FC]">Monitor</span>
+                        <h3 class="font-display text-xl text-white mt-1 mb-1">JBL SRX835P</h3>
+                        <p class="text-white/75 text-xs">Stage-floor monitoring for performers.</p>
+                    </div>
+                </div>
+
+                <!-- Tile 4 -->
+                <div class="spk-tile md:col-span-2">
+                    <img src="https://i.ytimg.com/vi/33TnQgTdSmc/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYACiAWKAgwIABABGH8gKSgcMA8=&amp;rs=AOn4CLC4xQVJmHOlRyI5Aj682Vys-0QVZQ" alt="Portable PA" class="absolute inset-0 w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+                    <div class="relative p-6 h-full flex flex-col justify-end min-h-[240px]">
+                        <span class="text-[10px] uppercase tracking-widest font-bold text-[#C084FC]">Compact</span>
+                        <h3 class="font-display text-2xl text-white mt-2 mb-2">Portable PA Systems</h3>
+                        <p class="text-white/80 text-sm max-w-md">Lightweight rigs for house parties, outdoor ceremonies, and smaller venues.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 4 · SUBWOOFERS — Side-by-Side Compare
+    ============================================================ -->
+    <section class="section-pad bg-background transition-colors" id="subwoofers">
+        <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-accent text-xs font-bold uppercase tracking-[0.25em]">Subwoofers</span>
+                <h2 class="font-display text-4xl sm:text-5xl md:text-6xl text-primary-text mt-3 mb-3">
+                    Deep Bass. <span class="text-gradient">Zero Distortion.</span>
+                </h2>
+                <p class="text-secondary-text text-base">Choose your low-end — from tight 15" kicks to earth-shaking 21" subs.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                <!-- Sub 1 -->
+                <div class="sub-card h-full flex flex-col">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-[10px] uppercase tracking-widest font-bold text-accent">Compact</span>
+                    </div>
+                    <h3 class="font-heading font-bold text-lg text-primary-text mb-1">Single 15" Sub</h3>
+                    <p class="text-xs text-secondary-text mb-5">Tight kick, ideal for smaller rooms and jazz.</p>
+                    <div class="space-y-2 text-xs mb-5 pt-4 border-t border-border mt-auto">
+                        <div class="flex justify-between"><span class="text-secondary-text">Power</span><span class="text-primary-text font-bold">800W</span></div>
+                        <div class="flex justify-between"><span class="text-secondary-text">Coverage</span><span class="text-primary-text font-bold">Up to 80 guests</span></div>
+                    </div>
+                    <p class="font-display text-2xl text-gradient">$79/day</p>
+                </div>
+
+                <!-- Sub 2 (featured) -->
+                <div class="sub-card h-full flex flex-col" style="border-color: var(--color-accent); border-width: 2px; transform: translateY(-6px);">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-[10px] uppercase tracking-widest font-bold text-accent">Best Seller</span>
+                    </div>
+                    <h3 class="font-heading font-bold text-lg text-primary-text mb-1">Dual 18" Sub</h3>
+                    <p class="text-xs text-secondary-text mb-5">The wedding & club sweet spot. Punchy, clean, powerful.</p>
+                    <div class="space-y-2 text-xs mb-5 pt-4 border-t border-border mt-auto">
+                        <div class="flex justify-between"><span class="text-secondary-text">Power</span><span class="text-primary-text font-bold">2000W</span></div>
+                        <div class="flex justify-between"><span class="text-secondary-text">Coverage</span><span class="text-primary-text font-bold">Up to 400 guests</span></div>
+                    </div>
+                    <p class="font-display text-2xl text-gradient">$149/day</p>
+                </div>
+
+                <!-- Sub 3 -->
+                <div class="sub-card h-full flex flex-col">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-[10px] uppercase tracking-widest font-bold text-accent">Festival</span>
+                    </div>
+                    <h3 class="font-heading font-bold text-lg text-primary-text mb-1">21" Beast Sub</h3>
+                    <p class="text-xs text-secondary-text mb-5">Chest-rattling low end for festivals and large stages.</p>
+                    <div class="space-y-2 text-xs mb-5 pt-4 border-t border-border mt-auto">
+                        <div class="flex justify-between"><span class="text-secondary-text">Power</span><span class="text-primary-text font-bold">4000W</span></div>
+                        <div class="flex justify-between"><span class="text-secondary-text">Coverage</span><span class="text-primary-text font-bold">1,500+ guests</span></div>
+                    </div>
+                    <p class="font-display text-2xl text-gradient">$299/day</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 5 · MICROPHONES — Dark Feature Grid
+    ============================================================ -->
+    <section class="section-pad bg-hover transition-colors" id="microphones">
+        <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-accent text-xs font-bold uppercase tracking-[0.25em]">Microphones</span>
+                <h2 class="font-display text-4xl sm:text-5xl md:text-6xl text-primary-text mt-3 mb-3">
+                    Clean Vocals. <span class="text-gradient">Always.</span>
+                </h2>
+                <p class="text-secondary-text text-base">Wireless freedom with crystal-clear clarity — for MCs, singers, and speakers.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <!-- Mic 1 -->
+                <div class="mic-card">
+                    <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5 relative z-10" style="background:linear-gradient(135deg,#A855F7,#EC4899);">
+                        <i class="fas fa-microphone text-white text-lg"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-lg text-white mb-2 relative z-10">Shure SM58</h3>
+                    <p class="text-white/70 text-sm mb-5 relative z-10">The industry workhorse. Rugged, warm, and reliable.</p>
+                    <div class="flex items-center justify-between relative z-10">
+                        <span class="text-[#C084FC] text-xs font-bold uppercase tracking-widest">Wired</span>
+                        <span class="font-display text-xl text-white">$19/day</span>
+                    </div>
+                </div>
+
+                <!-- Mic 2 -->
+                <div class="mic-card">
+                    <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5 relative z-10" style="background:linear-gradient(135deg,#EC4899,#A855F7);">
+                        <i class="fas fa-wifi text-white text-lg"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-lg text-white mb-2 relative z-10">Shure QLXD Wireless</h3>
+                    <p class="text-white/70 text-sm mb-5 relative z-10">Digital wireless with 300ft range and 24h battery.</p>
+                    <div class="flex items-center justify-between relative z-10">
+                        <span class="text-[#C084FC] text-xs font-bold uppercase tracking-widest">Wireless</span>
+                        <span class="font-display text-xl text-white">$49/day</span>
+                    </div>
+                </div>
+
+                <!-- Mic 3 -->
+                <div class="mic-card">
+                    <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5 relative z-10" style="background:linear-gradient(135deg,#8B5CF6,#EC4899);">
+                        <i class="fas fa-headset text-white text-lg"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-lg text-white mb-2 relative z-10">Sennheiser Lavalier</h3>
+                    <p class="text-white/70 text-sm mb-5 relative z-10">Clip-on lavs for presenters, panelists, and officiants.</p>
+                    <div class="flex items-center justify-between relative z-10">
+                        <span class="text-[#C084FC] text-xs font-bold uppercase tracking-widest">Lavalier</span>
+                        <span class="font-display text-xl text-white">$39/day</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 6 · LIGHTING EQUIPMENT — Small Icon Tile Grid
+    ============================================================ -->
+    <section class="section-pad bg-background transition-colors" id="lighting">
+        <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-accent text-xs font-bold uppercase tracking-[0.25em]">Lighting Equipment</span>
+                <h2 class="font-display text-4xl sm:text-5xl md:text-6xl text-primary-text mt-3 mb-3">
+                    Light The <span class="text-gradient">Floor</span>
+                </h2>
+                <p class="text-secondary-text text-base">Everything you need to turn a room into a stage.</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
+                <!-- Tile 1 -->
+                <div class="light-tile text-center">
+                    <div class="w-12 h-12 mx-auto rounded-xl flex items-center justify-center mb-3" style="background:rgba(168,85,247,0.12);">
+                        <i class="fas fa-lightbulb text-accent"></i>
+                    </div>
+                    <p class="font-heading font-bold text-xs text-primary-text">Moving Heads</p>
+                    <p class="text-[10px] text-secondary-text mt-1">$59/day</p>
+                </div>
+
+                <!-- Tile 2 -->
+                <div class="light-tile text-center">
+                    <div class="w-12 h-12 mx-auto rounded-xl flex items-center justify-center mb-3" style="background:rgba(236,72,153,0.12);">
+                        <i class="fas fa-circle text-pink"></i>
+                    </div>
+                    <p class="font-heading font-bold text-xs text-primary-text">Wash Lights</p>
+                    <p class="text-[10px] text-secondary-text mt-1">$39/day</p>
+                </div>
+
+                <!-- Tile 3 -->
+                <div class="light-tile text-center">
+                    <div class="w-12 h-12 mx-auto rounded-xl flex items-center justify-center mb-3" style="background:rgba(139,92,246,0.12);">
+                        <i class="fas fa-bars text-accent"></i>
+                    </div>
+                    <p class="font-heading font-bold text-xs text-primary-text">LED Bars</p>
+                    <p class="text-[10px] text-secondary-text mt-1">$29/day</p>
+                </div>
+
+                <!-- Tile 4 -->
+                <div class="light-tile text-center">
+                    <div class="w-12 h-12 mx-auto rounded-xl flex items-center justify-center mb-3" style="background:rgba(168,85,247,0.12);">
+                        <i class="fas fa-sun text-accent"></i>
+                    </div>
+                    <p class="font-heading font-bold text-xs text-primary-text">Uplights</p>
+                    <p class="text-[10px] text-secondary-text mt-1">$15/day</p>
+                </div>
+
+                <!-- Tile 5 -->
+                <div class="light-tile text-center">
+                    <div class="w-12 h-12 mx-auto rounded-xl flex items-center justify-center mb-3" style="background:rgba(236,72,153,0.12);">
+                        <i class="fas fa-cloud text-pink"></i>
+                    </div>
+                    <p class="font-heading font-bold text-xs text-primary-text">Haze / Fog</p>
+                    <p class="text-[10px] text-secondary-text mt-1">$49/day</p>
+                </div>
+
+                <!-- Tile 6 -->
+                <div class="light-tile text-center">
+                    <div class="w-12 h-12 mx-auto rounded-xl flex items-center justify-center mb-3" style="background:rgba(139,92,246,0.12);">
+                        <i class="fas fa-tv text-accent"></i>
+                    </div>
+                    <p class="font-heading font-bold text-xs text-primary-text">LED Walls</p>
+                    <p class="text-[10px] text-secondary-text mt-1">Call</p>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="mt-14 text-center">
+                <a href="contact.html" class="inline-flex items-center gap-2 book-btn px-8 py-4 rounded-full text-sm font-bold">
+                    <i class="fas fa-calendar-check"></i> Reserve Your Equipment
+                </a>
+                <p class="text-secondary-text text-xs mt-4">Free consultation · Free LA delivery · On-site setup included</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="pt-16 pb-8" style="background-color:#0A0A0F;color:#E2E8F0;">
+        <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
+
+                <div class="lg:col-span-2">
+                    <a href="index.html" class="flex items-center gap-2.5 mb-5">
+                        <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:linear-gradient(135deg,#A855F7,#EC4899);">
+                            <i class="fas fa-headphones text-white text-base"></i>
+                        </div>
+                        <div class="flex flex-col leading-none">
+                            <span class="font-display text-xl tracking-wider text-white">BEAT<span style="color:#C084FC;">BOX</span></span>
+                            <span class="text-[9px] tracking-[0.25em] uppercase font-semibold text-white/50">DJ &amp; Sound Rentals</span>
+                        </div>
+                    </a>
+                    <p class="text-sm text-white/70 leading-relaxed max-w-sm mb-6">
+                        Pro sound systems, DJ setups, and lighting for unforgettable events. Serving Los Angeles and Southern California since 2016.
+                    </p>
+                    <div class="flex gap-3">
+                        <a href="#" class="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/70 hover:bg-gradient-to-br hover:from-[#A855F7] hover:to-[#EC4899] hover:text-white hover:border-transparent transition"><i class="fab fa-instagram text-sm"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/70 hover:bg-gradient-to-br hover:from-[#A855F7] hover:to-[#EC4899] hover:text-white hover:border-transparent transition"><i class="fab fa-facebook-f text-sm"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/70 hover:bg-gradient-to-br hover:from-[#A855F7] hover:to-[#EC4899] hover:text-white hover:border-transparent transition"><i class="fab fa-youtube text-sm"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/70 hover:bg-gradient-to-br hover:from-[#A855F7] hover:to-[#EC4899] hover:text-white hover:border-transparent transition"><i class="fab fa-tiktok text-sm"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-heading font-bold text-white text-sm uppercase tracking-widest mb-4">Equipment</h4>
+                    <ul class="space-y-2.5 text-sm">
+                        <li><a href="#controllers" class="text-white/70 hover:text-[#C084FC] transition">DJ Controllers</a></li>
+                        <li><a href="#speakers" class="text-white/70 hover:text-[#C084FC] transition">Speakers</a></li>
+                        <li><a href="#subwoofers" class="text-white/70 hover:text-[#C084FC] transition">Subwoofers</a></li>
+                        <li><a href="#microphones" class="text-white/70 hover:text-[#C084FC] transition">Microphones</a></li>
+                        <li><a href="#lighting" class="text-white/70 hover:text-[#C084FC] transition">Lighting</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-heading font-bold text-white text-sm uppercase tracking-widest mb-4">Company</h4>
+                    <ul class="space-y-2.5 text-sm">
+                        <li><a href="about.html" class="text-white/70 hover:text-[#C084FC] transition">About</a></li>
+                        <li><a href="packages.html" class="text-white/70 hover:text-[#C084FC] transition">Packages</a></li>
+                        <li><a href="gallery.html" class="text-white/70 hover:text-[#C084FC] transition">Gallery</a></li>
+                        <li><a href="events.html" class="text-white/70 hover:text-[#C084FC] transition">Event</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-heading font-bold text-white text-sm uppercase tracking-widest mb-4">Contact</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-start gap-3 text-white/70">
+                            <i class="fas fa-map-marker-alt mt-1" style="color:#C084FC;"></i>
+                            <span>450 Vinyl Ave, Suite 12<br>Los Angeles, CA 90013</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-white/70">
+                            <i class="fas fa-phone" style="color:#C084FC;"></i>
+                            <span>(213) 555-0188</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-white/70">
+                            <i class="fas fa-envelope" style="color:#C084FC;"></i>
+                            <span>book@beatbox.io</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="py-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-white/50">
+                <p>© 2026 BeatBox — DJ &amp; Sound System Rentals. All rights reserved.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-[#C084FC] transition">Privacy</a>
+                    <a href="#" class="hover:text-[#C084FC] transition">Terms</a>
+                    <a href="contact.html" class="hover:text-[#C084FC] transition">Support</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        (function() {
+            const html = document.documentElement;
+
+            // Theme
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            function applyTheme(theme) {
+                html.setAttribute('data-theme', theme);
+                if (theme === 'dark') html.classList.add('dark');
+                else html.classList.remove('dark');
+                localStorage.setItem('theme', theme);
+                document.querySelectorAll('.light-icon').forEach(i => i.classList.toggle('hidden', theme === 'dark'));
+                document.querySelectorAll('.dark-icon').forEach(i => i.classList.toggle('hidden', theme === 'light'));
+            }
+            applyTheme(savedTheme);
+
+            [document.getElementById('theme-toggle'), document.getElementById('mobile-theme-toggle')]
+                .filter(Boolean).forEach(btn => btn.addEventListener('click', () => {
+                    applyTheme(html.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
+                }));
+
+            // RTL
+            const savedLang = localStorage.getItem('language') || 'en';
+            if (savedLang === 'ar') html.setAttribute('dir', 'rtl');
+            const toggleRTL = () => {
+                const next = html.getAttribute('dir') === 'rtl' ? 'ltr' : 'rtl';
+                html.setAttribute('dir', next);
+                localStorage.setItem('language', next === 'rtl' ? 'ar' : 'en');
+            };
+            document.getElementById('lang-icon')?.addEventListener('click', toggleRTL);
+            document.getElementById('mobile-lang-toggle')?.addEventListener('click', toggleRTL);
+
+            // Mobile drawer
+            const drawer = document.getElementById('mobile-menu-drawer');
+            const content = document.getElementById('drawer-content');
+            const backdrop = document.getElementById('drawer-backdrop');
+            const openMenu = () => {
+                drawer.classList.remove('pointer-events-none');
+                content.classList.remove('translate-x-full');
+                content.classList.add('translate-x-0');
+                backdrop.classList.add('opacity-100', 'pointer-events-auto');
+                backdrop.classList.remove('opacity-0', 'pointer-events-none');
+                document.body.style.overflow = 'hidden';
+            };
+            const closeMenu = () => {
+                content.classList.add('translate-x-full');
+                content.classList.remove('translate-x-0');
+                backdrop.classList.remove('opacity-100', 'pointer-events-auto');
+                backdrop.classList.add('opacity-0', 'pointer-events-none');
+                setTimeout(() => {
+                    drawer.classList.add('pointer-events-none');
+                    document.body.style.overflow = '';
+                }, 300);
+            };
+            document.getElementById('mobile-menu-open')?.addEventListener('click', openMenu);
+            document.getElementById('mobile-menu-close')?.addEventListener('click', closeMenu);
+            backdrop?.addEventListener('click', closeMenu);
+            document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+
+            document.getElementById('mobile-home-toggle')?.addEventListener('click', () => {
+                document.getElementById('mobile-home-menu')?.classList.toggle('hidden');
+                document.getElementById('home-icon')?.classList.toggle('rotate-180');
+            });
+
+            // Navbar scroll
+            const nav = document.getElementById('mainNav');
+            function updateNav() {
+                if (window.scrollY > 30) nav.classList.add('scrolled');
+                else nav.classList.remove('scrolled');
+            }
+            window.addEventListener('scroll', updateNav);
+            updateNav();
+
+            // Smooth anchor scroll with navbar offset
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId && targetId.length > 1) {
+                        const target = document.querySelector(targetId);
+                        if (target) {
+                            e.preventDefault();
+                            const offset = target.getBoundingClientRect().top + window.pageYOffset - 90;
+                            window.scrollTo({ top: offset, behavior: 'smooth' });
+                        }
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+
+</html>

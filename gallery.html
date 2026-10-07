@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Gallery &middot; BeatBox — DJ &amp; Sound System Rentals</title>
+    <link rel="icon" type="image/png" href="assests/favicon.png">
+    <meta name="description" content="BeatBox event gallery — moments we've powered. Weddings, festivals, club nights, corporate events, and private parties.">
+
+      <script src="tailwind.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        display: ['"Bebas Neue"', 'Impact', 'sans-serif'],
+                        heading: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
+                        body: ['"Inter"', 'system-ui', 'sans-serif'],
+                    },
+                    animation: {
+                        'marquee': 'marquee 32s linear infinite',
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        :root, html[data-theme='light'] {
+            --color-background: #FFFFFF;
+            --color-primary-text: #0F172A;
+            --color-secondary-text: #475569;
+            --color-accent: #A855F7;
+            --color-accent-light: #C084FC;
+            --color-pink: #EC4899;
+            --color-border: #E2E8F0;
+            --color-hover: #F8FAFC;
+            --color-card-bg: #FFFFFF;
+            --nav-bg-scrolled: #0A0A0F;
+            --nav-text-scrolled: #FFFFFF;
+        }
+        html[data-theme='dark'] {
+            --color-background: #0A0A0F;
+            --color-primary-text: #F8FAFC;
+            --color-secondary-text: #94A3B8;
+            --color-accent: #C084FC;
+            --color-accent-light: #A855F7;
+            --color-pink: #F472B6;
+            --color-border: #1E293B;
+            --color-hover: #131320;
+            --color-card-bg: #131320;
+            --nav-bg-scrolled: #000000;
+            --nav-text-scrolled: #FFFFFF;
+        }
+
+        * { box-sizing: border-box; }
+        body {
+            background-color: var(--color-background);
+            color: var(--color-primary-text);
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+            overflow-x: hidden;
+            margin: 0; padding: 0;
+        }
+
+        .text-primary-text { color: var(--color-primary-text); }
+        .text-secondary-text { color: var(--color-secondary-text); }
+        .text-accent { color: var(--color-accent); }
+        .text-pink { color: var(--color-pink); }
+        .bg-background { background-color: var(--color-background); }
+        .bg-hover { background-color: var(--color-hover); }
+        .bg-card { background-color: var(--color-card-bg); }
+        .border-border { border-color: var(--color-border); }
+
+        .bg-purple-gradient { background: linear-gradient(135deg, #A855F7 0%, #EC4899 100%); }
+        .bg-dark-gradient { background: linear-gradient(135deg, #0A0A0F 0%, #1E1B4B 100%); }
+        .text-gradient {
+            background: linear-gradient(135deg, #A855F7 0%, #EC4899 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .font-display { font-family: 'Bebas Neue', Impact, sans-serif; letter-spacing: 0.02em; }
+        .font-heading { font-family: 'Space Grotesk', system-ui, sans-serif; }
+
+        /* ============ NAVBAR ============ */
+        .navbar-fixed {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            padding: 14px 0;
+            background: transparent;
+            transition: background 0.35s ease, padding 0.35s ease, box-shadow 0.35s ease;
+        }
+        .navbar-fixed.scrolled {
+            padding: 10px 0;
+            background: var(--nav-bg-scrolled);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+            backdrop-filter: blur(8px);
+        }
+        .navbar-fixed.scrolled .nav-logo-text { color: var(--nav-text-scrolled); }
+        .navbar-fixed.scrolled .nav-link { color: rgba(255,255,255,0.85); }
+        .navbar-fixed.scrolled .nav-link:hover,
+        .navbar-fixed.scrolled .nav-link.active { color: #C084FC !important; }
+        .navbar-fixed.scrolled .icon-btn {
+            background: rgba(255,255,255,0.08);
+            color: #FFFFFF;
+            border-color: rgba(255,255,255,0.15);
+        }
+        .navbar-fixed .nav-link { color: rgba(255,255,255,0.85); }
+        .navbar-fixed .nav-logo-text { color: #FFFFFF; }
+        .navbar-fixed .icon-btn {
+            background: rgba(255,255,255,0.10);
+            color: #FFFFFF;
+            border-color: rgba(255,255,255,0.15);
+        }
+        .navbar-fixed .icon-btn:hover,
+        .navbar-fixed.scrolled .icon-btn:hover {
+            background: linear-gradient(135deg,#A855F7,#EC4899);
+            border-color: transparent;
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.25s;
+            padding: 0.4rem 0;
+            font-weight: 500;
+            font-size: 0.875rem;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            left: 0; right: 0; bottom: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #A855F7, #EC4899);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+            border-radius: 2px;
+        }
+        .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); }
+        .nav-link.active, .nav-link:hover { color: #C084FC !important; }
+
+        .dropdown-wrapper { position: relative; }
+        .dropdown-wrapper::before {
+            content: ''; position: absolute;
+            left: 0; right: 0; height: 20px;
+            bottom: 100%; z-index: 100; background: transparent;
+        }
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            background-color: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 1rem;
+            box-shadow: 0 20px 40px -12px rgba(0,0,0,0.35);
+            min-width: 200px;
+            z-index: 1000;
+            opacity: 0; visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        .dropdown-wrapper:hover .dropdown-menu {
+            opacity: 1; visibility: visible;
+            transform: translateY(0); display: block;
+        }
+        .dropdown-menu a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: var(--color-primary-text);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid var(--color-border);
+        }
+        .dropdown-menu a:last-child { border-bottom: none; }
+        .dropdown-menu a:hover {
+            background-color: var(--color-hover);
+            color: var(--color-accent);
+            padding-left: 1.25rem;
+        }
+
+        .book-btn {
+            background: linear-gradient(135deg, #A855F7, #EC4899);
+            color: white;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .book-btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+            transition: left 0.5s ease;
+        }
+        .book-btn:hover::before { left: 100%; }
+        .book-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px -8px rgba(168, 85, 247, 0.6);
+        }
+
+        .icon-btn {
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--color-hover);
+            color: var(--color-primary-text);
+            transition: all 0.25s ease;
+            border: 1px solid var(--color-border);
+            cursor: pointer;
+        }
+        .icon-btn:hover {
+            background: linear-gradient(135deg, #A855F7, #EC4899);
+            color: white;
+            border-color: transparent;
+            transform: scale(1.08);
+        }
+
+        body::-webkit-scrollbar { width: 8px; }
+        body::-webkit-scrollbar-track { background: var(--color-hover); }
+        body::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #A855F7, #EC4899);
+            border-radius: 8px;
+        }
+
+        .section-pad { padding-top: 5rem; padding-bottom: 5rem; }
+        @media (min-width: 768px) {
+            .section-pad { padding-top: 7rem; padding-bottom: 7rem; }
+        }
+
+        [dir="rtl"] .dropdown-menu { left: auto; right: 0; }
+        [dir="rtl"] .nav-link::after { left: auto; right: 0; }
+
+        /* ============ HERO ============ */
+        @keyframes spinSlow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        .vinyl-spin { animation: spinSlow 18s linear infinite; }
+
+        @keyframes floatY {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .float-y { animation: floatY 5s ease-in-out infinite; }
+
+        /* ============ FILTER CHIPS ============ */
+        .filter-chip {
+            padding: 0.55rem 1.25rem;
+            border-radius: 9999px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid var(--color-border);
+            background: var(--color-background);
+            color: var(--color-secondary-text);
+            transition: all 0.25s ease;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        .filter-chip:hover {
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+        }
+        .filter-chip.active {
+            background: linear-gradient(135deg,#A855F7,#EC4899);
+            border-color: transparent;
+            color: white;
+        }
+
+        /* ============ MASONRY / MOSAIC GRIDS ============ */
+        .gal-tile {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1.25rem;
+            cursor: pointer;
+        }
+        .gal-tile img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+        .gal-tile:hover img {
+            transform: scale(1.08);
+        }
+        .gal-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(10,10,15,0.9) 0%, rgba(10,10,15,0.35) 45%, transparent 75%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .gal-tile:hover .gal-overlay {
+            opacity: 1;
+        }
+        .gal-label {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            padding: 1.25rem;
+            transform: translateY(8px);
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+        .gal-tile:hover .gal-label {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* ============ HORIZONTAL FILM STRIP ============ */
+        .film-strip {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            padding: 0.5rem 0 1.5rem;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+        }
+        .film-strip::-webkit-scrollbar { height: 6px; }
+        .film-strip::-webkit-scrollbar-thumb {
+            background: linear-gradient(90deg, #A855F7, #EC4899);
+            border-radius: 6px;
+        }
+        .film-frame {
+            min-width: 260px;
+            flex-shrink: 0;
+            scroll-snap-align: start;
+            border-radius: 1.25rem;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.4s ease;
+        }
+        .film-frame:hover {
+            transform: translateY(-6px);
+        }
+
+        /* ============ FEATURED SPOTLIGHT ============ */
+        .spotlight-wrap {
+            position: relative;
+            border-radius: 2rem;
+            overflow: hidden;
+        }
+        .spotlight-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.9s ease;
+        }
+        .spotlight-wrap:hover img {
+            transform: scale(1.04);
+        }
+        .spotlight-wrap::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, rgba(10,10,15,0.92) 0%, rgba(10,10,15,0.65) 55%, transparent 100%);
+        }
+
+        /* Marquee */
+        .marquee-track {
+            display: flex;
+            width: max-content;
+            animation: marquee 32s linear infinite;
+        }
+
+        /* Lightbox */
+        #lightbox {
+            background: rgba(0,0,0,0.92);
+            backdrop-filter: blur(8px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        #lightbox.active { opacity: 1; pointer-events: auto; }
+    
+        ::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+        }
+    </style>
+</head>
+
+<body class="antialiased bg-background">
+
+    <!-- ================= NAVBAR ================= -->
+    <header class="navbar-fixed" id="mainNav">
+        <nav class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between gap-3">
+
+                <a href="index.html" class="flex items-center gap-2.5 flex-shrink-0">
+                    <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center shadow-lg" style="background:linear-gradient(135deg,#A855F7,#EC4899);">
+                        <i class="fas fa-headphones text-white text-base sm:text-lg"></i>
+                    </div>
+                    <div class="flex flex-col leading-none">
+                        <span class="nav-logo-text font-display text-xl sm:text-2xl tracking-wider">BEAT<span style="color:#C084FC;">BOX</span></span>
+                        <span class="text-[9px] tracking-[0.25em] uppercase font-semibold" style="color:rgba(255,255,255,0.55);">DJ &amp; Sound Rentals</span>
+                    </div>
+                </a>
+
+                <div class="hidden xl:flex items-center justify-center flex-1 gap-6 mx-4">
+                    <div class="dropdown-wrapper">
+                        <button class="nav-link flex items-center font-semibold">
+                            Home
+                            <svg class="w-3 h-3 ml-1 relative top-[2.5px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a href="index.html">Home 1</a>
+                            <a href="home2.html">Home 2</a>
+                        </div>
+                    </div>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="services.html" class="nav-link">Services</a>
+                    <a href="equipment.html" class="nav-link">Equipment</a>
+                    <a href="packages.html" class="nav-link">Packages</a>
+                    <a href="gallery.html" class="nav-link active">Gallery</a>
+                    <a href="events.html" class="nav-link">Event</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </div>
+
+                <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+                    <button id="lang-icon" class="hidden xl:flex icon-btn items-center justify-center" title="Toggle RTL" aria-label="Toggle RTL">
+                          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" /></svg>
+                      </button>
+                      <button id="theme-toggle" class="hidden xl:flex icon-btn items-center justify-center" title="Toggle Theme" aria-label="Toggle Theme">
+                          <svg class="w-4 h-4 light-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                          <svg class="w-4 h-4 dark-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                      </button>
+                      <a href="contact.html" class="hidden xl:inline-flex book-btn px-5 sm:px-6 py-2.5 rounded-full text-xs sm:text-sm">
+                        <i class="fas fa-calendar-check mr-1.5"></i> Book Now
+                    </a>
+                    <button id="mobile-menu-open" class="xl:hidden icon-btn" aria-label="Open menu">
+                        <i class="fas fa-bars text-base"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ================= MOBILE DRAWER ================= -->
+    <div id="mobile-menu-drawer" class="fixed inset-0 z-[110] pointer-events-none transition-all duration-300">
+        <div id="drawer-backdrop" class="absolute inset-0 bg-black/60 backdrop-blur-sm opacity-0 transition-opacity duration-300 pointer-events-none"></div>
+        <div id="drawer-content" class="absolute top-0 right-0 h-full w-80 max-w-[85vw] bg-background shadow-2xl transform translate-x-full transition-transform duration-300 ease-out overflow-y-auto">
+            <div class="p-5">
+                <div class="flex justify-between items-center pb-4 border-b border-border mb-4">
+                    <a href="index.html" class="flex items-center gap-2.5">
+                        <div class="w-9 h-9 rounded-lg flex items-center justify-center" style="background:linear-gradient(135deg,#A855F7,#EC4899);">
+                            <i class="fas fa-headphones text-white text-sm"></i>
+                        </div>
+                        <span class="font-display text-lg tracking-wider text-primary-text">BEAT<span style="color:var(--color-accent);">BOX</span></span>
+                    </a>
+                    <button id="mobile-menu-close" class="p-2 rounded-lg hover:bg-hover transition">
+                        <i class="fas fa-times text-primary-text"></i>
+                    </button>
+                </div>
+                <nav class="flex flex-col space-y-1">
+                    <div>
+                        <button class="w-full flex justify-between items-center py-3 px-3 rounded-xl font-semibold text-accent hover:bg-hover transition" id="mobile-home-toggle">
+                            Home
+                            <svg class="w-4 h-4 transform transition-transform duration-200" id="home-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div id="mobile-home-menu" class="hidden pl-3 flex flex-col space-y-1 mt-1">
+                            <a href="index.html" class="py-2 px-3 text-sm text-primary-text hover:text-accent transition">Home 1</a>
+                            <a href="home2.html" class="py-2 px-3 text-sm text-primary-text hover:text-accent transition">Home 2</a>
+                        </div>
+                    </div>
+                    <a href="about.html" class="py-3 px-3 rounded-xl font-medium text-primary-text hover:bg-hover hover:text-accent transition">About</a>
+                    <a href="services.html" class="py-3 px-3 rounded-xl font-medium text-primary-text hover:bg-hover hover:text-accent transition">Services</a>
+                    <a href="equipment.html" class="py-3 px-3 rounded-xl font-medium text-primary-text hover:bg-hover hover:text-accent transition">Equipment</a>
+                    <a href="packages.html" class="py-3 px-3 rounded-xl font-medium text-primary-text hover:bg-hover hover:text-accent transition">Packages</a>
+                    <a href="gallery.html" class="py-3 px-3 rounded-xl font-medium text-accent bg-hover transition">Gallery</a>
+                    <a href="events.html" class="py-3 px-3 rounded-xl font-medium text-primary-text hover:bg-hover hover:text-accent transition">Event</a>
+                    <a href="contact.html" class="py-3 px-3 rounded-xl font-medium text-primary-text hover:bg-hover hover:text-accent transition">Contact</a>
+                </nav>
+                <div class="mt-6 pt-6 border-t border-border">
+                    <a href="contact.html" class="block w-full book-btn text-center py-3.5 rounded-xl font-bold text-sm">
+                        <i class="fas fa-calendar-check mr-2"></i> Book Now
+                    </a>
+                </div>
+                <div class="mt-5 flex justify-around items-center pt-5 border-t border-border">
+                    <button id="mobile-lang-toggle" class="flex flex-col items-center text-primary-text hover:text-accent p-2 transition">
+                        <svg class="w-5 h-5 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" /></svg>
+                        <span class="text-[10px] uppercase tracking-wider">RTL</span>
+                    </button>
+                    <button id="mobile-theme-toggle" class="flex flex-col items-center text-primary-text hover:text-accent p-2 transition">
+                        <svg class="w-5 h-5 mb-1 light-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                        <svg class="w-5 h-5 mb-1 dark-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+                        <span class="text-[10px] uppercase tracking-wider">Theme</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         SECTION 1 · HERO — GALLERY INTRO
+    ============================================================ -->
+    <section class="relative min-h-[80vh] flex items-center overflow-hidden bg-dark-gradient pt-[100px]">
+        <div class="absolute inset-0">
+            <img src="assests/e6.jpg"
+                 alt="Concert crowd with lights"
+                 class="w-full h-full object-cover opacity-30">
+            <div class="absolute inset-0 bg-gradient-to-b from-[#0A0A0F]/95 via-[#0A0A0F]/85 to-[#0A0A0F]/95"></div>
+        </div>
+
+        <!-- Rotating vinyl -->
+        <div class="hidden lg:block absolute -left-32 top-1/2 -translate-y-1/2 pointer-events-none">
+            <div class="vinyl-spin relative w-[480px] h-[480px] rounded-full opacity-15">
+                <div class="absolute inset-0 rounded-full border-4 border-[#A855F7]/40"></div>
+                <div class="absolute inset-16 rounded-full border-2 border-[#EC4899]/40"></div>
+                <div class="absolute inset-32 rounded-full border-2 border-[#A855F7]/30"></div>
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <div class="w-28 h-28 rounded-full flex items-center justify-center" style="background:linear-gradient(135deg,#A855F7,#EC4899);">
+                        <i class="fas fa-camera-retro text-white text-3xl"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="relative z-10 max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 w-full">
+            <div class="max-w-3xl">
+                <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full mb-6">
+                    <span class="w-2 h-2 rounded-full bg-pink animate-pulse"></span>
+                    <span class="text-white text-[10px] sm:text-xs font-semibold tracking-widest uppercase">500+ Events · 10 Years · One Crew</span>
+                </div>
+
+                <h1 class="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[110px] text-white leading-[0.88] tracking-wide mb-6">
+                    Moments We <br>
+                    <span class="text-gradient">Powered.</span>
+                </h1>
+
+              
+
+                <!-- Category filter chips -->
+                <div class="flex flex-wrap gap-2 sm:gap-3">
+                    <button class="filter-chip active" data-filter="all">All</button>
+                    <button class="filter-chip" data-filter="weddings">Weddings</button>
+                    <button class="filter-chip" data-filter="festivals">Festivals</button>
+                    <button class="filter-chip" data-filter="clubs">Club Nights</button>
+                    <button class="filter-chip" data-filter="corporate">Corporate</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marquee -->
+    <section class="bg-gradient-to-r from-[#A855F7] via-[#EC4899] to-[#A855F7] py-3.5 overflow-hidden">
+        <div class="marquee-track">
+            <div class="flex items-center gap-8 sm:gap-12 px-6">
+                <span class="font-display text-base sm:text-xl text-white tracking-widest">WEDDINGS</span>
+                <span class="text-white/60">◆</span>
+                <span class="font-display text-base sm:text-xl text-white tracking-widest">FESTIVALS</span>
+                <span class="text-white/60">◆</span>
+                <span class="font-display text-base sm:text-xl text-white tracking-widest">CLUB NIGHTS</span>
+                <span class="text-white/60">◆</span>
+                <span class="font-display text-base sm:text-xl text-white tracking-widest">CORPORATE</span>
+                <span class="text-white/60">◆</span>
+                <span class="font-display text-base sm:text-xl text-white tracking-widest">PRIVATE PARTIES</span>
+                <span class="text-white/60">◆</span>
+            </div>
+            <div class="flex items-center gap-8 sm:gap-12 px-6" aria-hidden="true">
+                <span class="font-display text-base sm:text-xl text-white tracking-widest">WEDDINGS</span>
+                <span class="text-white/60">◆</span>
+                <span class="font-display text-base sm:text-xl text-white tracking-widest">FESTIVALS</span>
+                <span class="text-white/60">◆</span>
+                <span class="font-display text-base sm:text-xl text-white tracking-widest">CLUB NIGHTS</span>
+                <span class="text-white/60">◆</span>
+                <span class="font-display text-base sm:text-xl text-white tracking-widest">CORPORATE</span>
+                <span class="text-white/60">◆</span>
+                <span class="font-display text-base sm:text-xl text-white tracking-widest">PRIVATE PARTIES</span>
+                <span class="text-white/60">◆</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 2 · FEATURED SPOTLIGHT — Big Single Hero Image
+    ============================================================ -->
+    <section class="section-pad bg-background transition-colors" id="spotlight">
+        <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
+                <div>
+                    <span class="text-accent text-xs font-bold uppercase tracking-[0.25em]">Featured Spotlight</span>
+                    <h2 class="font-display text-4xl sm:text-5xl md:text-6xl text-primary-text mt-3">
+                        Moment Of The <span class="text-gradient">Month</span>
+                    </h2>
+                </div>
+                
+            </div>
+
+            <div class="spotlight-wrap shadow-2xl relative flex items-center min-h-[450px]">
+                <img src="assests/g.jpg" alt="Featured event highlight" class="absolute inset-0 w-full h-full object-cover z-0">
+                <div class="relative z-10 w-full flex items-center">
+                    <div class="max-w-xl p-6 py-12 sm:p-10 lg:p-14 text-white">
+                        <h3 class="font-display text-3xl sm:text-4xl lg:text-5xl mb-4 leading-tight">1,200 Guests. One Funktion-One Rig. Zero Drops.</h3>
+                        <p class="text-white/85 text-sm sm:text-base leading-relaxed mb-6">
+                            Multi-DJ lineup, full stage lighting, LED wall visuals, and 10 hours of non-stop sound on the Santa Monica Pier.
+                        </p>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 3 · EVENT GRID — Filterable Masonry
+    ============================================================ -->
+    <section class="section-pad bg-hover transition-colors" id="grid">
+        <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-accent text-xs font-bold uppercase tracking-[0.25em]">Event Grid</span>
+                <h2 class="font-display text-4xl sm:text-5xl md:text-6xl text-primary-text mt-3 mb-3">
+                    Browse <span class="text-gradient">By Category</span>
+                </h2>
+                <p class="text-secondary-text text-base">Click a category to filter. Hover any tile to reveal details.</p>
+            </div>
+
+            <!-- Filter chips -->
+            <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-10" id="gridFilters">
+                <button class="filter-chip active" data-filter="all">All Events</button>
+                <button class="filter-chip" data-filter="weddings">Weddings</button>
+                <button class="filter-chip" data-filter="festivals">Festivals</button>
+                <button class="filter-chip" data-filter="clubs">Club Nights</button>
+                <button class="filter-chip" data-filter="corporate">Corporate</button>
+            </div>
+
+            <!-- Masonry grid -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 auto-rows-[180px] sm:auto-rows-[220px]" id="gridContainer">
+
+                <div class="gal-tile col-span-2 row-span-2" data-cat="festivals">
+                    <img src="assests/concert_event.png" alt="Festival highlight">
+                    <div class="gal-overlay"></div>
+                    <div class="gal-label">
+                        <span class="text-[10px] uppercase tracking-widest font-bold text-[#C084FC]">Festival · 2026</span>
+                        <p class="font-heading font-bold text-white text-base mt-1">Summer Beats Main Stage</p>
+                    </div>
+                </div>
+
+                <div class="gal-tile" data-cat="weddings">
+                    <img src="assests/g1.jpg" alt="Wedding">
+                    <div class="gal-overlay"></div>
+                    <div class="gal-label">
+                        <span class="text-[10px] uppercase tracking-widest font-bold text-[#C084FC]">Wedding</span>
+                        <p class="font-heading font-bold text-white text-sm mt-1">Sunset Beach</p>
+                    </div>
+                </div>
+
+                <div class="gal-tile" data-cat="clubs">
+                    <img src="assests/g2.jpg" alt="Club night">
+                    <div class="gal-overlay"></div>
+                    <div class="gal-label">
+                        <span class="text-[10px] uppercase tracking-widest font-bold text-[#C084FC]">Club</span>
+                        <p class="font-heading font-bold text-white text-sm mt-1">Rooftop Nights</p>
+                    </div>
+                </div>
+
+                <div class="gal-tile" data-cat="corporate">
+                    <img src="assests/s4.jpg" alt="Corporate">
+                    <div class="gal-overlay"></div>
+                    <div class="gal-label">
+                        <span class="text-[10px] uppercase tracking-widest font-bold text-[#C084FC]">Corporate</span>
+                        <p class="font-heading font-bold text-white text-sm mt-1">TechCorp Launch</p>
+                    </div>
+                </div>
+
+                <div class="gal-tile" data-cat="weddings">
+                    <img src="assests/corporate_event.png" alt="Wedding reception">
+                    <div class="gal-overlay"></div>
+                    <div class="gal-label">
+                        <span class="text-[10px] uppercase tracking-widest font-bold text-[#C084FC]">Wedding</span>
+                        <p class="font-heading font-bold text-white text-sm mt-1">First Dance</p>
+                    </div>
+                </div>
+
+                <div class="gal-tile col-span-2" data-cat="festivals">
+                    <img src="https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=1000&q=80" alt="Festival crowd">
+                    <div class="gal-overlay"></div>
+                    <div class="gal-label">
+                        <span class="text-[10px] uppercase tracking-widest font-bold text-[#C084FC]">Festival · 2025</span>
+                        <p class="font-heading font-bold text-white text-base mt-1">Riverside Stage</p>
+                    </div>
+                </div>
+
+                <div class="gal-tile" data-cat="clubs">
+                    <img src="assests/g3.jpg" alt="Club">
+                    <div class="gal-overlay"></div>
+                    <div class="gal-label">
+                        <span class="text-[10px] uppercase tracking-widest font-bold text-[#C084FC]">Club</span>
+                        <p class="font-heading font-bold text-white text-sm mt-1">Neon Nights</p>
+                    </div>
+                </div>
+
+                <div class="gal-tile" data-cat="corporate">
+                    <img src="assests/wedding_event.png" alt="Corporate gala">
+                    <div class="gal-overlay"></div>
+                    <div class="gal-label">
+                        <span class="text-[10px] uppercase tracking-widest font-bold text-[#C084FC]">Corporate</span>
+                        <p class="font-heading font-bold text-white text-sm mt-1">Annual Gala</p>
+                    </div>
+                </div>
+
+                <div class="gal-tile col-span-2" data-cat="weddings">
+                    <img src="assests/g5.jpg" alt="Wedding venue">
+                    <div class="gal-overlay"></div>
+                    <div class="gal-label">
+                        <span class="text-[10px] uppercase tracking-widest font-bold text-[#C084FC]">Wedding</span>
+                        <p class="font-heading font-bold text-white text-base mt-1">Garden Ceremony</p>
+                    </div>
+                </div>
+
+                <div class="gal-tile" data-cat="festivals">
+                    <img src="assests/g4.jpg" alt="Festival">
+                    <div class="gal-overlay"></div>
+                    <div class="gal-label">
+                        <span class="text-[10px] uppercase tracking-widest font-bold text-[#C084FC]">Festival</span>
+                        <p class="font-heading font-bold text-white text-sm mt-1">Night Stage</p>
+                    </div>
+                </div>
+
+                <div class="gal-tile" data-cat="clubs">
+                    <img src="assests/s8.jpg" alt="Club lighting">
+                    <div class="gal-overlay"></div>
+                    <div class="gal-label">
+                        <span class="text-[10px] uppercase tracking-widest font-bold text-[#C084FC]">Club</span>
+                        <p class="font-heading font-bold text-white text-sm mt-1">LED Show</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- No results message -->
+            <div id="noResults" class="hidden text-center py-16">
+                <i class="fas fa-camera-retro text-4xl text-accent/40 mb-4"></i>
+                <p class="text-secondary-text text-base">No events found in this category yet.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 4 · FILM STRIP — Horizontal Scroll
+    ============================================================ -->
+    <section class="section-pad bg-background transition-colors" id="strip">
+        <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
+                <div>
+                    <span class="text-accent text-xs font-bold uppercase tracking-[0.25em]">Behind The Scenes</span>
+                    <h2 class="font-display text-4xl sm:text-5xl md:text-6xl text-primary-text mt-3">
+                        Backstage <span class="text-gradient">Moments</span>
+                    </h2>
+                </div>
+            </div>
+
+            <!-- Theory content -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+                <div class="bg-hover border border-border p-8 rounded-3xl">
+                    <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6" style="background:rgba(168,85,247,0.12);">
+                        <i class="fas fa-sliders-h text-accent text-xl"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-xl text-primary-text mb-4">Acoustic Engineering</h3>
+                    <p class="text-secondary-text leading-relaxed">
+                        Every venue has unique acoustic properties. Our engineers analyze the room's dimensions and materials to optimize speaker placement and EQ settings, ensuring crystal-clear sound without dead zones.
+                    </p>
+                </div>
+                <div class="bg-hover border border-border p-8 rounded-3xl">
+                    <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6" style="background:rgba(236,72,153,0.12);">
+                        <i class="fas fa-bolt text-pink text-xl"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-xl text-primary-text mb-4">Signal Flow Mastery</h3>
+                    <p class="text-secondary-text leading-relaxed">
+                        We utilize balanced cables and pristine digital routing to maintain audio integrity from the microphone to the speakers. This meticulous attention to signal flow prevents interference and noise.
+                    </p>
+                </div>
+                <div class="bg-hover border border-border p-8 rounded-3xl">
+                    <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6" style="background:rgba(139,92,246,0.12);">
+                        <i class="fas fa-shield-alt text-accent text-xl"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-xl text-primary-text mb-4">Failsafe Redundancy</h3>
+                    <p class="text-secondary-text leading-relaxed">
+                        Professional setups demand reliability. Our backstage protocol includes backup mixers, redundant power conditioning, and standby equipment to guarantee the show never stops.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- ============================================================
+         SECTION 5 · QUOTE / TESTIMONIAL STRIP
+    ============================================================ -->
+    <section class="section-pad bg-dark-gradient transition-colors relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-[400px] h-[400px] rounded-full blur-3xl" style="background:radial-gradient(circle, rgba(168,85,247,0.3) 0%, transparent 70%);"></div>
+        <div class="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full blur-3xl" style="background:radial-gradient(circle, rgba(236,72,153,0.25) 0%, transparent 70%);"></div>
+
+        <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <i class="fas fa-quote-left text-4xl text-[#C084FC] mb-6"></i>
+
+            <p class="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white leading-tight mb-8">
+                "The sound was so clean that guests kept asking us who our DJ was. BeatBox made our wedding feel like a concert."
+            </p>
+
+            <div class="flex items-center justify-center gap-4">
+                <div class="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold flex-shrink-0" style="background:linear-gradient(135deg,#A855F7,#EC4899);">
+                    AM
+                </div>
+                <div class="text-left">
+                    <p class="font-bold text-white text-sm">Amara &amp; Michael</p>
+                    <p class="text-xs text-gray-400">Married · May 2025</p>
+                </div>
+            </div>
+
+            <!-- Rating row -->
+            <div class="flex justify-center gap-1 mt-8">
+                <i class="fas fa-star text-[#EC4899]"></i>
+                <i class="fas fa-star text-[#EC4899]"></i>
+                <i class="fas fa-star text-[#EC4899]"></i>
+                <i class="fas fa-star text-[#EC4899]"></i>
+                <i class="fas fa-star text-[#EC4899]"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 6 · CTA — View Events + Book
+    ============================================================ -->
+    <section class="section-pad bg-background transition-colors">
+        <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+                <!-- Big CTA -->
+                <div class="md:col-span-2 rounded-3xl p-8 sm:p-12 relative overflow-hidden" style="background:linear-gradient(135deg,#A855F7,#EC4899);">
+                    <div class="relative z-10">
+                        <h2 class="font-display text-3xl sm:text-4xl md:text-5xl text-white mb-4 leading-tight">
+                            Want Your Event In This Gallery?
+                        </h2>
+                        <p class="text-white/85 text-sm sm:text-base max-w-xl mb-8">
+                            Book BeatBox for your next event and we'll bring the sound, the lights, and the energy. Every event has its moment — let's make yours unforgettable.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <a href="contact.html" class="px-7 py-3.5 bg-white text-[#0F172A] rounded-full font-bold text-sm hover:bg-gray-100 transition text-center">
+                                <i class="fas fa-calendar-check mr-2"></i> Book Your Event
+                            </a>
+                            <a href="contact.html" class="px-7 py-3.5 border-2 border-white/60 text-white rounded-full font-semibold text-sm hover:bg-white/10 hover:border-white transition text-center">
+                                <i class="fas fa-comments mr-2"></i> Talk To Us
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stat tile 1 -->
+                <div class="rounded-3xl p-8 bg-hover border border-border flex flex-col justify-between min-h-[200px]">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(168,85,247,0.12);">
+                            <i class="fas fa-images text-accent"></i>
+                        </div>
+                        <p class="text-secondary-text text-sm leading-relaxed">
+                            From intimate weddings to massive festival stages, we've documented every unforgettable moment.
+                        </p>
+                    </div>
+                    <div class="mt-6">
+                        <p class="font-display text-4xl text-gradient leading-none">500+</p>
+                        <p class="text-[10px] uppercase tracking-widest text-secondary-text mt-2">Events Captured</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom stat row -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-4">
+                <div class="rounded-2xl p-5 bg-hover border border-border text-center">
+                    <p class="font-display text-2xl text-gradient leading-none">120+</p>
+                    <p class="text-[10px] uppercase tracking-widest text-secondary-text mt-2">Weddings</p>
+                </div>
+                <div class="rounded-2xl p-5 bg-hover border border-border text-center">
+                    <p class="font-display text-2xl text-gradient leading-none">85+</p>
+                    <p class="text-[10px] uppercase tracking-widest text-secondary-text mt-2">Festivals</p>
+                </div>
+                <div class="rounded-2xl p-5 bg-hover border border-border text-center">
+                    <p class="font-display text-2xl text-gradient leading-none">240+</p>
+                    <p class="text-[10px] uppercase tracking-widest text-secondary-text mt-2">Club Nights</p>
+                </div>
+                <div class="rounded-2xl p-5 bg-hover border border-border text-center">
+                    <p class="font-display text-2xl text-gradient leading-none">55+</p>
+                    <p class="text-[10px] uppercase tracking-widest text-secondary-text mt-2">Corporate</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="pt-16 pb-8" style="background-color:#0A0A0F;color:#E2E8F0;">
+        <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
+
+                <div class="lg:col-span-2">
+                    <a href="index.html" class="flex items-center gap-2.5 mb-5">
+                        <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:linear-gradient(135deg,#A855F7,#EC4899);">
+                            <i class="fas fa-headphones text-white text-base"></i>
+                        </div>
+                        <div class="flex flex-col leading-none">
+                            <span class="font-display text-xl tracking-wider text-white">BEAT<span style="color:#C084FC;">BOX</span></span>
+                            <span class="text-[9px] tracking-[0.25em] uppercase font-semibold text-white/50">DJ &amp; Sound Rentals</span>
+                        </div>
+                    </a>
+                    <p class="text-sm text-white/70 leading-relaxed max-w-sm mb-6">
+                        Pro sound systems, DJ setups, and lighting for unforgettable events. Serving Los Angeles and Southern California since 2016.
+                    </p>
+                    <div class="flex gap-3">
+                        <a href="#" class="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/70 hover:bg-gradient-to-br hover:from-[#A855F7] hover:to-[#EC4899] hover:text-white hover:border-transparent transition"><i class="fab fa-instagram text-sm"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/70 hover:bg-gradient-to-br hover:from-[#A855F7] hover:to-[#EC4899] hover:text-white hover:border-transparent transition"><i class="fab fa-facebook-f text-sm"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/70 hover:bg-gradient-to-br hover:from-[#A855F7] hover:to-[#EC4899] hover:text-white hover:border-transparent transition"><i class="fab fa-youtube text-sm"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/70 hover:bg-gradient-to-br hover:from-[#A855F7] hover:to-[#EC4899] hover:text-white hover:border-transparent transition"><i class="fab fa-tiktok text-sm"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-heading font-bold text-white text-sm uppercase tracking-widest mb-4">Explore</h4>
+                    <ul class="space-y-2.5 text-sm">
+                        <li><a href="services.html" class="text-white/70 hover:text-[#C084FC] transition">Services</a></li>
+                        <li><a href="equipment.html" class="text-white/70 hover:text-[#C084FC] transition">Equipment</a></li>
+                        <li><a href="packages.html" class="text-white/70 hover:text-[#C084FC] transition">Packages</a></li>
+                        <li><a href="events.html" class="text-white/70 hover:text-[#C084FC] transition">Events</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-heading font-bold text-white text-sm uppercase tracking-widest mb-4">Company</h4>
+                    <ul class="space-y-2.5 text-sm">
+                        <li><a href="about.html" class="text-white/70 hover:text-[#C084FC] transition">About</a></li>
+                        <li><a href="gallery.html" class="text-white/70 hover:text-[#C084FC] transition">Gallery</a></li>
+                        <li><a href="contact.html" class="text-white/70 hover:text-[#C084FC] transition">Contact</a></li>
+                        <li><a href="contact.html" class="text-white/70 hover:text-[#C084FC] transition">Book</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-heading font-bold text-white text-sm uppercase tracking-widest mb-4">Contact</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-start gap-3 text-white/70">
+                            <i class="fas fa-map-marker-alt mt-1" style="color:#C084FC;"></i>
+                            <span>450 Vinyl Ave, Suite 12<br>Los Angeles, CA 90013</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-white/70">
+                            <i class="fas fa-phone" style="color:#C084FC;"></i>
+                            <span>(213) 555-0188</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-white/70">
+                            <i class="fas fa-envelope" style="color:#C084FC;"></i>
+                            <span>book@beatbox.io</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="py-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-white/50">
+                <p>© 2026 BeatBox — DJ &amp; Sound System Rentals. All rights reserved.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-[#C084FC] transition">Privacy</a>
+                    <a href="#" class="hover:text-[#C084FC] transition">Terms</a>
+                    <a href="contact.html" class="hover:text-[#C084FC] transition">Support</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ================= LIGHTBOX ================= -->
+    <div id="lightbox" class="fixed inset-0 z-[200] flex items-center justify-center p-4">
+        <button id="lightboxClose" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/10 border border-white/20 text-white flex items-center justify-center hover:bg-white/20 transition z-10">
+            <i class="fas fa-times"></i>
+        </button>
+        <img id="lightboxImg" src="" alt="Preview" class="max-w-full max-h-full rounded-2xl shadow-2xl">
+    </div>
+
+    <script>
+        (function() {
+            const html = document.documentElement;
+
+            // Theme
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            function applyTheme(theme) {
+                html.setAttribute('data-theme', theme);
+                if (theme === 'dark') html.classList.add('dark');
+                else html.classList.remove('dark');
+                localStorage.setItem('theme', theme);
+                document.querySelectorAll('.light-icon').forEach(i => i.classList.toggle('hidden', theme === 'dark'));
+                document.querySelectorAll('.dark-icon').forEach(i => i.classList.toggle('hidden', theme === 'light'));
+            }
+            applyTheme(savedTheme);
+
+            [document.getElementById('theme-toggle'), document.getElementById('mobile-theme-toggle')]
+                .filter(Boolean).forEach(btn => btn.addEventListener('click', () => {
+                    applyTheme(html.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
+                }));
+
+            // RTL
+            const savedLang = localStorage.getItem('language') || 'en';
+            if (savedLang === 'ar') html.setAttribute('dir', 'rtl');
+            const toggleRTL = () => {
+                const next = html.getAttribute('dir') === 'rtl' ? 'ltr' : 'rtl';
+                html.setAttribute('dir', next);
+                localStorage.setItem('language', next === 'rtl' ? 'ar' : 'en');
+            };
+            document.getElementById('lang-icon')?.addEventListener('click', toggleRTL);
+            document.getElementById('mobile-lang-toggle')?.addEventListener('click', toggleRTL);
+
+            // Mobile drawer
+            const drawer = document.getElementById('mobile-menu-drawer');
+            const content = document.getElementById('drawer-content');
+            const backdrop = document.getElementById('drawer-backdrop');
+            const openMenu = () => {
+                drawer.classList.remove('pointer-events-none');
+                content.classList.remove('translate-x-full');
+                content.classList.add('translate-x-0');
+                backdrop.classList.add('opacity-100', 'pointer-events-auto');
+                backdrop.classList.remove('opacity-0', 'pointer-events-none');
+                document.body.style.overflow = 'hidden';
+            };
+            const closeMenu = () => {
+                content.classList.add('translate-x-full');
+                content.classList.remove('translate-x-0');
+                backdrop.classList.remove('opacity-100', 'pointer-events-auto');
+                backdrop.classList.add('opacity-0', 'pointer-events-none');
+                setTimeout(() => {
+                    drawer.classList.add('pointer-events-none');
+                    document.body.style.overflow = '';
+                }, 300);
+            };
+            document.getElementById('mobile-menu-open')?.addEventListener('click', openMenu);
+            document.getElementById('mobile-menu-close')?.addEventListener('click', closeMenu);
+            backdrop?.addEventListener('click', closeMenu);
+
+            document.getElementById('mobile-home-toggle')?.addEventListener('click', () => {
+                document.getElementById('mobile-home-menu')?.classList.toggle('hidden');
+                document.getElementById('home-icon')?.classList.toggle('rotate-180');
+            });
+
+            // Navbar scroll
+            const nav = document.getElementById('mainNav');
+            function updateNav() {
+                if (window.scrollY > 30) nav.classList.add('scrolled');
+                else nav.classList.remove('scrolled');
+            }
+            window.addEventListener('scroll', updateNav);
+            updateNav();
+
+            // Hero filter chips → scroll to grid
+            document.querySelectorAll('#spotlight ~ * .filter-chip, section:first-of-type .filter-chip').forEach(() => {});
+            const heroChips = document.querySelectorAll('section:first-of-type .filter-chip');
+            heroChips.forEach(chip => {
+                chip.addEventListener('click', () => {
+                    heroChips.forEach(c => c.classList.remove('active'));
+                    chip.classList.add('active');
+                    const cat = chip.getAttribute('data-filter');
+                    const gridFilters = document.querySelectorAll('#gridFilters .filter-chip');
+                    gridFilters.forEach(c => {
+                        c.classList.remove('active');
+                        if (c.getAttribute('data-filter') === cat) c.classList.add('active');
+                    });
+                    applyGridFilter(cat);
+                    document.getElementById('grid')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+            });
+
+            // Grid filter
+            const gridFilters = document.querySelectorAll('#gridFilters .filter-chip');
+            const gridItems = document.querySelectorAll('#gridContainer .gal-tile');
+            const noResults = document.getElementById('noResults');
+
+            function applyGridFilter(filter) {
+                let visible = 0;
+                gridItems.forEach(item => {
+                    const cat = item.getAttribute('data-cat');
+                    if (filter === 'all' || cat === filter) {
+                        item.style.display = '';
+                        visible++;
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+                if (noResults) noResults.classList.toggle('hidden', visible > 0);
+            }
+
+            gridFilters.forEach(chip => {
+                chip.addEventListener('click', () => {
+                    gridFilters.forEach(c => c.classList.remove('active'));
+                    chip.classList.add('active');
+                    applyGridFilter(chip.getAttribute('data-filter'));
+                });
+            });
+
+            // Lightbox
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightboxImg');
+            const lightboxClose = document.getElementById('lightboxClose');
+            document.querySelectorAll('.gal-tile').forEach(tile => {
+                tile.addEventListener('click', () => {
+                    const img = tile.querySelector('img');
+                    if (img) {
+                        lightboxImg.src = img.src;
+                        lightbox.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                    }
+                });
+            });
+            function closeLightbox() {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+            lightboxClose?.addEventListener('click', closeLightbox);
+            lightbox?.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+            document.addEventListener('keydown', e => {
+                if (e.key === 'Escape') { closeLightbox(); closeMenu(); }
+            });
+        })();
+    </script>
+</body>
+
+</html>

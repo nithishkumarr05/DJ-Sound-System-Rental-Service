@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Packages &middot; BeatBox — DJ &amp; Sound System Rentals</title>
+    <link rel="icon" type="image/png" href="assests/favicon.png">
+    <meta name="description" content="BeatBox rental packages — Basic, Standard, Premium, Wedding, and Custom. Transparent pricing, all gear included, on-site technicians.">
+
+      <script src="tailwind.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        display: ['"Bebas Neue"', 'Impact', 'sans-serif'],
+                        heading: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
+                        body: ['"Inter"', 'system-ui', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'marquee': 'marquee 32s linear infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-12px)' },
+                        },
+                        marquee: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        :root, html[data-theme='light'] {
+            --color-background: #FFFFFF;
+            --color-primary-text: #0F172A;
+            --color-secondary-text: #475569;
+            --color-accent: #A855F7;
+            --color-accent-light: #C084FC;
+            --color-pink: #EC4899;
+            --color-border: #E2E8F0;
+            --color-hover: #F8FAFC;
+            --color-card-bg: #FFFFFF;
+            --nav-bg-scrolled: #0A0A0F;
+            --nav-text-scrolled: #FFFFFF;
+        }
+        html[data-theme='dark'] {
+            --color-background: #0A0A0F;
+            --color-primary-text: #F8FAFC;
+            --color-secondary-text: #94A3B8;
+            --color-accent: #C084FC;
+            --color-accent-light: #A855F7;
+            --color-pink: #F472B6;
+            --color-border: #1E293B;
+            --color-hover: #131320;
+            --color-card-bg: #131320;
+            --nav-bg-scrolled: #000000;
+            --nav-text-scrolled: #FFFFFF;
+        }
+
+        * { box-sizing: border-box; }
+        body {
+            background-color: var(--color-background);
+            color: var(--color-primary-text);
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+            overflow-x: hidden;
+            margin: 0; padding: 0;
+        }
+
+        .text-primary-text { color: var(--color-primary-text); }
+        .text-secondary-text { color: var(--color-secondary-text); }
+        .text-accent { color: var(--color-accent); }
+        .text-pink { color: var(--color-pink); }
+        .bg-background { background-color: var(--color-background); }
+        .bg-hover { background-color: var(--color-hover); }
+        .bg-card { background-color: var(--color-card-bg); }
+        .border-border { border-color: var(--color-border); }
+
+        .bg-purple-gradient { background: linear-gradient(135deg, #A855F7 0%, #EC4899 100%); }
+        .bg-dark-gradient { background: linear-gradient(135deg, #0A0A0F 0%, #1E1B4B 100%); }
+        .text-gradient {
+            background: linear-gradient(135deg, #A855F7 0%, #EC4899 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .font-display { font-family: 'Bebas Neue', Impact, sans-serif; letter-spacing: 0.02em; }
+        .font-heading { font-family: 'Space Grotesk', system-ui, sans-serif; }
+
+        /* ============ NAVBAR ============ */
+        .navbar-fixed {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            padding: 14px 0;
+            background: transparent;
+            transition: background 0.35s ease, padding 0.35s ease, box-shadow 0.35s ease;
+        }
+        .navbar-fixed.scrolled {
+            padding: 10px 0;
+            background: var(--nav-bg-scrolled);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+            backdrop-filter: blur(8px);
+        }
+        .navbar-fixed.scrolled .nav-logo-text { color: var(--nav-text-scrolled); }
+        .navbar-fixed.scrolled .nav-link { color: rgba(255,255,255,0.85); }
+        .navbar-fixed.scrolled .nav-link:hover,
+        .navbar-fixed.scrolled .nav-link.active { color: #C084FC !important; }
+        .navbar-fixed.scrolled .icon-btn {
+            background: rgba(255,255,255,0.08);
+            color: #FFFFFF;
+            border-color: rgba(255,255,255,0.15);
+        }
+        .navbar-fixed .nav-link { color: rgba(255,255,255,0.85); }
+        .navbar-fixed .nav-logo-text { color: #FFFFFF; }
+        .navbar-fixed .icon-btn {
+            background: rgba(255,255,255,0.10);
+            color: #FFFFFF;
+            border-color: rgba(255,255,255,0.15);
+        }
+        .navbar-fixed .icon-btn:hover,
+        .navbar-fixed.scrolled .icon-btn:hover {
+            background: linear-gradient(135deg,#A855F7,#EC4899);
+            border-color: transparent;
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.25s;
+            padding: 0.4rem 0;
+            font-weight: 500;
+            font-size: 0.875rem;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            left: 0; right: 0; bottom: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #A855F7, #EC4899);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+            border-radius: 2px;
+        }
+        .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); }
+        .nav-link.active, .nav-link:hover { color: #C084FC !important; }
+
+        .dropdown-wrapper { position: relative; }
+        .dropdown-wrapper::before {
+            content: ''; position: absolute;
+            left: 0; right: 0; height: 20px;
+            bottom: 100%; z-index: 100; background: transparent;
+        }
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            background-color: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 1rem;
+            box-shadow: 0 20px 40px -12px rgba(0,0,0,0.35);
+            min-width: 200px;
+            z-index: 1000;
+            opacity: 0; visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        .dropdown-wrapper:hover .dropdown-menu {
+            opacity: 1; visibility: visible;
+            transform: translateY(0); display: block;
+        }
+        .dropdown-menu a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: var(--color-primary-text);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid var(--color-border);
+        }
+        .dropdown-menu a:last-child { border-bottom: none; }
+        .dropdown-menu a:hover {
+            background-color: var(--color-hover);
+            color: var(--color-accent);
+            padding-left: 1.25rem;
+        }
+
+        .book-btn {
+            background: linear-gradient(135deg, #A855F7, #EC4899);
+            color: white;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .book-btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+            transition: left 0.5s ease;
+        }
+        .book-btn:hover::before { left: 100%; }
+        .book-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px -8px rgba(168, 85, 247, 0.6);
+        }
+
+        .icon-btn {
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--color-hover);
+            color: var(--color-primary-text);
+            transition: all 0.25s ease;
+            border: 1px solid var(--color-border);
+            cursor: pointer;
+        }
+        .icon-btn:hover {
+            background: linear-gradient(135deg, #A855F7, #EC4899);
+            color: white;
+            border-color: transparent;
+            transform: scale(1.08);
+        }
+
+        body::-webkit-scrollbar { width: 8px; }
+        body::-webkit-scrollbar-track { background: var(--color-hover); }
+        body::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #A855F7, #EC4899);
+            border-radius: 8px;
+        }
+
+        .section-pad { padding-top: 5rem; padding-bottom: 5rem; }
+        @media (min-width: 768px) {
+            .section-pad { padding-top: 7rem; padding-bottom: 7rem; }
+        }
+
+        [dir="rtl"] .dropdown-menu { left: auto; right: 0; }
+        [dir="rtl"] .nav-link::after { left: auto; right: 0; }
+        [dir="rtl"] .fa-arrow-right { transform: scaleX(-1); }
+
+        /* ============ HERO ============ */
+        @keyframes spinSlow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        .vinyl-spin { animation: spinSlow 16s linear infinite; }
+
+        @keyframes pulseDot {
+            0%, 100% { opacity: 0.4; transform: scale(0.9); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+        .pulse-dot { animation: pulseDot 2s ease-in-out infinite; }
+
+        /* ============ PACKAGE CARD STYLES ============ */
+        /* Basic: flat minimal */
+        .pkg-basic {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            transition: all 0.35s ease;
+        }
+        .pkg-basic:hover {
+            border-color: var(--color-accent);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -18px rgba(168, 85, 247, 0.25);
+        }
+
+        /* Standard: gradient border premium */
+        .pkg-standard {
+            position: relative;
+            padding: 2px;
+            border-radius: 1.75rem;
+            background: linear-gradient(135deg, #A855F7, #EC4899);
+            transition: all 0.35s ease;
+        }
+        .pkg-standard:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 30px 60px -20px rgba(236, 72, 153, 0.5);
+        }
+        .pkg-standard-inner {
+            background: var(--color-card-bg);
+            border-radius: calc(1.75rem - 2px);
+            padding: 2rem;
+            height: 100%;
+        }
+
+        /* Premium: dark luxe */
+        .pkg-premium {
+            background: linear-gradient(135deg, #0A0A0F 0%, #1E1B4B 100%);
+            border-radius: 1.75rem;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.35s ease;
+        }
+        .pkg-premium::before {
+            content: '';
+            position: absolute;
+            top: -50%; right: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(168,85,247,0.25) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        .pkg-premium:hover::before { opacity: 1; }
+        .pkg-premium:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 30px 60px -20px rgba(168, 85, 247, 0.55);
+        }
+
+        /* ============ WEDDING — Timeline Row Style ============ */
+        .wedding-row {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 1.25rem;
+            transition: all 0.3s ease;
+        }
+        .wedding-row:hover {
+            border-color: var(--color-accent);
+            background: var(--color-hover);
+        }
+        @media (min-width: 768px) {
+            .wedding-row {
+                flex-direction: row;
+                align-items: center;
+                padding: 1.25rem 1.75rem;
+            }
+        }
+
+        /* ============ CUSTOM — Bento Grid ============ */
+        .custom-tile {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 1.25rem;
+            padding: 1.5rem;
+            transition: all 0.35s ease;
+        }
+        .custom-tile:hover {
+            border-color: var(--color-accent);
+            transform: translateY(-4px);
+            box-shadow: 0 18px 35px -15px rgba(168, 85, 247, 0.3);
+        }
+        .custom-tile.featured {
+            background: linear-gradient(135deg, #A855F7, #EC4899);
+            border: none;
+            color: white;
+        }
+        .custom-tile.featured:hover {
+            box-shadow: 0 22px 45px -18px rgba(236, 72, 153, 0.55);
+        }
+
+        /* Marquee */
+        .marquee-track {
+            display: flex;
+            width: max-content;
+            animation: marquee 32s linear infinite;
+        }
+    
+        ::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+        }
+    </style>
+</head>
+
+<body class="antialiased bg-background">
+
+    <!-- ================= NAVBAR ================= -->
+    <header class="navbar-fixed" id="mainNav">
+        <nav class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between gap-3">
+
+                <a href="index.html" class="flex items-center gap-2.5 flex-shrink-0">
+                    <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center shadow-lg" style="background:linear-gradient(135deg,#A855F7,#EC4899);">
+                        <i class="fas fa-headphones text-white text-base sm:text-lg"></i>
+                    </div>
+                    <div class="flex flex-col leading-none">
+                        <span class="nav-logo-text font-display text-xl sm:text-2xl tracking-wider">BEAT<span style="color:#C084FC;">BOX</span></span>
+                        <span class="text-[9px] tracking-[0.25em] uppercase font-semibold" style="color:rgba(255,255,255,0.55);">DJ &amp; Sound Rentals</span>
+                    </div>
+                </a>
+
+                <div class="hidden xl:flex items-center justify-center flex-1 gap-6 mx-4">
+                    <div class="dropdown-wrapper">
+                        <button class="nav-link flex items-center font-semibold">
+                            Home
+                            <svg class="w-3 h-3 ml-1 relative top-[2.5px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a href="index.html">Home 1</a>
+                            <a href="home2.html">Home 2</a>
+                        </div>
+                    </div>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="services.html" class="nav-link">Services</a>
+                    <a href="equipment.html" class="nav-link">Equipment</a>
+                    <a href="packages.html" class="nav-link active">Packages</a>
+                    <a href="gallery.html" class="nav-link">Gallery</a>
+                    <a href="events.html" class="nav-link">Event</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </div>
+
+                <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+                    <button id="lang-icon" class="hidden xl:flex icon-btn items-center justify-center" title="Toggle RTL" aria-label="Toggle RTL">
+                          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" /></svg>
+                      </button>
+                      <button id="theme-toggle" class="hidden xl:flex icon-btn items-center justify-center" title="Toggle Theme" aria-label="Toggle Theme">
+                          <svg class="w-4 h-4 light-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                          <svg class="w-4 h-4 dark-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                      </button>
+                      <a href="contact.html" class="hidden xl:inline-flex book-btn px-5 sm:px-6 py-2.5 rounded-full text-xs sm:text-sm">
+                        <i class="fas fa-calendar-check mr-1.5"></i> Book Now
+                    </a>
+                    <button id="mobile-menu-open" class="xl:hidden icon-btn" aria-label="Open menu">
+                        <i class="fas fa-bars text-base"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ================= MOBILE DRAWER ================= -->
+    <div id="mobile-menu-drawer" class="fixed inset-0 z-[110] pointer-events-none transition-all duration-300">
+        <div id="drawer-backdrop" class="absolute inset-0 bg-black/60 backdrop-blur-sm opacity-0 transition-opacity duration-300 pointer-events-none"></div>
+        <div id="drawer-content" class="absolute top-0 right-0 h-full w-80 max-w-[85vw] bg-background shadow-2xl transform translate-x-full transition-transform duration-300 ease-out overflow-y-auto">
+            <div class="p-5">
+                <div class="flex justify-between items-center pb-4 border-b border-border mb-4">
+                    <a href="index.html" class="flex items-center gap-2.5">
+                        <div class="w-9 h-9 rounded-lg flex items-center justify-center" style="background:linear-gradient(135deg,#A855F7,#EC4899);">
+                            <i class="fas fa-headphones text-white text-sm"></i>
+                        </div>
+                        <span class="font-display text-lg tracking-wider text-primary-text">BEAT<span style="color:var(--color-accent);">BOX</span></span>
+                    </a>
+                    <button id="mobile-menu-close" class="p-2 rounded-lg hover:bg-hover transition">
+                        <i class="fas fa-times text-primary-text"></i>
+                    </button>
+                </div>
+                <nav class="flex flex-col space-y-1">
+                    <div>
+                        <button class="w-full flex justify-between items-center py-3 px-3 rounded-xl font-semibold text-accent hover:bg-hover transition" id="mobile-home-toggle">
+                            Home
+                            <svg class="w-4 h-4 transform transition-transform duration-200" id="home-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div id="mobile-home-menu" class="hidden pl-3 flex flex-col space-y-1 mt-1">
+                            <a href="index.html" class="py-2 px-3 text-sm text-primary-text hover:text-accent transition">Home 1</a>
+                            <a href="home2.html" class="py-2 px-3 text-sm text-primary-text hover:text-accent transition">Home 2</a>
+                        </div>
+                    </div>
+                    <a href="about.html" class="py-3 px-3 rounded-xl font-medium text-primary-text hover:bg-hover hover:text-accent transition">About</a>
+                    <a href="services.html" class="py-3 px-3 rounded-xl font-medium text-primary-text hover:bg-hover hover:text-accent transition">Services</a>
+                    <a href="equipment.html" class="py-3 px-3 rounded-xl font-medium text-primary-text hover:bg-hover hover:text-accent transition">Equipment</a>
+                    <a href="packages.html" class="py-3 px-3 rounded-xl font-medium text-accent bg-hover transition">Packages</a>
+                    <a href="gallery.html" class="py-3 px-3 rounded-xl font-medium text-primary-text hover:bg-hover hover:text-accent transition">Gallery</a>
+                    <a href="events.html" class="py-3 px-3 rounded-xl font-medium text-primary-text hover:bg-hover hover:text-accent transition">Event</a>
+                    <a href="contact.html" class="py-3 px-3 rounded-xl font-medium text-primary-text hover:bg-hover hover:text-accent transition">Contact</a>
+                </nav>
+                <div class="mt-6 pt-6 border-t border-border">
+                    <a href="contact.html" class="block w-full book-btn text-center py-3.5 rounded-xl font-bold text-sm">
+                        <i class="fas fa-calendar-check mr-2"></i> Book Now
+                    </a>
+                </div>
+                <div class="mt-5 flex justify-around items-center pt-5 border-t border-border">
+                    <button id="mobile-lang-toggle" class="flex flex-col items-center text-primary-text hover:text-accent p-2 transition">
+                        <svg class="w-5 h-5 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" /></svg>
+                        <span class="text-[10px] uppercase tracking-wider">RTL</span>
+                    </button>
+                    <button id="mobile-theme-toggle" class="flex flex-col items-center text-primary-text hover:text-accent p-2 transition">
+                        <svg class="w-5 h-5 mb-1 light-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                        <svg class="w-5 h-5 mb-1 dark-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+                        <span class="text-[10px] uppercase tracking-wider">Theme</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         SECTION 1 · HERO
+    ============================================================ -->
+    <section class="relative min-h-[88vh] flex items-center overflow-hidden bg-dark-gradient pt-[100px]">
+        <!-- Background Image -->
+        <div class="absolute inset-0 pointer-events-none">
+            <img src="assests/concert_event.png" alt="Packages background" class="w-full h-full object-cover opacity-30">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0A0A0F] via-[#0A0A0F]/80 to-transparent"></div>
+        </div>
+        <!-- Decorative pulse dots -->
+        <div class="absolute top-32 left-1/4 w-3 h-3 rounded-full bg-[#A855F7] pulse-dot"></div>
+        <div class="absolute top-52 right-1/3 w-2 h-2 rounded-full bg-[#EC4899] pulse-dot" style="animation-delay: 0.8s;"></div>
+        <div class="absolute bottom-32 left-1/3 w-2 h-2 rounded-full bg-[#A855F7] pulse-dot" style="animation-delay: 1.5s;"></div>
+
+        <!-- Rotating vinyl right -->
+        <div class="hidden lg:block absolute -right-32 -bottom-32 pointer-events-none">
+            <div class="vinyl-spin relative w-[520px] h-[520px] rounded-full opacity-15">
+                <div class="absolute inset-0 rounded-full border-4 border-[#A855F7]/40"></div>
+                <div class="absolute inset-16 rounded-full border-2 border-[#EC4899]/40"></div>
+                <div class="absolute inset-32 rounded-full border-2 border-[#A855F7]/30"></div>
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <div class="w-28 h-28 rounded-full flex items-center justify-center" style="background:linear-gradient(135deg,#A855F7,#EC4899);">
+                        <i class="fas fa-box-open text-white text-3xl"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="relative z-10 max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 w-full">
+            <div class="max-w-3xl">
+                <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full mb-6">
+                    <span class="w-2 h-2 rounded-full bg-pink animate-pulse"></span>
+                    <span class="text-white text-[10px] sm:text-xs font-semibold tracking-widest uppercase">Simple Pricing · All Gear Included · No Hidden Fees</span>
+                </div>
+
+                <h1 class="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[110px] text-white leading-[0.88] tracking-wide mb-6">
+                    Pick A Package. <br>
+                    <span class="text-gradient">Own The Night.</span>
+                </h1>
+
+               
+
+                <!-- Quick package nav -->
+                <div class="flex flex-wrap gap-2 sm:gap-3 mb-10">
+                    <a href="#basic" class="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-xs sm:text-sm hover:bg-white/20 transition">Basic</a>
+                    <a href="#standard" class="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-xs sm:text-sm hover:bg-white/20 transition">Standard</a>
+                    <a href="#premium" class="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-xs sm:text-sm hover:bg-white/20 transition">Premium</a>
+                    <a href="#wedding" class="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-xs sm:text-sm hover:bg-white/20 transition">Wedding</a>
+                    <a href="#custom" class="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-xs sm:text-sm hover:bg-white/20 transition">Custom</a>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="contact.html" class="book-btn px-8 py-4 rounded-full text-sm sm:text-base text-center">
+                        <i class="fas fa-calendar-check mr-2"></i> Book a Package
+                    </a>
+                    <a href="contact.html" class="px-8 py-4 rounded-full border-2 border-white/40 text-white font-semibold text-sm sm:text-base hover:bg-white/10 hover:border-white transition text-center">
+                        <i class="fas fa-comments mr-2"></i> Ask a Question
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marquee -->
+    <section class="bg-gradient-to-r from-[#A855F7] via-[#EC4899] to-[#A855F7] py-3.5 overflow-hidden">
+        <div class="marquee-track">
+            <div class="flex items-center gap-8 sm:gap-12 px-6">
+                <span class="font-display text-base sm:text-xl text-white tracking-widest">BASIC</span>
+                <span class="text-white/60">◆</span>
+                <span class="font-display text-base sm:text-xl text-white tracking-widest">STANDARD</span>
+                <span class="text-white/60">◆</span>
+                <span class="font-display text-base sm:text-xl text-white tracking-widest">PREMIUM</span>
+                <span class="text-white/60">◆</span>
+                <span class="font-display text-base sm:text-xl text-white tracking-widest">WEDDING</span>
+                <span class="text-white/60">◆</span>
+                <span class="font-display text-base sm:text-xl text-white tracking-widest">CUSTOM</span>
+                <span class="text-white/60">◆</span>
+            </div>
+            <div class="flex items-center gap-8 sm:gap-12 px-6" aria-hidden="true">
+                <span class="font-display text-base sm:text-xl text-white tracking-widest">BASIC</span>
+                <span class="text-white/60">◆</span>
+                <span class="font-display text-base sm:text-xl text-white tracking-widest">STANDARD</span>
+                <span class="text-white/60">◆</span>
+                <span class="font-display text-base sm:text-xl text-white tracking-widest">PREMIUM</span>
+                <span class="text-white/60">◆</span>
+                <span class="font-display text-base sm:text-xl text-white tracking-widest">WEDDING</span>
+                <span class="text-white/60">◆</span>
+                <span class="font-display text-base sm:text-xl text-white tracking-widest">CUSTOM</span>
+                <span class="text-white/60">◆</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 2 · BASIC PACKAGE — Flat Minimal Card
+    ============================================================ -->
+    <section class="section-pad bg-background transition-colors" id="basic">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+
+                <!-- Left: heading -->
+                <div class="lg:col-span-5">
+                    <span class="text-accent text-xs font-bold uppercase tracking-[0.25em]">Package 01</span>
+                    <h2 class="font-display text-5xl sm:text-6xl md:text-7xl text-primary-text mt-3 mb-5 leading-none">
+                        Basic
+                    </h2>
+                    <p class="text-secondary-text text-base sm:text-lg leading-relaxed mb-6">
+                        Everything you need for a small party — nothing you don't. Perfect for house parties and intimate gatherings.
+                    </p>
+
+                    <div class="flex items-baseline gap-2 mb-6">
+                        <span class="font-display text-5xl sm:text-6xl text-gradient leading-none">$199</span>
+                        <span class="text-secondary-text text-sm">/ event</span>
+                    </div>
+
+                    <a href="contact.html" class="inline-flex items-center gap-2 book-btn px-7 py-3.5 rounded-full text-sm">
+                        Book Basic <i class="fas fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Right: features card -->
+                <div class="lg:col-span-7">
+                    <div class="pkg-basic">
+                        <div class="flex items-center gap-3 mb-6 pb-5 border-b border-border">
+                            <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(168,85,247,0.12);">
+                                <i class="fas fa-cube text-accent"></i>
+                            </div>
+                            <span class="font-heading font-bold text-primary-text">What's Included</span>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4 text-sm">
+                            <div class="flex items-start gap-2">
+                                <i class="fas fa-check text-accent mt-1"></i>
+                                <span class="text-secondary-text">2x 12" active speakers</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <i class="fas fa-check text-accent mt-1"></i>
+                                <span class="text-secondary-text">1x 15" subwoofer</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <i class="fas fa-check text-accent mt-1"></i>
+                                <span class="text-secondary-text">1x wireless mic</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <i class="fas fa-check text-accent mt-1"></i>
+                                <span class="text-secondary-text">Basic LED lighting</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <i class="fas fa-check text-accent mt-1"></i>
+                                <span class="text-secondary-text">Up to 50 guests</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <i class="fas fa-check text-accent mt-1"></i>
+                                <span class="text-secondary-text">Free LA delivery</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 3 · STANDARD PACKAGE — Premium Gradient Border
+    ============================================================ -->
+    <section class="section-pad bg-hover transition-colors" id="standard">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-accent text-xs font-bold uppercase tracking-[0.25em]">Package 02</span>
+                <h2 class="font-display text-4xl sm:text-5xl md:text-6xl text-primary-text mt-3 mb-3">
+                    <span class="text-gradient">Standard</span>
+                </h2>
+                <p class="text-secondary-text text-base">The crowd favorite — perfect for weddings, birthdays, and mid-size events.</p>
+            </div>
+
+            <div class="max-w-2xl mx-auto">
+                <div class="pkg-standard">
+                    <div class="pkg-standard-inner">
+                        <!-- Header -->
+                        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-6 pb-5 border-b border-border">
+                            <div>
+                                <span class="text-[10px] uppercase tracking-widest font-bold text-accent">Most Popular</span>
+                                <h3 class="font-heading font-bold text-2xl text-primary-text mt-1">Standard</h3>
+                            </div>
+                            <div class="text-left sm:text-right">
+                                <span class="font-display text-4xl text-gradient leading-none">$499</span>
+                                <span class="text-secondary-text text-sm ml-1">/ event</span>
+                            </div>
+                        </div>
+
+                        <!-- Features grid -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 text-sm mb-6">
+                            <div class="flex items-start gap-2">
+                                <i class="fas fa-check-circle text-accent mt-0.5"></i>
+                                <span class="text-secondary-text">4x 15" speakers</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <i class="fas fa-check-circle text-accent mt-0.5"></i>
+                                <span class="text-secondary-text">2x 18" subwoofers</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <i class="fas fa-check-circle text-accent mt-0.5"></i>
+                                <span class="text-secondary-text">2x wireless mics</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <i class="fas fa-check-circle text-accent mt-0.5"></i>
+                                <span class="text-secondary-text">Full lighting rig + haze</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <i class="fas fa-check-circle text-accent mt-0.5"></i>
+                                <span class="text-secondary-text">On-site technician (8h)</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <i class="fas fa-check-circle text-accent mt-0.5"></i>
+                                <span class="text-secondary-text">Up to 250 guests</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <i class="fas fa-check-circle text-accent mt-0.5"></i>
+                                <span class="text-secondary-text">Setup &amp; teardown</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <i class="fas fa-check-circle text-accent mt-0.5"></i>
+                                <span class="text-secondary-text">Soundcheck included</span>
+                            </div>
+                        </div>
+
+                        <a href="contact.html" class="block w-full text-center book-btn py-3.5 rounded-full font-bold text-sm">
+                            <i class="fas fa-calendar-check mr-2"></i> Book Standard Package
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 4 · PREMIUM PACKAGE — Dark Luxe
+    ============================================================ -->
+    <section class="section-pad bg-background transition-colors" id="premium">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+
+                <!-- Left: dark premium card -->
+                <div class="lg:col-span-7 order-2 lg:order-1">
+                    <div class="pkg-premium">
+                        <div class="relative z-10">
+                            <div class="flex items-center justify-between mb-6 pb-5 border-b border-white/10">
+                                <div>
+                                    <span class="text-[10px] uppercase tracking-widest font-bold text-[#C084FC]">All-Inclusive</span>
+                                    <h3 class="font-heading font-bold text-2xl text-white mt-1">Premium</h3>
+                                </div>
+                                <div class="text-right">
+                                    <span class="font-display text-4xl text-gradient leading-none">$1,299</span>
+                                    <span class="text-gray-400 text-sm ml-1">/ event</span>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 text-sm mb-6">
+                                <div class="flex items-start gap-2">
+                                    <i class="fas fa-star text-[#C084FC] mt-0.5"></i>
+                                    <span class="text-white/80">Funktion-One line array</span>
+                                </div>
+                                <div class="flex items-start gap-2">
+                                    <i class="fas fa-star text-[#C084FC] mt-0.5"></i>
+                                    <span class="text-white/80">4x dual 18" subs</span>
+                                </div>
+                                <div class="flex items-start gap-2">
+                                    <i class="fas fa-star text-[#C084FC] mt-0.5"></i>
+                                    <span class="text-white/80">Stage monitors + console</span>
+                                </div>
+                                <div class="flex items-start gap-2">
+                                    <i class="fas fa-star text-[#C084FC] mt-0.5"></i>
+                                    <span class="text-white/80">Full lighting + LEDs</span>
+                                </div>
+                                <div class="flex items-start gap-2">
+                                    <i class="fas fa-star text-[#C084FC] mt-0.5"></i>
+                                    <span class="text-white/80">2 technicians (12h)</span>
+                                </div>
+                                <div class="flex items-start gap-2">
+                                    <i class="fas fa-star text-[#C084FC] mt-0.5"></i>
+                                    <span class="text-white/80">Up to 1,500 guests</span>
+                                </div>
+                            </div>
+
+                            <a href="contact.html" class="block w-full text-center book-btn py-3.5 rounded-full font-bold text-sm">
+                                <i class="fas fa-crown mr-2"></i> Book Premium Package
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: heading -->
+                <div class="lg:col-span-5 order-1 lg:order-2">
+                    <span class="text-accent text-xs font-bold uppercase tracking-[0.25em]">Package 03</span>
+                    <h2 class="font-display text-5xl sm:text-6xl md:text-7xl text-primary-text mt-3 mb-5 leading-none">
+                        Premium
+                    </h2>
+                    <p class="text-secondary-text text-base sm:text-lg leading-relaxed mb-6">
+                        Our flagship rig for concerts, festivals, and large-scale events. Concert-grade everything, engineered to perfection.
+                    </p>
+
+                    <div class="space-y-3 pt-5 border-t border-border">
+                        <div class="flex items-center gap-3 text-sm">
+                            <i class="fas fa-circle text-[10px] text-accent"></i>
+                            <span class="text-secondary-text">Best for 500–1,500 guests</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-sm">
+                            <i class="fas fa-circle text-[10px] text-accent"></i>
+                            <span class="text-secondary-text">Full venue load-in &amp; strike</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-sm">
+                            <i class="fas fa-circle text-[10px] text-accent"></i>
+                            <span class="text-secondary-text">Backup gear on-site</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 5 · WEDDING PACKAGE — Timeline Row Style
+    ============================================================ -->
+    <section class="section-pad bg-hover transition-colors" id="wedding">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-accent text-xs font-bold uppercase tracking-[0.25em]">Package 04</span>
+                <h2 class="font-display text-4xl sm:text-5xl md:text-6xl text-primary-text mt-3 mb-3">
+                    Wedding <span class="text-gradient">Package</span>
+                </h2>
+                <p class="text-secondary-text text-base">Everything your ceremony, cocktail hour, and reception need — covered from start to finish.</p>
+            </div>
+
+            <!-- Price banner -->
+            <div class="max-w-3xl mx-auto bg-purple-gradient rounded-2xl p-5 sm:p-6 mb-8 text-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                <div>
+                    <span class="text-[10px] uppercase tracking-widest font-bold opacity-80">Full-Day Wedding Rig</span>
+                    <p class="font-display text-3xl sm:text-4xl mt-1">$899</p>
+                </div>
+                <a href="contact.html" class="px-6 py-3 bg-white text-[#0F172A] rounded-full font-bold text-sm hover:bg-gray-100 transition whitespace-nowrap">
+                    <i class="fas fa-heart mr-1"></i> Book for Wedding
+                </a>
+            </div>
+
+            <!-- Row timeline -->
+            <div class="space-y-3 max-w-3xl mx-auto">
+                <div class="wedding-row">
+                    <div class="flex items-center gap-3 md:w-56 flex-shrink-0">
+                        <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(168,85,247,0.12);">
+                            <i class="fas fa-bell text-accent text-sm"></i>
+                        </div>
+                        <div>
+                            <p class="text-[10px] uppercase tracking-widest font-bold text-accent">Ceremony</p>
+                            <p class="font-heading font-bold text-sm text-primary-text">Vows &amp; I Do's</p>
+                        </div>
+                    </div>
+                    <p class="text-secondary-text text-sm flex-1">Clip-on wireless mics for officiant &amp; couple, gentle background PA, and acoustic tuning for outdoor venues.</p>
+                </div>
+
+                <div class="wedding-row">
+                    <div class="flex items-center gap-3 md:w-56 flex-shrink-0">
+                        <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(236,72,153,0.12);">
+                            <i class="fas fa-champagne-glasses text-pink text-sm"></i>
+                        </div>
+                        <div>
+                            <p class="text-[10px] uppercase tracking-widest font-bold text-accent">Cocktail Hour</p>
+                            <p class="font-heading font-bold text-sm text-primary-text">Ambiance Audio</p>
+                        </div>
+                    </div>
+                    <p class="text-secondary-text text-sm flex-1">DJ or curated playlist, soft uplighting, and a sound level that lets your guests actually talk.</p>
+                </div>
+
+                <div class="wedding-row">
+                    <div class="flex items-center gap-3 md:w-56 flex-shrink-0">
+                        <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(139,92,246,0.12);">
+                            <i class="fas fa-music text-accent text-sm"></i>
+                        </div>
+                        <div>
+                            <p class="text-[10px] uppercase tracking-widest font-bold text-accent">Reception</p>
+                            <p class="font-heading font-bold text-sm text-primary-text">Full Party Rig</p>
+                        </div>
+                    </div>
+                    <p class="text-secondary-text text-sm flex-1">Professional DJ + MC, full sound system, moving head lighting, and a dance floor that stays packed all night.</p>
+                </div>
+
+                <div class="wedding-row">
+                    <div class="flex items-center gap-3 md:w-56 flex-shrink-0">
+                        <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(168,85,247,0.12);">
+                            <i class="fas fa-camera text-accent text-sm"></i>
+                        </div>
+                        <div>
+                            <p class="text-[10px] uppercase tracking-widest font-bold text-accent">Extras</p>
+                            <p class="font-heading font-bold text-sm text-primary-text">Wedding Add-Ons</p>
+                        </div>
+                    </div>
+                    <p class="text-secondary-text text-sm flex-1">Timeline coordination with planner, first dance lighting, sparkler exit audio, and clean strike after the last dance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 6 · CUSTOM PACKAGES — Bento Grid
+    ============================================================ -->
+    <section class="section-pad bg-background transition-colors" id="custom">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-accent text-xs font-bold uppercase tracking-[0.25em]">Package 05</span>
+                <h2 class="font-display text-4xl sm:text-5xl md:text-6xl text-primary-text mt-3 mb-3">
+                    Custom <span class="text-gradient">Packages</span>
+                </h2>
+                <p class="text-secondary-text text-base">Don't fit a package? We'll build one around your venue, budget, and vibe.</p>
+            </div>
+
+            <!-- Bento grid -->
+            <div class="grid grid-cols-1 md:grid-cols-6 gap-4">
+
+                <!-- Featured wide tile -->
+                <div class="custom-tile featured md:col-span-4">
+                    <div class="flex flex-col justify-between h-full min-h-[220px]">
+                        <div class="w-12 h-12 rounded-xl flex items-center justify-center bg-white/20 backdrop-blur-sm">
+                            <i class="fas fa-wand-magic-sparkles text-white text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-display text-3xl sm:text-4xl text-white mb-2">Fully Tailored</h3>
+                            <p class="text-white/85 text-sm leading-relaxed max-w-md">Pick your DJ, rig size, lighting package, and extras. We build the perfect system for your event and send a transparent quote within 2 hours.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Compact tile -->
+                <div class="custom-tile md:col-span-2">
+                    <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-4" style="background:rgba(168,85,247,0.12);">
+                        <i class="fas fa-calculator text-accent"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-base text-primary-text mb-2">Flexible Budget</h3>
+                    <p class="text-secondary-text text-sm">Any scale — from $300 to $5,000+.</p>
+                </div>
+
+                <!-- Small tiles -->
+                <div class="custom-tile md:col-span-2">
+                    <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-4" style="background:rgba(236,72,153,0.12);">
+                        <i class="fas fa-music text-pink"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-base text-primary-text mb-2">Mixed Services</h3>
+                    <p class="text-secondary-text text-sm">DJ + sound + light + stage, all in one quote.</p>
+                </div>
+
+                <div class="custom-tile md:col-span-2">
+                    <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-4" style="background:rgba(139,92,246,0.12);">
+                        <i class="fas fa-clock text-accent"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-base text-primary-text mb-2">Multi-Day Rates</h3>
+                    <p class="text-secondary-text text-sm">Discounts for multi-day events &amp; festivals.</p>
+                </div>
+
+                <div class="custom-tile md:col-span-2">
+                    <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-4" style="background:rgba(168,85,247,0.12);">
+                        <i class="fas fa-map-marker-alt text-accent"></i>
+                    </div>
+                    <h3 class="font-heading font-bold text-base text-primary-text mb-2">Nationwide</h3>
+                    <p class="text-secondary-text text-sm">Extended delivery outside LA available.</p>
+                </div>
+
+                <!-- CTA tile -->
+                <div class="custom-tile md:col-span-6 text-center" style="background:linear-gradient(135deg,#0A0A0F 0%,#1E1B4B 100%);border:none;">
+                    <div class="py-4">
+                        <h3 class="font-display text-2xl sm:text-3xl text-white mb-2">Ready to build your custom package?</h3>
+                        <p class="text-gray-400 text-sm mb-5 max-w-md mx-auto">Tell us about your event — we'll send a tailored quote within 2 hours.</p>
+                        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                            <a href="contact.html" class="book-btn px-7 py-3.5 rounded-full font-bold text-sm">
+                                <i class="fas fa-paper-plane mr-2"></i> Request Custom Quote
+                            </a>
+                            <a href="contact.html" class="px-7 py-3.5 rounded-full border-2 border-white/40 text-white font-semibold text-sm hover:bg-white/10 hover:border-white transition">
+                                <i class="fas fa-phone mr-2"></i> Call Our Team
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom support row -->
+            <div class="mt-14 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto text-center">
+                <div class="p-4 rounded-2xl bg-hover border border-border">
+                    <i class="fas fa-check-circle text-accent text-xl mb-2"></i>
+                    <p class="text-sm font-bold text-primary-text">No Hidden Fees</p>
+                </div>
+                <div class="p-4 rounded-2xl bg-hover border border-border">
+                    <i class="fas fa-truck text-accent text-xl mb-2"></i>
+                    <p class="text-sm font-bold text-primary-text">Free LA Delivery</p>
+                </div>
+                <div class="p-4 rounded-2xl bg-hover border border-border">
+                    <i class="fas fa-user-tie text-accent text-xl mb-2"></i>
+                    <p class="text-sm font-bold text-primary-text">On-Site Technician</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="pt-16 pb-8" style="background-color:#0A0A0F;color:#E2E8F0;">
+        <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
+
+                <div class="lg:col-span-2">
+                    <a href="index.html" class="flex items-center gap-2.5 mb-5">
+                        <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:linear-gradient(135deg,#A855F7,#EC4899);">
+                            <i class="fas fa-headphones text-white text-base"></i>
+                        </div>
+                        <div class="flex flex-col leading-none">
+                            <span class="font-display text-xl tracking-wider text-white">BEAT<span style="color:#C084FC;">BOX</span></span>
+                            <span class="text-[9px] tracking-[0.25em] uppercase font-semibold text-white/50">DJ &amp; Sound Rentals</span>
+                        </div>
+                    </a>
+                    <p class="text-sm text-white/70 leading-relaxed max-w-sm mb-6">
+                        Pro sound systems, DJ setups, and lighting for unforgettable events. Serving Los Angeles and Southern California since 2016.
+                    </p>
+                    <div class="flex gap-3">
+                        <a href="#" class="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/70 hover:bg-gradient-to-br hover:from-[#A855F7] hover:to-[#EC4899] hover:text-white hover:border-transparent transition"><i class="fab fa-instagram text-sm"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/70 hover:bg-gradient-to-br hover:from-[#A855F7] hover:to-[#EC4899] hover:text-white hover:border-transparent transition"><i class="fab fa-facebook-f text-sm"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/70 hover:bg-gradient-to-br hover:from-[#A855F7] hover:to-[#EC4899] hover:text-white hover:border-transparent transition"><i class="fab fa-youtube text-sm"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/70 hover:bg-gradient-to-br hover:from-[#A855F7] hover:to-[#EC4899] hover:text-white hover:border-transparent transition"><i class="fab fa-tiktok text-sm"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-heading font-bold text-white text-sm uppercase tracking-widest mb-4">Packages</h4>
+                    <ul class="space-y-2.5 text-sm">
+                        <li><a href="#basic" class="text-white/70 hover:text-[#C084FC] transition">Basic</a></li>
+                        <li><a href="#standard" class="text-white/70 hover:text-[#C084FC] transition">Standard</a></li>
+                        <li><a href="#premium" class="text-white/70 hover:text-[#C084FC] transition">Premium</a></li>
+                        <li><a href="#wedding" class="text-white/70 hover:text-[#C084FC] transition">Wedding</a></li>
+                        <li><a href="#custom" class="text-white/70 hover:text-[#C084FC] transition">Custom</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-heading font-bold text-white text-sm uppercase tracking-widest mb-4">Company</h4>
+                    <ul class="space-y-2.5 text-sm">
+                        <li><a href="about.html" class="text-white/70 hover:text-[#C084FC] transition">About</a></li>
+                        <li><a href="equipment.html" class="text-white/70 hover:text-[#C084FC] transition">Equipment</a></li>
+                        <li><a href="gallery.html" class="text-white/70 hover:text-[#C084FC] transition">Gallery</a></li>
+                        <li><a href="events.html" class="text-white/70 hover:text-[#C084FC] transition">Event</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-heading font-bold text-white text-sm uppercase tracking-widest mb-4">Contact</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-start gap-3 text-white/70">
+                            <i class="fas fa-map-marker-alt mt-1" style="color:#C084FC;"></i>
+                            <span>450 Vinyl Ave, Suite 12<br>Los Angeles, CA 90013</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-white/70">
+                            <i class="fas fa-phone" style="color:#C084FC;"></i>
+                            <span>(213) 555-0188</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-white/70">
+                            <i class="fas fa-envelope" style="color:#C084FC;"></i>
+                            <span>book@beatbox.io</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="py-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-white/50">
+                <p>© 2026 BeatBox — DJ &amp; Sound System Rentals. All rights reserved.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-[#C084FC] transition">Privacy</a>
+                    <a href="#" class="hover:text-[#C084FC] transition">Terms</a>
+                    <a href="contact.html" class="hover:text-[#C084FC] transition">Support</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        (function() {
+            const html = document.documentElement;
+
+            // Theme
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            function applyTheme(theme) {
+                html.setAttribute('data-theme', theme);
+                if (theme === 'dark') html.classList.add('dark');
+                else html.classList.remove('dark');
+                localStorage.setItem('theme', theme);
+                document.querySelectorAll('.light-icon').forEach(i => i.classList.toggle('hidden', theme === 'dark'));
+                document.querySelectorAll('.dark-icon').forEach(i => i.classList.toggle('hidden', theme === 'light'));
+            }
+            applyTheme(savedTheme);
+
+            [document.getElementById('theme-toggle'), document.getElementById('mobile-theme-toggle')]
+                .filter(Boolean).forEach(btn => btn.addEventListener('click', () => {
+                    applyTheme(html.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
+                }));
+
+            // RTL
+            const savedLang = localStorage.getItem('language') || 'en';
+            if (savedLang === 'ar') html.setAttribute('dir', 'rtl');
+            const toggleRTL = () => {
+                const next = html.getAttribute('dir') === 'rtl' ? 'ltr' : 'rtl';
+                html.setAttribute('dir', next);
+                localStorage.setItem('language', next === 'rtl' ? 'ar' : 'en');
+            };
+            document.getElementById('lang-icon')?.addEventListener('click', toggleRTL);
+            document.getElementById('mobile-lang-toggle')?.addEventListener('click', toggleRTL);
+
+            // Mobile drawer
+            const drawer = document.getElementById('mobile-menu-drawer');
+            const content = document.getElementById('drawer-content');
+            const backdrop = document.getElementById('drawer-backdrop');
+            const openMenu = () => {
+                drawer.classList.remove('pointer-events-none');
+                content.classList.remove('translate-x-full');
+                content.classList.add('translate-x-0');
+                backdrop.classList.add('opacity-100', 'pointer-events-auto');
+                backdrop.classList.remove('opacity-0', 'pointer-events-none');
+                document.body.style.overflow = 'hidden';
+            };
+            const closeMenu = () => {
+                content.classList.add('translate-x-full');
+                content.classList.remove('translate-x-0');
+                backdrop.classList.remove('opacity-100', 'pointer-events-auto');
+                backdrop.classList.add('opacity-0', 'pointer-events-none');
+                setTimeout(() => {
+                    drawer.classList.add('pointer-events-none');
+                    document.body.style.overflow = '';
+                }, 300);
+            };
+            document.getElementById('mobile-menu-open')?.addEventListener('click', openMenu);
+            document.getElementById('mobile-menu-close')?.addEventListener('click', closeMenu);
+            backdrop?.addEventListener('click', closeMenu);
+            document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+
+            document.getElementById('mobile-home-toggle')?.addEventListener('click', () => {
+                document.getElementById('mobile-home-menu')?.classList.toggle('hidden');
+                document.getElementById('home-icon')?.classList.toggle('rotate-180');
+            });
+
+            // Navbar scroll
+            const nav = document.getElementById('mainNav');
+            function updateNav() {
+                if (window.scrollY > 30) nav.classList.add('scrolled');
+                else nav.classList.remove('scrolled');
+            }
+            window.addEventListener('scroll', updateNav);
+            updateNav();
+
+            // Smooth anchor scroll
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId && targetId.length > 1) {
+                        const target = document.querySelector(targetId);
+                        if (target) {
+                            e.preventDefault();
+                            const offset = target.getBoundingClientRect().top + window.pageYOffset - 90;
+                            window.scrollTo({ top: offset, behavior: 'smooth' });
+                        }
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+
+</html>
