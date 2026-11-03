@@ -267,107 +267,166 @@
         }
         .pulse-dot { animation: pulseDot 2s ease-in-out infinite; }
 
-        /* ============ PACKAGE CARD STYLES ============ */
-        /* Basic: flat minimal */
-        .pkg-basic {
+        /* ============ REDESIGNED PACKAGES SYSTEM ============ */
+        .pricing-card {
             background: var(--color-card-bg);
             border: 1px solid var(--color-border);
             border-radius: 1.5rem;
-            padding: 2rem;
-            transition: all 0.35s ease;
-        }
-        .pkg-basic:hover {
-            border-color: var(--color-accent);
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px -18px rgba(168, 85, 247, 0.25);
-        }
-
-        /* Standard: gradient border premium */
-        .pkg-standard {
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
-            padding: 2px;
-            border-radius: 1.75rem;
-            background: linear-gradient(135deg, #A855F7, #EC4899);
-            transition: all 0.35s ease;
-        }
-        .pkg-standard:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 30px 60px -20px rgba(236, 72, 153, 0.5);
-        }
-        .pkg-standard-inner {
-            background: var(--color-card-bg);
-            border-radius: calc(1.75rem - 2px);
-            padding: 2rem;
-            height: 100%;
-        }
-
-        /* Premium: dark luxe */
-        .pkg-premium {
-            background: linear-gradient(135deg, #0A0A0F 0%, #1E1B4B 100%);
-            border-radius: 1.75rem;
-            padding: 2rem;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.35s ease;
-        }
-        .pkg-premium::before {
-            content: '';
-            position: absolute;
-            top: -50%; right: -50%;
-            width: 200%; height: 200%;
-            background: radial-gradient(circle, rgba(168,85,247,0.25) 0%, transparent 60%);
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-        .pkg-premium:hover::before { opacity: 1; }
-        .pkg-premium:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 30px 60px -20px rgba(168, 85, 247, 0.55);
-        }
-
-        /* ============ WEDDING — Timeline Row Style ============ */
-        .wedding-row {
             display: flex;
             flex-direction: column;
-            gap: 1rem;
-            padding: 1.5rem;
-            background: var(--color-card-bg);
-            border: 1px solid var(--color-border);
-            border-radius: 1.25rem;
-            transition: all 0.3s ease;
+            overflow: hidden;
         }
-        .wedding-row:hover {
+        .pricing-card:hover {
+            transform: translateY(-6px);
             border-color: var(--color-accent);
-            background: var(--color-hover);
+            box-shadow: 0 24px 48px -14px rgba(168, 85, 247, 0.28);
         }
-        @media (min-width: 768px) {
-            .wedding-row {
-                flex-direction: row;
-                align-items: center;
-                padding: 1.25rem 1.75rem;
-            }
+        .pricing-card.featured {
+            background: linear-gradient(180deg, rgba(168, 85, 247, 0.08) 0%, var(--color-card-bg) 35%);
+            border: 2px solid #A855F7;
+            box-shadow: 0 16px 40px -12px rgba(168, 85, 247, 0.35);
+        }
+        .pricing-card.featured:hover {
+            box-shadow: 0 30px 60px -15px rgba(236, 72, 153, 0.45);
+        }
+        .pricing-card.wedding-theme {
+            background: linear-gradient(180deg, rgba(236, 72, 153, 0.08) 0%, var(--color-card-bg) 35%);
+            border: 2px solid rgba(236, 72, 153, 0.8);
+        }
+        .pricing-card.wedding-theme:hover {
+            box-shadow: 0 30px 60px -15px rgba(236, 72, 153, 0.45);
+        }
+        .pricing-card.luxe {
+            background: linear-gradient(145deg, #0A0A0F 0%, #16152B 100%);
+            border: 1px solid rgba(168, 85, 247, 0.5);
+            color: #FFFFFF;
+        }
+        .pricing-card.luxe:hover {
+            border-color: #EC4899;
+            box-shadow: 0 24px 50px -14px rgba(236, 72, 153, 0.4);
         }
 
-        /* ============ CUSTOM — Bento Grid ============ */
-        .custom-tile {
+        /* Toggle pill */
+        .toggle-switch-btn {
+            transition: all 0.3s ease;
+        }
+        .toggle-switch-btn.active {
+            background: linear-gradient(135deg, #A855F7, #EC4899);
+            color: #FFFFFF;
+            box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4);
+        }
+
+        /* Comparison Table */
+        .table-responsive {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            border-radius: 1.25rem;
+            border: 1px solid var(--color-border);
+            background: var(--color-card-bg);
+        }
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.875rem;
+        }
+        .compare-table th, .compare-table td {
+            padding: 1rem 1.15rem;
+            border-bottom: 1px solid var(--color-border);
+            text-align: center;
+            vertical-align: middle;
+        }
+        .compare-table th:first-child, .compare-table td:first-child {
+            text-align: left;
+            font-weight: 600;
+            color: var(--color-primary-text);
+            position: sticky;
+            left: 0;
+            background: var(--color-card-bg);
+            z-index: 5;
+            min-width: 200px;
+        }
+        .compare-table tr:hover td {
+            background-color: var(--color-hover);
+        }
+        .compare-table tr:hover td:first-child {
+            background-color: var(--color-hover);
+        }
+        .compare-cat-row td {
+            background: var(--color-hover);
+            font-weight: 700;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-accent);
+            text-align: left !important;
+            padding: 0.75rem 1.15rem;
+        }
+
+        /* Wedding Stage Pill */
+        .wedding-stage-card {
             background: var(--color-card-bg);
             border: 1px solid var(--color-border);
             border-radius: 1.25rem;
             padding: 1.5rem;
-            transition: all 0.35s ease;
+            transition: all 0.3s ease;
         }
-        .custom-tile:hover {
+        .wedding-stage-card:hover {
+            border-color: var(--color-pink);
+            transform: translateY(-4px);
+            box-shadow: 0 16px 32px -12px rgba(236, 72, 153, 0.25);
+        }
+
+        /* Add-on Card */
+        .addon-card {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 1.25rem;
+            padding: 1.25rem;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .addon-card:hover {
             border-color: var(--color-accent);
             transform: translateY(-4px);
-            box-shadow: 0 18px 35px -15px rgba(168, 85, 247, 0.3);
+            box-shadow: 0 16px 30px -10px rgba(168, 85, 247, 0.22);
         }
-        .custom-tile.featured {
-            background: linear-gradient(135deg, #A855F7, #EC4899);
-            border: none;
-            color: white;
+
+        /* FAQ details */
+        details.faq-item {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
         }
-        .custom-tile.featured:hover {
-            box-shadow: 0 22px 45px -18px rgba(236, 72, 153, 0.55);
+        details.faq-item:hover {
+            border-color: var(--color-accent);
+        }
+        details.faq-item summary {
+            list-style: none;
+            cursor: pointer;
+            padding: 1.25rem 1.5rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        details.faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+        details.faq-item[open] summary .faq-icon {
+            transform: rotate(180deg);
+            color: var(--color-accent);
+        }
+        details.faq-item .faq-answer {
+            padding: 0 1.5rem 1.25rem 1.5rem;
+            color: var(--color-secondary-text);
+            font-size: 0.925rem;
+            line-height: 1.6;
         }
 
         /* Marquee */
@@ -523,7 +582,7 @@
         </div>
 
         <div class="relative z-10 max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 w-full">
-            <div class="max-w-3xl">
+            <div class="max-w-4xl mx-auto text-center flex flex-col items-center">
                 <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full mb-6">
                     <span class="w-2 h-2 rounded-full bg-pink animate-pulse"></span>
                     <span class="text-white text-[10px] sm:text-xs font-semibold tracking-widest uppercase">Simple Pricing · All Gear Included · No Hidden Fees</span>
@@ -534,24 +593,55 @@
                     <span class="text-gradient">Own The Night.</span>
                 </h1>
 
-               
-
                 <!-- Quick package nav -->
-                <div class="flex flex-wrap gap-2 sm:gap-3 mb-10">
-                    <a href="#basic" class="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-xs sm:text-sm hover:bg-white/20 transition">Basic</a>
-                    <a href="#standard" class="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-xs sm:text-sm hover:bg-white/20 transition">Standard</a>
-                    <a href="#premium" class="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-xs sm:text-sm hover:bg-white/20 transition">Premium</a>
-                    <a href="#wedding" class="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-xs sm:text-sm hover:bg-white/20 transition">Wedding</a>
-                    <a href="#custom" class="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-xs sm:text-sm hover:bg-white/20 transition">Custom</a>
+                <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-10">
+                    <a href="#packages-grid" class="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-xs sm:text-sm hover:bg-white/20 transition">
+                        <i class="fas fa-boxes-stacked mr-1.5 text-[#C084FC]"></i> Packages
+                    </a>
+                    <a href="#comparison-matrix" class="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-xs sm:text-sm hover:bg-white/20 transition">
+                        <i class="fas fa-table-list mr-1.5 text-pink"></i> Compare Matrix
+                    </a>
+                    <a href="#wedding-package" class="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-xs sm:text-sm hover:bg-white/20 transition">
+                        <i class="fas fa-heart mr-1.5 text-pink"></i> Wedding Rig
+                    </a>
+                    <a href="#package-addons" class="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-xs sm:text-sm hover:bg-white/20 transition">
+                        <i class="fas fa-plus-circle mr-1.5 text-[#C084FC]"></i> Add-Ons
+                    </a>
+                    <a href="#custom-quote" class="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-xs sm:text-sm hover:bg-white/20 transition">
+                        <i class="fas fa-wand-magic-sparkles mr-1.5 text-[#C084FC]"></i> Custom
+                    </a>
+                    <a href="#packages-faq" class="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-xs sm:text-sm hover:bg-white/20 transition">
+                        <i class="fas fa-circle-question mr-1.5 text-pink"></i> FAQ
+                    </a>
                 </div>
 
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="contact.html" class="book-btn px-8 py-4 rounded-full text-sm sm:text-base text-center">
-                        <i class="fas fa-calendar-check mr-2"></i> Book a Package
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-4 w-full sm:w-auto mb-10">
+                    <a href="#packages-grid" class="book-btn px-8 py-4 rounded-full text-sm sm:text-base text-center w-full sm:w-auto">
+                        <i class="fas fa-calendar-check mr-2"></i> Browse All Packages
                     </a>
-                    <a href="contact.html" class="px-8 py-4 rounded-full border-2 border-white/40 text-white font-semibold text-sm sm:text-base hover:bg-white/10 hover:border-white transition text-center">
-                        <i class="fas fa-comments mr-2"></i> Ask a Question
+                    <a href="#comparison-matrix" class="px-8 py-4 rounded-full border-2 border-white/40 text-white font-semibold text-sm sm:text-base hover:bg-white/10 hover:border-white transition text-center w-full sm:w-auto">
+                        <i class="fas fa-columns mr-2"></i> Compare Inclusions
                     </a>
+                </div>
+
+                <!-- Trust signals -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-3xl mx-auto pt-6 border-t border-white/10 text-white/80 text-xs">
+                    <div class="flex items-center justify-center gap-2 text-center">
+                        <i class="fas fa-shield-halved text-[#C084FC]"></i>
+                        <span>100% On-Time Guarantee</span>
+                    </div>
+                    <div class="flex items-center justify-center gap-2 text-center">
+                        <i class="fas fa-truck-fast text-pink"></i>
+                        <span>Free LA County Delivery</span>
+                    </div>
+                    <div class="flex items-center justify-center gap-2 text-center">
+                        <i class="fas fa-user-check text-[#C084FC]"></i>
+                        <span>Pro Sound Engineers</span>
+                    </div>
+                    <div class="flex items-center justify-center gap-2 text-center">
+                        <i class="fas fa-rotate text-pink"></i>
+                        <span>Redundant Backup Gear</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -561,434 +651,1066 @@
     <section class="bg-gradient-to-r from-[#A855F7] via-[#EC4899] to-[#A855F7] py-3.5 overflow-hidden">
         <div class="marquee-track">
             <div class="flex items-center gap-8 sm:gap-12 px-6">
-                <span class="font-display text-base sm:text-xl text-white tracking-widest">BASIC</span>
+                <span class="font-display text-base sm:text-xl text-white tracking-widest">TRANSPARENT PRICING</span>
                 <span class="text-white/60">◆</span>
-                <span class="font-display text-base sm:text-xl text-white tracking-widest">STANDARD</span>
+                <span class="font-display text-base sm:text-xl text-white tracking-widest">CONCERT-GRADE AUDIO</span>
                 <span class="text-white/60">◆</span>
-                <span class="font-display text-base sm:text-xl text-white tracking-widest">PREMIUM</span>
+                <span class="font-display text-base sm:text-xl text-white tracking-widest">ON-SITE TECHNICIANS</span>
                 <span class="text-white/60">◆</span>
-                <span class="font-display text-base sm:text-xl text-white tracking-widest">WEDDING</span>
+                <span class="font-display text-base sm:text-xl text-white tracking-widest">INTELLIGENT DMX LIGHTING</span>
                 <span class="text-white/60">◆</span>
-                <span class="font-display text-base sm:text-xl text-white tracking-widest">CUSTOM</span>
+                <span class="font-display text-base sm:text-xl text-white tracking-widest">FREE DELIVERY &amp; SETUP</span>
                 <span class="text-white/60">◆</span>
             </div>
             <div class="flex items-center gap-8 sm:gap-12 px-6" aria-hidden="true">
-                <span class="font-display text-base sm:text-xl text-white tracking-widest">BASIC</span>
+                <span class="font-display text-base sm:text-xl text-white tracking-widest">TRANSPARENT PRICING</span>
                 <span class="text-white/60">◆</span>
-                <span class="font-display text-base sm:text-xl text-white tracking-widest">STANDARD</span>
+                <span class="font-display text-base sm:text-xl text-white tracking-widest">CONCERT-GRADE AUDIO</span>
                 <span class="text-white/60">◆</span>
-                <span class="font-display text-base sm:text-xl text-white tracking-widest">PREMIUM</span>
+                <span class="font-display text-base sm:text-xl text-white tracking-widest">ON-SITE TECHNICIANS</span>
                 <span class="text-white/60">◆</span>
-                <span class="font-display text-base sm:text-xl text-white tracking-widest">WEDDING</span>
+                <span class="font-display text-base sm:text-xl text-white tracking-widest">INTELLIGENT DMX LIGHTING</span>
                 <span class="text-white/60">◆</span>
-                <span class="font-display text-base sm:text-xl text-white tracking-widest">CUSTOM</span>
+                <span class="font-display text-base sm:text-xl text-white tracking-widest">FREE DELIVERY &amp; SETUP</span>
                 <span class="text-white/60">◆</span>
             </div>
         </div>
     </section>
 
     <!-- ============================================================
-         SECTION 2 · BASIC PACKAGE — Flat Minimal Card
+         SECTION 2 · SIDE-BY-SIDE PACKAGES COMPARISON GRID
     ============================================================ -->
-    <section class="section-pad bg-background transition-colors" id="basic">
-        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+    <section class="section-pad bg-background transition-colors" id="packages-grid">
+        <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
 
-                <!-- Left: heading -->
-                <div class="lg:col-span-5">
-                    <span class="text-accent text-xs font-bold uppercase tracking-[0.25em]">Package 01</span>
-                    <h2 class="font-display text-5xl sm:text-6xl md:text-7xl text-primary-text mt-3 mb-5 leading-none">
-                        Basic
-                    </h2>
-                    <p class="text-secondary-text text-base sm:text-lg leading-relaxed mb-6">
-                        Everything you need for a small party — nothing you don't. Perfect for house parties and intimate gatherings.
-                    </p>
-
-                    <div class="flex items-baseline gap-2 mb-6">
-                        <span class="font-display text-5xl sm:text-6xl text-gradient leading-none">$199</span>
-                        <span class="text-secondary-text text-sm">/ event</span>
-                    </div>
-
-                    <a href="contact.html" class="inline-flex items-center gap-2 book-btn px-7 py-3.5 rounded-full text-sm">
-                        Book Basic <i class="fas fa-arrow-right text-xs"></i>
-                    </a>
+            <!-- Section Heading -->
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-accent/10 border border-accent/20 mb-3">
+                    <span class="w-2 h-2 rounded-full bg-accent"></span>
+                    <span class="text-accent text-[11px] font-bold uppercase tracking-widest">All-Inclusive Packages</span>
                 </div>
-
-                <!-- Right: features card -->
-                <div class="lg:col-span-7">
-                    <div class="pkg-basic">
-                        <div class="flex items-center gap-3 mb-6 pb-5 border-b border-border">
-                            <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(168,85,247,0.12);">
-                                <i class="fas fa-cube text-accent"></i>
-                            </div>
-                            <span class="font-heading font-bold text-primary-text">What's Included</span>
-                        </div>
-
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4 text-sm">
-                            <div class="flex items-start gap-2">
-                                <i class="fas fa-check text-accent mt-1"></i>
-                                <span class="text-secondary-text">2x 12" active speakers</span>
-                            </div>
-                            <div class="flex items-start gap-2">
-                                <i class="fas fa-check text-accent mt-1"></i>
-                                <span class="text-secondary-text">1x 15" subwoofer</span>
-                            </div>
-                            <div class="flex items-start gap-2">
-                                <i class="fas fa-check text-accent mt-1"></i>
-                                <span class="text-secondary-text">1x wireless mic</span>
-                            </div>
-                            <div class="flex items-start gap-2">
-                                <i class="fas fa-check text-accent mt-1"></i>
-                                <span class="text-secondary-text">Basic LED lighting</span>
-                            </div>
-                            <div class="flex items-start gap-2">
-                                <i class="fas fa-check text-accent mt-1"></i>
-                                <span class="text-secondary-text">Up to 50 guests</span>
-                            </div>
-                            <div class="flex items-start gap-2">
-                                <i class="fas fa-check text-accent mt-1"></i>
-                                <span class="text-secondary-text">Free LA delivery</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================
-         SECTION 3 · STANDARD PACKAGE — Premium Gradient Border
-    ============================================================ -->
-    <section class="section-pad bg-hover transition-colors" id="standard">
-        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-12">
-                <span class="text-accent text-xs font-bold uppercase tracking-[0.25em]">Package 02</span>
-                <h2 class="font-display text-4xl sm:text-5xl md:text-6xl text-primary-text mt-3 mb-3">
-                    <span class="text-gradient">Standard</span>
+                <h2 class="font-display text-4xl sm:text-5xl md:text-6xl text-primary-text mb-4 leading-none">
+                    Engineered For Every <span class="text-gradient">Crowd Size</span>
                 </h2>
-                <p class="text-secondary-text text-base">The crowd favorite — perfect for weddings, birthdays, and mid-size events.</p>
+                <p class="text-secondary-text text-base sm:text-lg leading-relaxed">
+                    Four distinct, all-inclusive rental packages with zero hidden fees. Compare gear, guest capacities, audio power, and inclusions side-by-side.
+                </p>
+
+                <!-- Billing Duration Switcher -->
+                <div class="mt-8 inline-flex items-center p-1.5 rounded-full bg-hover border border-border shadow-inner">
+                    <button id="plan-single-day" onclick="switchBilling('day')" class="toggle-switch-btn active px-5 py-2 rounded-full text-xs sm:text-sm font-bold flex items-center gap-2">
+                        <i class="fas fa-calendar-day"></i> Single Day Event
+                    </button>
+                    <button id="plan-weekend" onclick="switchBilling('weekend')" class="toggle-switch-btn text-secondary-text px-5 py-2 rounded-full text-xs sm:text-sm font-bold flex items-center gap-2 hover:text-primary-text">
+                        <i class="fas fa-calendar-week"></i> Weekend / 2-Day
+                        <span class="px-2 py-0.5 rounded-full bg-pink/20 text-pink text-[10px] font-extrabold uppercase">Save 15%</span>
+                    </button>
+                </div>
             </div>
 
-            <div class="max-w-2xl mx-auto">
-                <div class="pkg-standard">
-                    <div class="pkg-standard-inner">
-                        <!-- Header -->
-                        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-6 pb-5 border-b border-border">
-                            <div>
-                                <span class="text-[10px] uppercase tracking-widest font-bold text-accent">Most Popular</span>
-                                <h3 class="font-heading font-bold text-2xl text-primary-text mt-1">Standard</h3>
+            <!-- 4-Column Responsive Comparison Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 items-stretch">
+
+                <!-- 1. BASIC PACKAGE -->
+                <div class="pricing-card p-6 sm:p-7 flex flex-col justify-between" id="basic">
+                    <div>
+                        <!-- Top Header -->
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-[11px] font-extrabold uppercase tracking-widest px-2.5 py-1 rounded-full bg-accent/10 text-accent">Package 01</span>
+                            <span class="text-xs text-secondary-text font-medium"><i class="fas fa-users mr-1"></i> Up to 50 guests</span>
+                        </div>
+                        <h3 class="font-heading font-bold text-2xl text-primary-text mb-1">Basic</h3>
+                        <p class="text-secondary-text text-xs sm:text-sm mb-6 leading-relaxed">
+                            Essential sound punch for house parties, pop-ups, and private backyard sessions.
+                        </p>
+
+                        <!-- Price -->
+                        <div class="mb-6 pb-6 border-b border-border">
+                            <div class="flex items-baseline gap-1">
+                                <span class="font-display text-4xl sm:text-5xl text-gradient leading-none price-val" data-day="199" data-weekend="338">$199</span>
+                                <span class="text-secondary-text text-xs font-semibold billing-text">/ event</span>
                             </div>
-                            <div class="text-left sm:text-right">
-                                <span class="font-display text-4xl text-gradient leading-none">$499</span>
-                                <span class="text-secondary-text text-sm ml-1">/ event</span>
-                            </div>
+                            <span class="text-[11px] text-accent mt-1 block font-medium">Free LA County delivery &amp; pickup</span>
                         </div>
 
-                        <!-- Features grid -->
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 text-sm mb-6">
-                            <div class="flex items-start gap-2">
-                                <i class="fas fa-check-circle text-accent mt-0.5"></i>
-                                <span class="text-secondary-text">4x 15" speakers</span>
-                            </div>
-                            <div class="flex items-start gap-2">
-                                <i class="fas fa-check-circle text-accent mt-0.5"></i>
-                                <span class="text-secondary-text">2x 18" subwoofers</span>
-                            </div>
-                            <div class="flex items-start gap-2">
-                                <i class="fas fa-check-circle text-accent mt-0.5"></i>
-                                <span class="text-secondary-text">2x wireless mics</span>
-                            </div>
-                            <div class="flex items-start gap-2">
-                                <i class="fas fa-check-circle text-accent mt-0.5"></i>
-                                <span class="text-secondary-text">Full lighting rig + haze</span>
-                            </div>
-                            <div class="flex items-start gap-2">
-                                <i class="fas fa-check-circle text-accent mt-0.5"></i>
-                                <span class="text-secondary-text">On-site technician (8h)</span>
-                            </div>
-                            <div class="flex items-start gap-2">
-                                <i class="fas fa-check-circle text-accent mt-0.5"></i>
-                                <span class="text-secondary-text">Up to 250 guests</span>
-                            </div>
-                            <div class="flex items-start gap-2">
-                                <i class="fas fa-check-circle text-accent mt-0.5"></i>
-                                <span class="text-secondary-text">Setup &amp; teardown</span>
-                            </div>
-                            <div class="flex items-start gap-2">
-                                <i class="fas fa-check-circle text-accent mt-0.5"></i>
-                                <span class="text-secondary-text">Soundcheck included</span>
-                            </div>
+                        <!-- Quick Specs Badge Row -->
+                        <div class="flex flex-wrap gap-1.5 mb-6">
+                            <span class="px-2.5 py-1 rounded-lg bg-hover border border-border text-[11px] font-semibold text-primary-text">1,800W Total</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-hover border border-border text-[11px] font-semibold text-primary-text">2x 12" Tops</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-hover border border-border text-[11px] font-semibold text-primary-text">1x 15" Sub</span>
                         </div>
 
-                        <a href="contact.html" class="block w-full text-center book-btn py-3.5 rounded-full font-bold text-sm">
-                            <i class="fas fa-calendar-check mr-2"></i> Book Standard Package
+                        <!-- Inclusions Checklist -->
+                        <div class="space-y-3 text-xs sm:text-sm text-secondary-text mb-8">
+                            <div class="flex items-start gap-2.5">
+                                <i class="fas fa-check text-accent mt-0.5 text-xs"></i>
+                                <span><strong>2x 12"</strong> Active 2-Way Speakers</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <i class="fas fa-check text-accent mt-0.5 text-xs"></i>
+                                <span><strong>1x 15"</strong> High-Output Powered Subwoofer</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <i class="fas fa-check text-accent mt-0.5 text-xs"></i>
+                                <span><strong>1x UHF</strong> Wireless Handheld Microphone</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <i class="fas fa-check text-accent mt-0.5 text-xs"></i>
+                                <span>Sound-Active Multi-Color LED Party Light Bar</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <i class="fas fa-check text-accent mt-0.5 text-xs"></i>
+                                <span>Bluetooth + Aux + XLR Mixer Interface</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <i class="fas fa-check text-accent mt-0.5 text-xs"></i>
+                                <span>Color-coded cables &amp; plug-and-play guide</span>
+                            </div>
+                            <div class="flex items-start gap-2.5 text-secondary-text/70 text-xs pt-1">
+                                <i class="fas fa-info-circle mt-0.5 text-accent"></i>
+                                <span>Self-service setup (on-site tech available)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Button -->
+                    <div class="mt-auto pt-4 border-t border-border">
+                        <a href="contact.html?package=basic" class="block w-full text-center py-3.5 px-4 rounded-xl border border-accent text-accent font-bold text-sm hover:bg-accent hover:text-white transition">
+                            Book Basic Package
                         </a>
                     </div>
                 </div>
+
+                <!-- 2. STANDARD PACKAGE (Featured / Most Popular) -->
+                <div class="pricing-card featured p-6 sm:p-7 flex flex-col justify-between" id="standard">
+                    <!-- Most Popular Floating Banner -->
+                    <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#A855F7] to-[#EC4899] text-white text-[10px] font-extrabold tracking-widest uppercase px-4 py-1 rounded-full shadow-lg">
+                        ★ Most Popular Choice
+                    </div>
+
+                    <div>
+                        <!-- Top Header -->
+                        <div class="flex items-center justify-between mb-4 mt-1">
+                            <span class="text-[11px] font-extrabold uppercase tracking-widest px-2.5 py-1 rounded-full bg-pink/15 text-pink">Package 02</span>
+                            <span class="text-xs text-secondary-text font-medium"><i class="fas fa-users mr-1"></i> Up to 250 guests</span>
+                        </div>
+                        <h3 class="font-heading font-bold text-2xl text-primary-text mb-1">Standard</h3>
+                        <p class="text-secondary-text text-xs sm:text-sm mb-6 leading-relaxed">
+                            The crowd favorite for weddings, milestone birthdays, corporate galas, and club nights.
+                        </p>
+
+                        <!-- Price -->
+                        <div class="mb-6 pb-6 border-b border-border">
+                            <div class="flex items-baseline gap-1">
+                                <span class="font-display text-4xl sm:text-5xl text-gradient leading-none price-val" data-day="499" data-weekend="848">$499</span>
+                                <span class="text-secondary-text text-xs font-semibold billing-text">/ event</span>
+                            </div>
+                            <span class="text-[11px] text-pink mt-1 block font-bold">Includes dedicated sound technician</span>
+                        </div>
+
+                        <!-- Quick Specs Badge Row -->
+                        <div class="flex flex-wrap gap-1.5 mb-6">
+                            <span class="px-2.5 py-1 rounded-lg bg-pink/10 text-pink text-[11px] font-bold">5,600W Total</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-hover border border-border text-[11px] font-semibold text-primary-text">4x 15" Tops</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-hover border border-border text-[11px] font-semibold text-primary-text">2x 18" Subs</span>
+                        </div>
+
+                        <!-- Inclusions Checklist -->
+                        <div class="space-y-3 text-xs sm:text-sm text-secondary-text mb-8">
+                            <div class="flex items-start gap-2.5">
+                                <i class="fas fa-check-circle text-pink mt-0.5 text-xs"></i>
+                                <span><strong>4x 15"</strong> High-Output Active PA Speakers</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <i class="fas fa-check-circle text-pink mt-0.5 text-xs"></i>
+                                <span><strong>2x 18"</strong> Heavy Bass Subwoofers (2,400W)</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <i class="fas fa-check-circle text-pink mt-0.5 text-xs"></i>
+                                <span><strong>2x UHF</strong> Long-Range Wireless Microphones</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <i class="fas fa-check-circle text-pink mt-0.5 text-xs"></i>
+                                <span>Full DMX Moving Head Lighting Rig + Wash</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <i class="fas fa-check-circle text-pink mt-0.5 text-xs"></i>
+                                <span>High-Output Atmospheric Haze Machine</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <i class="fas fa-check-circle text-pink mt-0.5 text-xs"></i>
+                                <span><strong>On-Site Audio Technician (8 Hours)</strong></span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <i class="fas fa-check-circle text-pink mt-0.5 text-xs"></i>
+                                <span>Complete Load-In, Room Soundcheck &amp; Strike</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Button -->
+                    <div class="mt-auto pt-4 border-t border-border">
+                        <a href="contact.html?package=standard" class="block w-full text-center py-3.5 px-4 rounded-xl book-btn font-bold text-sm shadow-md">
+                            <i class="fas fa-calendar-check mr-1.5"></i> Book Standard Package
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 3. WEDDING SIGNATURE PACKAGE -->
+                <div class="pricing-card wedding-theme p-6 sm:p-7 flex flex-col justify-between" id="wedding">
+                    <!-- Wedding Signature Floating Banner -->
+                    <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#EC4899] to-[#A855F7] text-white text-[10px] font-extrabold tracking-widest uppercase px-4 py-1 rounded-full shadow-lg">
+                        ♥ Wedding All-Inclusive
+                    </div>
+
+                    <div>
+                        <!-- Top Header -->
+                        <div class="flex items-center justify-between mb-4 mt-1">
+                            <span class="text-[11px] font-extrabold uppercase tracking-widest px-2.5 py-1 rounded-full bg-pink/15 text-pink">Package 03</span>
+                            <span class="text-xs text-secondary-text font-medium"><i class="fas fa-users mr-1"></i> 100–400 guests</span>
+                        </div>
+                        <h3 class="font-heading font-bold text-2xl text-primary-text mb-1">Wedding Rig</h3>
+                        <p class="text-secondary-text text-xs sm:text-sm mb-6 leading-relaxed">
+                            Seamless ceremony, cocktail hour, dinner speeches, and high-energy dance reception.
+                        </p>
+
+                        <!-- Price -->
+                        <div class="mb-6 pb-6 border-b border-border">
+                            <div class="flex items-baseline gap-1">
+                                <span class="font-display text-4xl sm:text-5xl text-gradient leading-none price-val" data-day="899" data-weekend="1528">$899</span>
+                                <span class="text-secondary-text text-xs font-semibold billing-text">/ event</span>
+                            </div>
+                            <span class="text-[11px] text-pink mt-1 block font-semibold">Dual-zone ceremony + reception audio</span>
+                        </div>
+
+                        <!-- Quick Specs Badge Row -->
+                        <div class="flex flex-wrap gap-1.5 mb-6">
+                            <span class="px-2.5 py-1 rounded-lg bg-pink/10 text-pink text-[11px] font-bold">Dual Zone PA</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-hover border border-border text-[11px] font-semibold text-primary-text">12x Uplights</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-hover border border-border text-[11px] font-semibold text-primary-text">Lapel Mics</span>
+                        </div>
+
+                        <!-- Inclusions Checklist -->
+                        <div class="space-y-3 text-xs sm:text-sm text-secondary-text mb-8">
+                            <div class="flex items-start gap-2.5">
+                                <i class="fas fa-check text-pink mt-0.5 text-xs"></i>
+                                <span><strong>Dual-Zone Audio:</strong> Ceremony PA + Reception Rig</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <i class="fas fa-check text-pink mt-0.5 text-xs"></i>
+                                <span><strong>2x Wireless Lapel Mics:</strong> For Officiant &amp; Couple</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <i class="fas fa-check text-pink mt-0.5 text-xs"></i>
+                                <span><strong>2x Wireless Handhelds:</strong> Speeches &amp; Toasts</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <i class="fas fa-check text-pink mt-0.5 text-xs"></i>
+                                <span><strong>12x Wireless Battery Uplights:</strong> Room ambiance</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <i class="fas fa-check text-pink mt-0.5 text-xs"></i>
+                                <span>Moving Head Dance Wash &amp; First Dance Pinspot</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <i class="fas fa-check text-pink mt-0.5 text-xs"></i>
+                                <span><strong>Dedicated Sound Tech (10h):</strong> Planner Sync</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <i class="fas fa-check text-pink mt-0.5 text-xs"></i>
+                                <span>Zero-feedback audio &amp; instant outdoor transitions</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Button -->
+                    <div class="mt-auto pt-4 border-t border-border">
+                        <a href="contact.html?package=wedding" class="block w-full text-center py-3.5 px-4 rounded-xl border-2 border-pink text-pink font-bold text-sm hover:bg-pink hover:text-white transition">
+                            <i class="fas fa-heart mr-1.5"></i> Book Wedding Package
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 4. PREMIUM CONCERT PACKAGE (Flagship Luxe) -->
+                <div class="pricing-card luxe p-6 sm:p-7 flex flex-col justify-between" id="premium">
+                    <!-- Flagship Floating Banner -->
+                    <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#C084FC] to-[#A855F7] text-black text-[10px] font-extrabold tracking-widest uppercase px-4 py-1 rounded-full shadow-lg">
+                        ⚡ Flagship Concert Rig
+                    </div>
+
+                    <div>
+                        <!-- Top Header -->
+                        <div class="flex items-center justify-between mb-4 mt-1">
+                            <span class="text-[11px] font-extrabold uppercase tracking-widest px-2.5 py-1 rounded-full bg-white/10 text-[#C084FC]">Package 04</span>
+                            <span class="text-xs text-gray-300 font-medium"><i class="fas fa-users mr-1"></i> 500–1,500+ guests</span>
+                        </div>
+                        <h3 class="font-heading font-bold text-2xl text-white mb-1">Premium</h3>
+                        <p class="text-gray-400 text-xs sm:text-sm mb-6 leading-relaxed">
+                            Festival and concert-level production. Uncompromising sound pressure and arena-grade lighting.
+                        </p>
+
+                        <!-- Price -->
+                        <div class="mb-6 pb-6 border-b border-white/10">
+                            <div class="flex items-baseline gap-1">
+                                <span class="font-display text-4xl sm:text-5xl text-gradient leading-none price-val" data-day="1299" data-weekend="2208">$1,299</span>
+                                <span class="text-gray-400 text-xs font-semibold billing-text">/ event</span>
+                            </div>
+                            <span class="text-[11px] text-[#C084FC] mt-1 block font-semibold">2 Audio &amp; Light Engineers Included</span>
+                        </div>
+
+                        <!-- Quick Specs Badge Row -->
+                        <div class="flex flex-wrap gap-1.5 mb-6">
+                            <span class="px-2.5 py-1 rounded-lg bg-white/10 text-white text-[11px] font-bold">14,000W+ Rig</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-white/10 text-white text-[11px] font-bold">Funktion-One</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-white/10 text-white text-[11px] font-bold">CDJ-3000s</span>
+                        </div>
+
+                        <!-- Inclusions Checklist -->
+                        <div class="space-y-3 text-xs sm:text-sm text-gray-300 mb-8">
+                            <div class="flex items-start gap-2.5">
+                                <i class="fas fa-star text-[#C084FC] mt-0.5 text-xs"></i>
+                                <span><strong>Funktion-One</strong> Line Array Touring Audio Rig</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <i class="fas fa-star text-[#C084FC] mt-0.5 text-xs"></i>
+                                <span><strong>4x Dual 18"</strong> Touring Concert Subwoofers</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <i class="fas fa-star text-[#C084FC] mt-0.5 text-xs"></i>
+                                <span><strong>Pioneer CDJ-3000 + DJM-A9</strong> Pro Console Rig</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <i class="fas fa-star text-[#C084FC] mt-0.5 text-xs"></i>
+                                <span>Stage Monitors &amp; 32-Channel Digital FOH Console</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <i class="fas fa-star text-[#C084FC] mt-0.5 text-xs"></i>
+                                <span>Computer-Controlled DMX Moving Heads + Laser FX</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <i class="fas fa-star text-[#C084FC] mt-0.5 text-xs"></i>
+                                <span><strong>2 Engineers On-Site (12 Hours):</strong> Sound &amp; Light</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <i class="fas fa-star text-[#C084FC] mt-0.5 text-xs"></i>
+                                <span>Full Redundant On-Site Backup Rig (Zero Downtime)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Button -->
+                    <div class="mt-auto pt-4 border-t border-white/10">
+                        <a href="contact.html?package=premium" class="block w-full text-center py-3.5 px-4 rounded-xl book-btn font-bold text-sm shadow-md">
+                            <i class="fas fa-crown mr-1.5"></i> Book Premium Package
+                        </a>
+                    </div>
+                </div>
+
             </div>
+
         </div>
     </section>
 
     <!-- ============================================================
-         SECTION 4 · PREMIUM PACKAGE — Dark Luxe
+         SECTION 3 · DETAILED SIDE-BY-SIDE FEATURE COMPARISON MATRIX
     ============================================================ -->
-    <section class="section-pad bg-background transition-colors" id="premium">
-        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+    <section class="section-pad bg-hover transition-colors" id="comparison-matrix">
+        <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
 
-                <!-- Left: dark premium card -->
-                <div class="lg:col-span-7 order-2 lg:order-1">
-                    <div class="pkg-premium">
-                        <div class="relative z-10">
-                            <div class="flex items-center justify-between mb-6 pb-5 border-b border-white/10">
-                                <div>
-                                    <span class="text-[10px] uppercase tracking-widest font-bold text-[#C084FC]">All-Inclusive</span>
-                                    <h3 class="font-heading font-bold text-2xl text-white mt-1">Premium</h3>
-                                </div>
-                                <div class="text-right">
-                                    <span class="font-display text-4xl text-gradient leading-none">$1,299</span>
-                                    <span class="text-gray-400 text-sm ml-1">/ event</span>
-                                </div>
-                            </div>
-
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 text-sm mb-6">
-                                <div class="flex items-start gap-2">
-                                    <i class="fas fa-star text-[#C084FC] mt-0.5"></i>
-                                    <span class="text-white/80">Funktion-One line array</span>
-                                </div>
-                                <div class="flex items-start gap-2">
-                                    <i class="fas fa-star text-[#C084FC] mt-0.5"></i>
-                                    <span class="text-white/80">4x dual 18" subs</span>
-                                </div>
-                                <div class="flex items-start gap-2">
-                                    <i class="fas fa-star text-[#C084FC] mt-0.5"></i>
-                                    <span class="text-white/80">Stage monitors + console</span>
-                                </div>
-                                <div class="flex items-start gap-2">
-                                    <i class="fas fa-star text-[#C084FC] mt-0.5"></i>
-                                    <span class="text-white/80">Full lighting + LEDs</span>
-                                </div>
-                                <div class="flex items-start gap-2">
-                                    <i class="fas fa-star text-[#C084FC] mt-0.5"></i>
-                                    <span class="text-white/80">2 technicians (12h)</span>
-                                </div>
-                                <div class="flex items-start gap-2">
-                                    <i class="fas fa-star text-[#C084FC] mt-0.5"></i>
-                                    <span class="text-white/80">Up to 1,500 guests</span>
-                                </div>
-                            </div>
-
-                            <a href="contact.html" class="block w-full text-center book-btn py-3.5 rounded-full font-bold text-sm">
-                                <i class="fas fa-crown mr-2"></i> Book Premium Package
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right: heading -->
-                <div class="lg:col-span-5 order-1 lg:order-2">
-                    <span class="text-accent text-xs font-bold uppercase tracking-[0.25em]">Package 03</span>
-                    <h2 class="font-display text-5xl sm:text-6xl md:text-7xl text-primary-text mt-3 mb-5 leading-none">
-                        Premium
-                    </h2>
-                    <p class="text-secondary-text text-base sm:text-lg leading-relaxed mb-6">
-                        Our flagship rig for concerts, festivals, and large-scale events. Concert-grade everything, engineered to perfection.
-                    </p>
-
-                    <div class="space-y-3 pt-5 border-t border-border">
-                        <div class="flex items-center gap-3 text-sm">
-                            <i class="fas fa-circle text-[10px] text-accent"></i>
-                            <span class="text-secondary-text">Best for 500–1,500 guests</span>
-                        </div>
-                        <div class="flex items-center gap-3 text-sm">
-                            <i class="fas fa-circle text-[10px] text-accent"></i>
-                            <span class="text-secondary-text">Full venue load-in &amp; strike</span>
-                        </div>
-                        <div class="flex items-center gap-3 text-sm">
-                            <i class="fas fa-circle text-[10px] text-accent"></i>
-                            <span class="text-secondary-text">Backup gear on-site</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================
-         SECTION 5 · WEDDING PACKAGE — Timeline Row Style
-    ============================================================ -->
-    <section class="section-pad bg-hover transition-colors" id="wedding">
-        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-12">
-                <span class="text-accent text-xs font-bold uppercase tracking-[0.25em]">Package 04</span>
-                <h2 class="font-display text-4xl sm:text-5xl md:text-6xl text-primary-text mt-3 mb-3">
-                    Wedding <span class="text-gradient">Package</span>
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-accent text-xs font-bold uppercase tracking-[0.25em]">Specification Matrix</span>
+                <h2 class="font-display text-4xl sm:text-5xl md:text-6xl text-primary-text mt-2 mb-4 leading-none">
+                    Compare Every <span class="text-gradient">Feature &amp; Inclusion</span>
                 </h2>
-                <p class="text-secondary-text text-base">Everything your ceremony, cocktail hour, and reception need — covered from start to finish.</p>
+                <p class="text-secondary-text text-base sm:text-lg leading-relaxed">
+                    Evaluate hardware components, audio capacity, lighting configurations, and crew support to find the exact match for your event.
+                </p>
             </div>
 
-            <!-- Price banner -->
-            <div class="max-w-3xl mx-auto bg-purple-gradient rounded-2xl p-5 sm:p-6 mb-8 text-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-                <div>
-                    <span class="text-[10px] uppercase tracking-widest font-bold opacity-80">Full-Day Wedding Rig</span>
-                    <p class="font-display text-3xl sm:text-4xl mt-1">$899</p>
+            <!-- Table Container -->
+            <div class="table-responsive shadow-xl">
+                <table class="compare-table">
+                    <!-- Table Head -->
+                    <thead>
+                        <tr class="bg-card">
+                            <th class="text-base font-bold text-primary-text">Package Overview</th>
+                            <th class="w-1/5">
+                                <div class="font-heading font-bold text-base text-primary-text">Basic</div>
+                                <div class="text-accent text-lg font-display mt-0.5">$199</div>
+                                <div class="text-[11px] text-secondary-text font-normal">House &amp; Backyard</div>
+                            </th>
+                            <th class="w-1/5 bg-accent/5 border-l-2 border-r-2 border-accent">
+                                <div class="inline-block bg-gradient-to-r from-[#A855F7] to-[#EC4899] text-white text-[9px] font-bold px-2 py-0.5 rounded-full uppercase mb-1">Most Popular</div>
+                                <div class="font-heading font-bold text-base text-primary-text">Standard</div>
+                                <div class="text-gradient text-lg font-display mt-0.5">$499</div>
+                                <div class="text-[11px] text-secondary-text font-normal">Weddings &amp; Clubs</div>
+                            </th>
+                            <th class="w-1/5">
+                                <div class="font-heading font-bold text-base text-primary-text">Wedding Rig</div>
+                                <div class="text-pink text-lg font-display mt-0.5">$899</div>
+                                <div class="text-[11px] text-secondary-text font-normal">Ceremony to Reception</div>
+                            </th>
+                            <th class="w-1/5">
+                                <div class="font-heading font-bold text-base text-primary-text">Premium</div>
+                                <div class="text-[#C084FC] text-lg font-display mt-0.5">$1,299</div>
+                                <div class="text-[11px] text-secondary-text font-normal">Concerts &amp; Galas</div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <!-- CATEGORY 1: CAPACITY & VENUE -->
+                        <tr class="compare-cat-row">
+                            <td colspan="5"><i class="fas fa-users-viewfinder mr-2"></i> 1. Capacity &amp; Coverage</td>
+                        </tr>
+                        <tr>
+                            <td>Guest Capacity Recommendation</td>
+                            <td>Up to 50 guests</td>
+                            <td class="bg-accent/5 font-semibold text-primary-text">Up to 250 guests</td>
+                            <td>100 – 400 guests</td>
+                            <td class="font-semibold text-primary-text">500 – 1,500+ guests</td>
+                        </tr>
+                        <tr>
+                            <td>Ideal Venue Profile</td>
+                            <td>Apartment, Backyard, Studio</td>
+                            <td class="bg-accent/5">Banquet Hall, Club, Loft</td>
+                            <td>Resort, Vineyard, Church + Hall</td>
+                            <td>Concert Amphitheater, Festival Grounds</td>
+                        </tr>
+                        <tr>
+                            <td>System Peak Acoustic Output</td>
+                            <td>1,800 Watts</td>
+                            <td class="bg-accent/5 font-bold text-pink">5,600 Watts</td>
+                            <td>6,500 Watts</td>
+                            <td class="font-bold text-accent">14,000+ Watts</td>
+                        </tr>
+                        <tr>
+                            <td>Multi-Zone Audio Distribution</td>
+                            <td><span class="text-secondary-text/50">—</span></td>
+                            <td class="bg-accent/5"><span class="text-secondary-text/50">—</span></td>
+                            <td class="text-pink font-semibold"><i class="fas fa-check mr-1.5"></i> Dual-Zone (Ceremony + Party)</td>
+                            <td class="text-accent font-semibold"><i class="fas fa-check mr-1.5"></i> Multi-Zone Line Array</td>
+                        </tr>
+
+                        <!-- CATEGORY 2: AUDIO HARDWARE -->
+                        <tr class="compare-cat-row">
+                            <td colspan="5"><i class="fas fa-volume-high mr-2"></i> 2. Audio Hardware &amp; Rigs</td>
+                        </tr>
+                        <tr>
+                            <td>Main Active Loudspeakers</td>
+                            <td>2x 12" Active 2-Way Tops</td>
+                            <td class="bg-accent/5 font-semibold">4x 15" High-Output Tops</td>
+                            <td>4x 15" Multi-Zone Tops</td>
+                            <td class="font-semibold">Funktion-One Concert Array</td>
+                        </tr>
+                        <tr>
+                            <td>Subwoofer Low-Frequency Bass</td>
+                            <td>1x 15" Subwoofer (800W)</td>
+                            <td class="bg-accent/5 font-semibold">2x 18" Subwoofers (2,400W)</td>
+                            <td>2x 18" High-Impact Subs</td>
+                            <td class="font-semibold">4x Dual 18" Touring Subs</td>
+                        </tr>
+                        <tr>
+                            <td>Stage Foldback / DJ Monitors</td>
+                            <td><span class="text-secondary-text/50">Add-on ($40)</span></td>
+                            <td class="bg-accent/5"><i class="fas fa-check text-accent mr-1"></i> 1x Active Stage Wedge</td>
+                            <td><i class="fas fa-check text-pink mr-1"></i> 2x Stage Wedges</td>
+                            <td><i class="fas fa-check text-accent mr-1"></i> Full Stereo Stage In-Ear + Wedges</td>
+                        </tr>
+                        <tr>
+                            <td>Audio Mixer &amp; FOH Console</td>
+                            <td>Bluetooth / Aux Hub</td>
+                            <td class="bg-accent/5 font-semibold">Pioneer DJ Console Stand</td>
+                            <td>Pioneer Rig + Ceremony Console</td>
+                            <td class="font-semibold">Pioneer CDJ-3000 + 32-Ch FOH</td>
+                        </tr>
+
+                        <!-- CATEGORY 3: MICROPHONES & SPEECH -->
+                        <tr class="compare-cat-row">
+                            <td colspan="5"><i class="fas fa-microphone mr-2"></i> 3. Microphones &amp; Vocal Clarity</td>
+                        </tr>
+                        <tr>
+                            <td>UHF Wireless Handheld Mics</td>
+                            <td>1x Handheld Mic</td>
+                            <td class="bg-accent/5 font-semibold">2x Handheld Mics + Stands</td>
+                            <td>2x Handhelds (Toasts &amp; Speeches)</td>
+                            <td class="font-semibold">4x Shure Axient Digital Mics</td>
+                        </tr>
+                        <tr>
+                            <td>Wireless Lapel / Lavalier Mics</td>
+                            <td><span class="text-secondary-text/50">—</span></td>
+                            <td class="bg-accent/5"><span class="text-secondary-text/50">—</span></td>
+                            <td class="text-pink font-semibold"><i class="fas fa-check mr-1.5"></i> 2x Discreet Vow/Officiant Mics</td>
+                            <td>Available on Request</td>
+                        </tr>
+                        <tr>
+                            <td>DSP Acoustic Feedback Suppression</td>
+                            <td>Standard</td>
+                            <td class="bg-accent/5 text-pink font-semibold"><i class="fas fa-check mr-1.5"></i> Pro DSP Tuned</td>
+                            <td class="text-pink font-semibold"><i class="fas fa-check mr-1.5"></i> Speech Optimized DSP</td>
+                            <td class="text-accent font-semibold"><i class="fas fa-check mr-1.5"></i> FOH RTA Real-Time EQ</td>
+                        </tr>
+
+                        <!-- CATEGORY 4: LIGHTING & ATMOSPHERE -->
+                        <tr class="compare-cat-row">
+                            <td colspan="5"><i class="fas fa-lightbulb mr-2"></i> 4. Lighting &amp; Atmospheric FX</td>
+                        </tr>
+                        <tr>
+                            <td>Dance Floor Lighting</td>
+                            <td>Sound-Active LED Bar</td>
+                            <td class="bg-accent/5 font-semibold">DMX Moving Heads + Bar</td>
+                            <td>Moving Heads + Dance Wash</td>
+                            <td class="font-semibold">Full Computer-Synced Moving Rig</td>
+                        </tr>
+                        <tr>
+                            <td>Architectural Room Uplighting</td>
+                            <td><span class="text-secondary-text/50">Add-on ($15/ea)</span></td>
+                            <td class="bg-accent/5">4x Ambient Uplights</td>
+                            <td class="text-pink font-semibold"><i class="fas fa-check mr-1.5"></i> 12x Wireless Battery Uplights</td>
+                            <td class="font-semibold">Full Arena/Hall Uplighting Rig</td>
+                        </tr>
+                        <tr>
+                            <td>Atmospheric Effects</td>
+                            <td><span class="text-secondary-text/50">Add-on ($49)</span></td>
+                            <td class="bg-accent/5 text-pink font-semibold"><i class="fas fa-check mr-1.5"></i> Pro Haze Machine</td>
+                            <td class="text-pink font-semibold"><i class="fas fa-check mr-1.5"></i> Low-Fog / Pinspot Lights</td>
+                            <td class="text-accent font-semibold"><i class="fas fa-check mr-1.5"></i> Heavy Haze + High-Powered Laser FX</td>
+                        </tr>
+
+                        <!-- CATEGORY 5: SERVICE & CREW -->
+                        <tr class="compare-cat-row">
+                            <td colspan="5"><i class="fas fa-user-gear mr-2"></i> 5. Logistics, Crew &amp; Support</td>
+                        </tr>
+                        <tr>
+                            <td>Delivery &amp; Pickup (LA County)</td>
+                            <td class="text-accent font-semibold"><i class="fas fa-check mr-1"></i> Included Free</td>
+                            <td class="bg-accent/5 text-accent font-semibold"><i class="fas fa-check mr-1"></i> Included Free</td>
+                            <td class="text-accent font-semibold"><i class="fas fa-check mr-1"></i> Included Free</td>
+                            <td class="text-accent font-semibold"><i class="fas fa-check mr-1"></i> Included Free</td>
+                        </tr>
+                        <tr>
+                            <td>Full Setup, Soundcheck &amp; Strike</td>
+                            <td>Quick drop + Guide</td>
+                            <td class="bg-accent/5 text-pink font-semibold"><i class="fas fa-check mr-1"></i> Complete Turn-Key</td>
+                            <td class="text-pink font-semibold"><i class="fas fa-check mr-1"></i> Complete Turn-Key</td>
+                            <td class="text-accent font-semibold"><i class="fas fa-check mr-1"></i> Complete Turn-Key</td>
+                        </tr>
+                        <tr>
+                            <td>Dedicated On-Site Sound Technician</td>
+                            <td><span class="text-secondary-text/50">Add-on ($50/hr)</span></td>
+                            <td class="bg-accent/5 text-pink font-bold"><i class="fas fa-check mr-1"></i> 8 Hours Included</td>
+                            <td class="text-pink font-bold"><i class="fas fa-check mr-1"></i> 10 Hours Included</td>
+                            <td class="text-accent font-bold"><i class="fas fa-check mr-1"></i> 2 Techs (12 Hours Included)</td>
+                        </tr>
+                        <tr>
+                            <td>Redundant Backup Gear On-Site</td>
+                            <td>Emergency Hotline</td>
+                            <td class="bg-accent/5 text-pink font-semibold"><i class="fas fa-check mr-1"></i> Critical Spares Kit</td>
+                            <td class="text-pink font-semibold"><i class="fas fa-check mr-1"></i> Full Audio Backup</td>
+                            <td class="text-accent font-semibold"><i class="fas fa-check mr-1"></i> 100% Mirror Audio Chain</td>
+                        </tr>
+
+                        <!-- ACTION ROW -->
+                        <tr class="bg-card">
+                            <td class="font-bold text-primary-text">Ready to Reserve?</td>
+                            <td>
+                                <a href="contact.html?package=basic" class="inline-block py-2.5 px-4 rounded-xl border border-accent text-accent font-bold text-xs hover:bg-accent hover:text-white transition">
+                                    Book Basic ($199)
+                                </a>
+                            </td>
+                            <td class="bg-accent/5 border-l-2 border-r-2 border-accent">
+                                <a href="contact.html?package=standard" class="inline-block py-2.5 px-5 rounded-xl book-btn font-bold text-xs shadow-md">
+                                    Book Standard ($499)
+                                </a>
+                            </td>
+                            <td>
+                                <a href="contact.html?package=wedding" class="inline-block py-2.5 px-4 rounded-xl border-2 border-pink text-pink font-bold text-xs hover:bg-pink hover:text-white transition">
+                                    Book Wedding ($899)
+                                </a>
+                            </td>
+                            <td>
+                                <a href="contact.html?package=premium" class="inline-block py-2.5 px-4 rounded-xl book-btn font-bold text-xs shadow-md">
+                                    Book Premium ($1,299)
+                                </a>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 4 · WEDDING AUDIO BLUEPRINT / TIMELINE
+    ============================================================ -->
+    <section class="section-pad bg-background transition-colors" id="wedding-package">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <span class="text-pink text-xs font-bold uppercase tracking-[0.25em]">Wedding Signature Coverage</span>
+                <h2 class="font-display text-4xl sm:text-5xl md:text-6xl text-primary-text mt-2 mb-4 leading-none">
+                    How The Wedding Package <span class="text-gradient">Covers Your Entire Day</span>
+                </h2>
+                <p class="text-secondary-text text-base sm:text-lg leading-relaxed">
+                    Zero awkward mic drops, zero feedback screech, and zero awkward pauses. We coordinate seamlessly with your wedding planner from pre-ceremony to final send-off.
+                </p>
+            </div>
+
+            <!-- 4 Stage Wedding Journey Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                <!-- Stage 1: Ceremony -->
+                <div class="wedding-stage-card flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(236,72,153,0.12);">
+                            <i class="fas fa-heart text-pink text-xl"></i>
+                        </div>
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-pink">Stage 01 · 3:00 PM</span>
+                        <h3 class="font-heading font-bold text-lg text-primary-text mt-1 mb-2">The Ceremony &amp; Vows</h3>
+                        <p class="text-secondary-text text-xs sm:text-sm leading-relaxed mb-4">
+                            Discreet body-worn lavalier mics on the officiant and couple. Ultra-clean wireless PA ensures every guest in every row hears every intimate word clearly.
+                        </p>
+                    </div>
+                    <div class="pt-3 border-t border-border flex items-center gap-2 text-xs font-semibold text-primary-text">
+                        <i class="fas fa-check-circle text-pink"></i> Lapel Mics + Acoustic PA
+                    </div>
                 </div>
-                <a href="contact.html" class="px-6 py-3 bg-white text-[#0F172A] rounded-full font-bold text-sm hover:bg-gray-100 transition whitespace-nowrap">
-                    <i class="fas fa-heart mr-1"></i> Book for Wedding
+
+                <!-- Stage 2: Cocktail Hour -->
+                <div class="wedding-stage-card flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(168,85,247,0.12);">
+                            <i class="fas fa-champagne-glasses text-accent text-xl"></i>
+                        </div>
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-accent">Stage 02 · 4:30 PM</span>
+                        <h3 class="font-heading font-bold text-lg text-primary-text mt-1 mb-2">Cocktail Hour Vibe</h3>
+                        <p class="text-secondary-text text-xs sm:text-sm leading-relaxed mb-4">
+                            Separate audio zone setup on the outdoor terrace or lawn. Curated playlist, balanced decibels that let guests mingle comfortably, and subtle accent uplighting.
+                        </p>
+                    </div>
+                    <div class="pt-3 border-t border-border flex items-center gap-2 text-xs font-semibold text-primary-text">
+                        <i class="fas fa-check-circle text-accent"></i> Multi-Zone Terrace Audio
+                    </div>
+                </div>
+
+                <!-- Stage 3: Dinner & Toasts -->
+                <div class="wedding-stage-card flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(236,72,153,0.12);">
+                            <i class="fas fa-microphone-lines text-pink text-xl"></i>
+                        </div>
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-pink">Stage 03 · 6:30 PM</span>
+                        <h3 class="font-heading font-bold text-lg text-primary-text mt-1 mb-2">Grand Entrance &amp; Toasts</h3>
+                        <p class="text-secondary-text text-xs sm:text-sm leading-relaxed mb-4">
+                            Handheld wireless microphones passed seamlessly to Maid of Honor, Best Man, and parents with live DSP volume leveling to avoid any shouting or dropouts.
+                        </p>
+                    </div>
+                    <div class="pt-3 border-t border-border flex items-center gap-2 text-xs font-semibold text-primary-text">
+                        <i class="fas fa-check-circle text-pink"></i> Feedback-Free Vocal Tuning
+                    </div>
+                </div>
+
+                <!-- Stage 4: Reception Party -->
+                <div class="wedding-stage-card flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(168,85,247,0.12);">
+                            <i class="fas fa-music text-accent text-xl"></i>
+                        </div>
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-accent">Stage 04 · 8:30 PM – Late</span>
+                        <h3 class="font-heading font-bold text-lg text-primary-text mt-1 mb-2">Dance Floor Ignition</h3>
+                        <p class="text-secondary-text text-xs sm:text-sm leading-relaxed mb-4">
+                            Subwoofers engage with concert punch, moving head beam fixtures light up the dance floor, and atmospheric haze gives light beams breathtaking 3D depth.
+                        </p>
+                    </div>
+                    <div class="pt-3 border-t border-border flex items-center gap-2 text-xs font-semibold text-primary-text">
+                        <i class="fas fa-check-circle text-accent"></i> Sub Bass + Moving Heads
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Wedding Callout Banner -->
+            <div class="mt-10 p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-[#A855F7]/10 via-[#EC4899]/10 to-[#A855F7]/10 border border-pink/30 flex flex-col sm:flex-row items-center justify-between gap-6">
+                <div>
+                    <h4 class="font-heading font-bold text-xl text-primary-text mb-1">Planning a unique wedding timeline?</h4>
+                    <p class="text-secondary-text text-sm">We provide custom ceremony-only, reception-only, or multi-location setups with full coordination.</p>
+                </div>
+                <a href="contact.html?package=wedding-custom" class="book-btn px-6 py-3 rounded-full text-sm whitespace-nowrap">
+                    <i class="fas fa-ring mr-2"></i> Customize Wedding Rig
                 </a>
             </div>
 
-            <!-- Row timeline -->
-            <div class="space-y-3 max-w-3xl mx-auto">
-                <div class="wedding-row">
-                    <div class="flex items-center gap-3 md:w-56 flex-shrink-0">
-                        <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(168,85,247,0.12);">
-                            <i class="fas fa-bell text-accent text-sm"></i>
-                        </div>
-                        <div>
-                            <p class="text-[10px] uppercase tracking-widest font-bold text-accent">Ceremony</p>
-                            <p class="font-heading font-bold text-sm text-primary-text">Vows &amp; I Do's</p>
-                        </div>
-                    </div>
-                    <p class="text-secondary-text text-sm flex-1">Clip-on wireless mics for officiant &amp; couple, gentle background PA, and acoustic tuning for outdoor venues.</p>
-                </div>
-
-                <div class="wedding-row">
-                    <div class="flex items-center gap-3 md:w-56 flex-shrink-0">
-                        <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(236,72,153,0.12);">
-                            <i class="fas fa-champagne-glasses text-pink text-sm"></i>
-                        </div>
-                        <div>
-                            <p class="text-[10px] uppercase tracking-widest font-bold text-accent">Cocktail Hour</p>
-                            <p class="font-heading font-bold text-sm text-primary-text">Ambiance Audio</p>
-                        </div>
-                    </div>
-                    <p class="text-secondary-text text-sm flex-1">DJ or curated playlist, soft uplighting, and a sound level that lets your guests actually talk.</p>
-                </div>
-
-                <div class="wedding-row">
-                    <div class="flex items-center gap-3 md:w-56 flex-shrink-0">
-                        <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(139,92,246,0.12);">
-                            <i class="fas fa-music text-accent text-sm"></i>
-                        </div>
-                        <div>
-                            <p class="text-[10px] uppercase tracking-widest font-bold text-accent">Reception</p>
-                            <p class="font-heading font-bold text-sm text-primary-text">Full Party Rig</p>
-                        </div>
-                    </div>
-                    <p class="text-secondary-text text-sm flex-1">Professional DJ + MC, full sound system, moving head lighting, and a dance floor that stays packed all night.</p>
-                </div>
-
-                <div class="wedding-row">
-                    <div class="flex items-center gap-3 md:w-56 flex-shrink-0">
-                        <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(168,85,247,0.12);">
-                            <i class="fas fa-camera text-accent text-sm"></i>
-                        </div>
-                        <div>
-                            <p class="text-[10px] uppercase tracking-widest font-bold text-accent">Extras</p>
-                            <p class="font-heading font-bold text-sm text-primary-text">Wedding Add-Ons</p>
-                        </div>
-                    </div>
-                    <p class="text-secondary-text text-sm flex-1">Timeline coordination with planner, first dance lighting, sparkler exit audio, and clean strike after the last dance.</p>
-                </div>
-            </div>
         </div>
     </section>
 
     <!-- ============================================================
-         SECTION 6 · CUSTOM PACKAGES — Bento Grid
+         SECTION 5 · POPULAR ADD-ONS & EQUIPMENT ENHANCEMENTS
+    ============================================================ -->
+    <section class="section-pad bg-hover transition-colors" id="package-addons">
+        <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-accent text-xs font-bold uppercase tracking-[0.25em]">A La Carte Upgrades</span>
+                <h2 class="font-display text-4xl sm:text-5xl md:text-6xl text-primary-text mt-2 mb-4 leading-none">
+                    Enhance Any <span class="text-gradient">Rental Package</span>
+                </h2>
+                <p class="text-secondary-text text-base sm:text-lg leading-relaxed">
+                    Stack individual pro-grade fixtures, visual video walls, and extra technician support onto your chosen package with clear upfront pricing.
+                </p>
+            </div>
+
+            <!-- 6 Add-on Cards Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- Addon 1 -->
+                <div class="addon-card">
+                    <div class="flex items-start justify-between gap-4 mb-4">
+                        <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(168,85,247,0.12);">
+                            <i class="fas fa-lightbulb text-accent text-xl"></i>
+                        </div>
+                        <div class="text-right">
+                            <span class="font-display text-2xl text-gradient leading-none">+$120</span>
+                            <span class="text-[11px] text-secondary-text block">/ 8 fixtures</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-heading font-bold text-base text-primary-text mb-1">Wireless DMX Uplighting Pack</h3>
+                        <p class="text-secondary-text text-xs leading-relaxed mb-4">
+                            8x battery-powered RGBWA+UV uplights with 12h battery life. Zero messy cable runs along your venue walls.
+                        </p>
+                    </div>
+                    <div class="pt-3 border-t border-border flex items-center justify-between text-xs">
+                        <span class="text-accent font-semibold">100% Cable-Free</span>
+                        <a href="contact.html?addon=uplights" class="font-bold text-primary-text hover:text-accent transition">Add to quote →</a>
+                    </div>
+                </div>
+
+                <!-- Addon 2 -->
+                <div class="addon-card">
+                    <div class="flex items-start justify-between gap-4 mb-4">
+                        <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(236,72,153,0.12);">
+                            <i class="fas fa-fire-flame-curved text-pink text-xl"></i>
+                        </div>
+                        <div class="text-right">
+                            <span class="font-display text-2xl text-gradient leading-none">+$180</span>
+                            <span class="text-[11px] text-secondary-text block">/ pair</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-heading font-bold text-base text-primary-text mb-1">Cold Spark Fountain Machines</h3>
+                        <p class="text-secondary-text text-xs leading-relaxed mb-4">
+                            Pair of indoor-safe non-pyrotechnic cold spark fountains. Up to 12ft high sparks for grand entrance and final drop.
+                        </p>
+                    </div>
+                    <div class="pt-3 border-t border-border flex items-center justify-between text-xs">
+                        <span class="text-pink font-semibold">Indoor Venue Safe</span>
+                        <a href="contact.html?addon=cold-sparks" class="font-bold text-primary-text hover:text-pink transition">Add to quote →</a>
+                    </div>
+                </div>
+
+                <!-- Addon 3 -->
+                <div class="addon-card">
+                    <div class="flex items-start justify-between gap-4 mb-4">
+                        <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(168,85,247,0.12);">
+                            <i class="fas fa-cloud text-accent text-xl"></i>
+                        </div>
+                        <div class="text-right">
+                            <span class="font-display text-2xl text-gradient leading-none">+$95</span>
+                            <span class="text-[11px] text-secondary-text block">/ event</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-heading font-bold text-base text-primary-text mb-1">"Dancing On Clouds" Dry Ice Fog</h3>
+                        <p class="text-secondary-text text-xs leading-relaxed mb-4">
+                            Thick, low-lying ground cloud effect that hugs the floor without triggering smoke alarms or obscuring guests.
+                        </p>
+                    </div>
+                    <div class="pt-3 border-t border-border flex items-center justify-between text-xs">
+                        <span class="text-accent font-semibold">First Dance Essential</span>
+                        <a href="contact.html?addon=cloud-fog" class="font-bold text-primary-text hover:text-accent transition">Add to quote →</a>
+                    </div>
+                </div>
+
+                <!-- Addon 4 -->
+                <div class="addon-card">
+                    <div class="flex items-start justify-between gap-4 mb-4">
+                        <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(236,72,153,0.12);">
+                            <i class="fas fa-compact-disc text-pink text-xl"></i>
+                        </div>
+                        <div class="text-right">
+                            <span class="font-display text-2xl text-gradient leading-none">+$250</span>
+                            <span class="text-[11px] text-secondary-text block">/ pro rig</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-heading font-bold text-base text-primary-text mb-1">Pioneer CDJ-3000 + DJM-A9 Setup</h3>
+                        <p class="text-secondary-text text-xs leading-relaxed mb-4">
+                            Industry club-standard twin player and 4-channel mixer setup mounted in road cases with pro Ethernet linking.
+                        </p>
+                    </div>
+                    <div class="pt-3 border-t border-border flex items-center justify-between text-xs">
+                        <span class="text-pink font-semibold">Rider Compliant</span>
+                        <a href="contact.html?addon=cdj-upgrade" class="font-bold text-primary-text hover:text-pink transition">Add to quote →</a>
+                    </div>
+                </div>
+
+                <!-- Addon 5 -->
+                <div class="addon-card">
+                    <div class="flex items-start justify-between gap-4 mb-4">
+                        <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(168,85,247,0.12);">
+                            <i class="fas fa-tv text-accent text-xl"></i>
+                        </div>
+                        <div class="text-right">
+                            <span class="font-display text-2xl text-gradient leading-none">From $450</span>
+                            <span class="text-[11px] text-secondary-text block">/ custom size</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-heading font-bold text-base text-primary-text mb-1">Modular P3.91 LED Video Wall</h3>
+                        <p class="text-secondary-text text-xs leading-relaxed mb-4">
+                            High-refresh rate video panels for DJ visuals, wedding photo slideshows, sponsor loops, or live camera feed.
+                        </p>
+                    </div>
+                    <div class="pt-3 border-t border-border flex items-center justify-between text-xs">
+                        <span class="text-accent font-semibold">HD Visual Impact</span>
+                        <a href="contact.html?addon=led-wall" class="font-bold text-primary-text hover:text-accent transition">Add to quote →</a>
+                    </div>
+                </div>
+
+                <!-- Addon 6 -->
+                <div class="addon-card">
+                    <div class="flex items-start justify-between gap-4 mb-4">
+                        <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(236,72,153,0.12);">
+                            <i class="fas fa-user-clock text-pink text-xl"></i>
+                        </div>
+                        <div class="text-right">
+                            <span class="font-display text-2xl text-gradient leading-none">+$50</span>
+                            <span class="text-[11px] text-secondary-text block">/ hour</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-heading font-bold text-base text-primary-text mb-1">Extra On-Site Technician Hours</h3>
+                        <p class="text-secondary-text text-xs leading-relaxed mb-4">
+                            Extend your dedicated sound or lighting engineer coverage for afterparties, extended sets, or rehearsals.
+                        </p>
+                    </div>
+                    <div class="pt-3 border-t border-border flex items-center justify-between text-xs">
+                        <span class="text-pink font-semibold">Certified Crew</span>
+                        <a href="contact.html?addon=tech-hours" class="font-bold text-primary-text hover:text-pink transition">Add to quote →</a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 6 · CUSTOM PACKAGE BUILDER BENTO
     ============================================================ -->
     <section class="section-pad bg-background transition-colors" id="custom">
         <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+
             <div class="text-center max-w-2xl mx-auto mb-12">
                 <span class="text-accent text-xs font-bold uppercase tracking-[0.25em]">Package 05</span>
-                <h2 class="font-display text-4xl sm:text-5xl md:text-6xl text-primary-text mt-3 mb-3">
-                    Custom <span class="text-gradient">Packages</span>
+                <h2 class="font-display text-4xl sm:text-5xl md:text-6xl text-primary-text mt-2 mb-3">
+                    Need Something <span class="text-gradient">Completely Custom?</span>
                 </h2>
-                <p class="text-secondary-text text-base">Don't fit a package? We'll build one around your venue, budget, and vibe.</p>
+                <p class="text-secondary-text text-base">Have multiple stages, unusual acoustics, or an outdoor festival? We will build a tailored rig tailored to your venue and budget.</p>
             </div>
 
             <!-- Bento grid -->
             <div class="grid grid-cols-1 md:grid-cols-6 gap-4">
 
                 <!-- Featured wide tile -->
-                <div class="custom-tile featured md:col-span-4">
-                    <div class="flex flex-col justify-between h-full min-h-[220px]">
-                        <div class="w-12 h-12 rounded-xl flex items-center justify-center bg-white/20 backdrop-blur-sm">
-                            <i class="fas fa-wand-magic-sparkles text-white text-lg"></i>
+                <div class="p-8 rounded-2xl md:col-span-4 bg-purple-gradient text-white flex flex-col justify-between min-h-[240px] shadow-lg">
+                    <div class="w-12 h-12 rounded-xl flex items-center justify-center bg-white/20 backdrop-blur-sm">
+                        <i class="fas fa-wand-magic-sparkles text-white text-lg"></i>
+                    </div>
+                    <div class="mt-8">
+                        <h3 class="font-display text-3xl sm:text-4xl text-white mb-2">Tailored Engineering &amp; Quote</h3>
+                        <p class="text-white/85 text-sm sm:text-base leading-relaxed max-w-lg mb-4">
+                            Pick your exact DJ setup, sub-bass count, wireless channels, and lighting cues. We engineer the system and send a transparent line-item proposal within 2 hours.
+                        </p>
+                        <div class="flex flex-wrap gap-2 text-xs font-semibold">
+                            <span class="px-3 py-1 rounded-full bg-white/20">2-Hour Quote Guarantee</span>
+                            <span class="px-3 py-1 rounded-full bg-white/20">3D Acoustic Plotting</span>
+                            <span class="px-3 py-1 rounded-full bg-white/20">Rider Compliance</span>
                         </div>
-                        <div>
-                            <h3 class="font-display text-3xl sm:text-4xl text-white mb-2">Fully Tailored</h3>
-                            <p class="text-white/85 text-sm leading-relaxed max-w-md">Pick your DJ, rig size, lighting package, and extras. We build the perfect system for your event and send a transparent quote within 2 hours.</p>
+                    </div>
+                </div>
+
+                <!-- Compact tile 1 -->
+                <div class="p-6 rounded-2xl md:col-span-2 bg-card border border-border flex flex-col justify-between">
+                    <div>
+                        <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-4" style="background:rgba(168,85,247,0.12);">
+                            <i class="fas fa-calculator text-accent"></i>
                         </div>
+                        <h3 class="font-heading font-bold text-base text-primary-text mb-1">Flexible Budgets</h3>
+                        <p class="text-secondary-text text-sm">Any scale from $300 intimate showcases to $15,000+ festival stages.</p>
                     </div>
+                    <span class="text-accent text-xs font-bold mt-4">Transparent Pricing →</span>
                 </div>
 
-                <!-- Compact tile -->
-                <div class="custom-tile md:col-span-2">
-                    <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-4" style="background:rgba(168,85,247,0.12);">
-                        <i class="fas fa-calculator text-accent"></i>
+                <!-- Small tile 2 -->
+                <div class="p-6 rounded-2xl md:col-span-2 bg-card border border-border flex flex-col justify-between">
+                    <div>
+                        <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-4" style="background:rgba(236,72,153,0.12);">
+                            <i class="fas fa-music text-pink"></i>
+                        </div>
+                        <h3 class="font-heading font-bold text-base text-primary-text mb-1">Turn-Key Bundles</h3>
+                        <p class="text-secondary-text text-sm">Combine DJ gear, PA, lighting, power generators &amp; trussing into one contract.</p>
                     </div>
-                    <h3 class="font-heading font-bold text-base text-primary-text mb-2">Flexible Budget</h3>
-                    <p class="text-secondary-text text-sm">Any scale — from $300 to $5,000+.</p>
+                    <span class="text-pink text-xs font-bold mt-4">Zero Vendor Hassle</span>
                 </div>
 
-                <!-- Small tiles -->
-                <div class="custom-tile md:col-span-2">
-                    <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-4" style="background:rgba(236,72,153,0.12);">
-                        <i class="fas fa-music text-pink"></i>
+                <!-- Small tile 3 -->
+                <div class="p-6 rounded-2xl md:col-span-2 bg-card border border-border flex flex-col justify-between">
+                    <div>
+                        <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-4" style="background:rgba(139,92,246,0.12);">
+                            <i class="fas fa-percent text-accent"></i>
+                        </div>
+                        <h3 class="font-heading font-bold text-base text-primary-text mb-1">Multi-Day Discounts</h3>
+                        <p class="text-secondary-text text-sm">15% off day 2, 25% off day 3+, and discounted weekly production rates.</p>
                     </div>
-                    <h3 class="font-heading font-bold text-base text-primary-text mb-2">Mixed Services</h3>
-                    <p class="text-secondary-text text-sm">DJ + sound + light + stage, all in one quote.</p>
+                    <span class="text-accent text-xs font-bold mt-4">Extended Event Savings</span>
                 </div>
 
-                <div class="custom-tile md:col-span-2">
-                    <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-4" style="background:rgba(139,92,246,0.12);">
-                        <i class="fas fa-clock text-accent"></i>
+                <!-- Small tile 4 -->
+                <div class="p-6 rounded-2xl md:col-span-2 bg-card border border-border flex flex-col justify-between">
+                    <div>
+                        <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-4" style="background:rgba(168,85,247,0.12);">
+                            <i class="fas fa-truck-ramp-box text-accent"></i>
+                        </div>
+                        <h3 class="font-heading font-bold text-base text-primary-text mb-1">SoCal Delivery</h3>
+                        <p class="text-secondary-text text-sm">Daily delivery across LA, Orange County, San Diego, and Palm Springs.</p>
                     </div>
-                    <h3 class="font-heading font-bold text-base text-primary-text mb-2">Multi-Day Rates</h3>
-                    <p class="text-secondary-text text-sm">Discounts for multi-day events &amp; festivals.</p>
-                </div>
-
-                <div class="custom-tile md:col-span-2">
-                    <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-4" style="background:rgba(168,85,247,0.12);">
-                        <i class="fas fa-map-marker-alt text-accent"></i>
-                    </div>
-                    <h3 class="font-heading font-bold text-base text-primary-text mb-2">Nationwide</h3>
-                    <p class="text-secondary-text text-sm">Extended delivery outside LA available.</p>
+                    <span class="text-accent text-xs font-bold mt-4">On-Time Crew Guarantee</span>
                 </div>
 
                 <!-- CTA tile -->
-                <div class="custom-tile md:col-span-6 text-center" style="background:linear-gradient(135deg,#0A0A0F 0%,#1E1B4B 100%);border:none;">
-                    <div class="py-4">
-                        <h3 class="font-display text-2xl sm:text-3xl text-white mb-2">Ready to build your custom package?</h3>
-                        <p class="text-gray-400 text-sm mb-5 max-w-md mx-auto">Tell us about your event — we'll send a tailored quote within 2 hours.</p>
+                <div class="md:col-span-6 p-8 rounded-2xl text-center bg-dark-gradient border border-white/10">
+                    <div class="max-w-xl mx-auto">
+                        <h3 class="font-display text-2xl sm:text-3xl text-white mb-2">Ready to build your bespoke package?</h3>
+                        <p class="text-gray-400 text-sm mb-6">Send us your venue address, guest count, and date. We will respond with an exact gear quote in 2 hours.</p>
                         <div class="flex flex-col sm:flex-row gap-3 justify-center">
-                            <a href="contact.html" class="book-btn px-7 py-3.5 rounded-full font-bold text-sm">
+                            <a href="contact.html?custom=true" class="book-btn px-8 py-3.5 rounded-full font-bold text-sm">
                                 <i class="fas fa-paper-plane mr-2"></i> Request Custom Quote
                             </a>
-                            <a href="contact.html" class="px-7 py-3.5 rounded-full border-2 border-white/40 text-white font-semibold text-sm hover:bg-white/10 hover:border-white transition">
-                                <i class="fas fa-phone mr-2"></i> Call Our Team
+                            <a href="tel:2135550188" class="px-8 py-3.5 rounded-full border-2 border-white/40 text-white font-semibold text-sm hover:bg-white/10 hover:border-white transition">
+                                <i class="fas fa-phone mr-2"></i> Call (213) 555-0188
                             </a>
                         </div>
                     </div>
                 </div>
+
             </div>
 
-            <!-- Bottom support row -->
-            <div class="mt-14 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto text-center">
-                <div class="p-4 rounded-2xl bg-hover border border-border">
-                    <i class="fas fa-check-circle text-accent text-xl mb-2"></i>
-                    <p class="text-sm font-bold text-primary-text">No Hidden Fees</p>
-                </div>
-                <div class="p-4 rounded-2xl bg-hover border border-border">
-                    <i class="fas fa-truck text-accent text-xl mb-2"></i>
-                    <p class="text-sm font-bold text-primary-text">Free LA Delivery</p>
-                </div>
-                <div class="p-4 rounded-2xl bg-hover border border-border">
-                    <i class="fas fa-user-tie text-accent text-xl mb-2"></i>
-                    <p class="text-sm font-bold text-primary-text">On-Site Technician</p>
-                </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 7 · FREQUENTLY ASKED QUESTIONS
+    ============================================================ -->
+    <section class="section-pad bg-hover transition-colors" id="packages-faq">
+        <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-accent text-xs font-bold uppercase tracking-[0.25em]">Got Questions?</span>
+                <h2 class="font-display text-4xl sm:text-5xl md:text-6xl text-primary-text mt-2 mb-3">
+                    Package <span class="text-gradient">FAQs</span>
+                </h2>
+                <p class="text-secondary-text text-base">Everything you need to know about delivery, setup, payments, and equipment guarantees.</p>
+            </div>
+
+            <!-- FAQ List -->
+            <div class="space-y-4 max-w-3xl mx-auto">
+
+                <details class="faq-item group">
+                    <summary>
+                        <span class="text-primary-text text-sm sm:text-base font-semibold">How do I know which package fits my venue and guest count?</span>
+                        <i class="fas fa-chevron-down faq-icon text-xs text-secondary-text transition-transform duration-300"></i>
+                    </summary>
+                    <div class="faq-answer">
+                        As a rule of thumb: <strong>Basic ($199)</strong> handles up to 50 guests in home/backyard settings; <strong>Standard ($499)</strong> easily powers 50 to 250 guests in banquet halls, clubs, or indoor spaces; <strong>Wedding ($899)</strong> provides dual-zone audio for outdoor vows + indoor receptions up to 400 guests; and <strong>Premium ($1,299)</strong> is designed for 500 to 1,500+ attendees in concert amphitheaters or large outdoor festivals.
+                    </div>
+                </details>
+
+                <details class="faq-item group">
+                    <summary>
+                        <span class="text-primary-text text-sm sm:text-base font-semibold">Are setup, soundcheck, and strike times deducted from rental hours?</span>
+                        <i class="fas fa-chevron-down faq-icon text-xs text-secondary-text transition-transform duration-300"></i>
+                    </summary>
+                    <div class="faq-answer">
+                        No, never! Our technician arrival, load-in, room acoustic calibration, and soundcheck are completed <strong>before your event start time</strong> at zero extra charge. The 8 to 12 hours of included technician coverage begins when your event doors open.
+                    </div>
+                </details>
+
+                <details class="faq-item group">
+                    <summary>
+                        <span class="text-primary-text text-sm sm:text-base font-semibold">Can I customize or swap items inside a standard package?</span>
+                        <i class="fas fa-chevron-down faq-icon text-xs text-secondary-text transition-transform duration-300"></i>
+                    </summary>
+                    <div class="faq-answer">
+                        Absolutely. All of our packages serve as modular starting points. You can upgrade to Pioneer CDJ-3000s, add wireless uplighting packs, substitute microphones, or include cold spark machines. Simply mention your preferences when submitting your quote.
+                    </div>
+                </details>
+
+                <details class="faq-item group">
+                    <summary>
+                        <span class="text-primary-text text-sm sm:text-base font-semibold">What happens if a piece of equipment fails during my event?</span>
+                        <i class="fas fa-chevron-down faq-icon text-xs text-secondary-text transition-transform duration-300"></i>
+                    </summary>
+                    <div class="faq-answer">
+                        Every package above Basic includes on-site redundant backup gear (spare microphones, audio cables, and mixer backup). For our Standard, Wedding, and Premium packages, our on-site certified technician immediately resolves any technical glitch in seconds without interrupting the party.
+                    </div>
+                </details>
+
+                <details class="faq-item group">
+                    <summary>
+                        <span class="text-primary-text text-sm sm:text-base font-semibold">What are your delivery areas and travel fees?</span>
+                        <i class="fas fa-chevron-down faq-icon text-xs text-secondary-text transition-transform duration-300"></i>
+                    </summary>
+                    <div class="faq-answer">
+                        Delivery, load-in, and post-event teardown are <strong>100% free across Los Angeles County</strong>. For events in Orange County, Ventura, San Diego, or Palm Springs, a small transparent mileage surcharge applies based on distance from our downtown LA warehouse.
+                    </div>
+                </details>
+
+                <details class="faq-item group">
+                    <summary>
+                        <span class="text-primary-text text-sm sm:text-base font-semibold">How do I lock in my date, and what deposit is required?</span>
+                        <i class="fas fa-chevron-down faq-icon text-xs text-secondary-text transition-transform duration-300"></i>
+                    </summary>
+                    <div class="faq-answer">
+                        We require a 25% refundable deposit to reserve the gear and crew for your date. The remaining balance is due 48 hours prior to delivery. Changes or cancellations up to 14 days before your event receive a 100% full refund.
+                    </div>
+                </details>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 8 · FINAL CTA BANNER
+    ============================================================ -->
+    <section class="py-16 bg-gradient-to-r from-[#A855F7] via-[#EC4899] to-[#A855F7] text-white">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="font-display text-4xl sm:text-5xl md:text-6xl text-white mb-4">
+                Not Sure Which Rig Fits Your Room?
+            </h2>
+            <p class="text-white/90 text-base sm:text-lg max-w-2xl mx-auto mb-8">
+                Speak directly with a BeatBox audio engineer today. We'll review your venue dimensions, guest count, and itinerary to recommend the exact setup.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="contact.html" class="px-8 py-4 bg-white text-[#0F172A] rounded-full font-bold text-sm sm:text-base hover:bg-gray-100 transition shadow-xl">
+                    <i class="fas fa-calendar-check mr-2"></i> Get Free Acoustic Consultation
+                </a>
+                <a href="tel:2135550188" class="px-8 py-4 border-2 border-white text-white rounded-full font-bold text-sm sm:text-base hover:bg-white/10 transition">
+                    <i class="fas fa-phone mr-2"></i> Call (213) 555-0188
+                </a>
             </div>
         </div>
     </section>
@@ -1022,11 +1744,12 @@
                 <div>
                     <h4 class="font-heading font-bold text-white text-sm uppercase tracking-widest mb-4">Packages</h4>
                     <ul class="space-y-2.5 text-sm">
-                        <li><a href="#basic" class="text-white/70 hover:text-[#C084FC] transition">Basic</a></li>
-                        <li><a href="#standard" class="text-white/70 hover:text-[#C084FC] transition">Standard</a></li>
-                        <li><a href="#premium" class="text-white/70 hover:text-[#C084FC] transition">Premium</a></li>
-                        <li><a href="#wedding" class="text-white/70 hover:text-[#C084FC] transition">Wedding</a></li>
-                        <li><a href="#custom" class="text-white/70 hover:text-[#C084FC] transition">Custom</a></li>
+                        <li><a href="#basic" class="text-white/70 hover:text-[#C084FC] transition">Basic ($199)</a></li>
+                        <li><a href="#standard" class="text-white/70 hover:text-[#C084FC] transition">Standard ($499)</a></li>
+                        <li><a href="#wedding" class="text-white/70 hover:text-[#C084FC] transition">Wedding Rig ($899)</a></li>
+                        <li><a href="#premium" class="text-white/70 hover:text-[#C084FC] transition">Premium ($1,299)</a></li>
+                        <li><a href="#comparison-matrix" class="text-white/70 hover:text-[#C084FC] transition">Compare Matrix</a></li>
+                        <li><a href="#custom" class="text-white/70 hover:text-[#C084FC] transition">Custom Packages</a></li>
                     </ul>
                 </div>
 
@@ -1142,6 +1865,42 @@
             }
             window.addEventListener('scroll', updateNav);
             updateNav();
+
+            // Package billing duration toggle
+            window.switchBilling = function(mode) {
+                const dayBtn = document.getElementById('plan-single-day');
+                const weekendBtn = document.getElementById('plan-weekend');
+                const priceElements = document.querySelectorAll('.price-val');
+                const billingLabels = document.querySelectorAll('.billing-text');
+
+                if (mode === 'weekend') {
+                    dayBtn?.classList.remove('active');
+                    dayBtn?.classList.add('text-secondary-text');
+                    weekendBtn?.classList.add('active');
+                    weekendBtn?.classList.remove('text-secondary-text');
+
+                    priceElements.forEach(el => {
+                        const weekendVal = el.getAttribute('data-weekend');
+                        if (weekendVal) el.textContent = '$' + weekendVal;
+                    });
+                    billingLabels.forEach(el => {
+                        el.textContent = '/ weekend (2-day)';
+                    });
+                } else {
+                    weekendBtn?.classList.remove('active');
+                    weekendBtn?.classList.add('text-secondary-text');
+                    dayBtn?.classList.add('active');
+                    dayBtn?.classList.remove('text-secondary-text');
+
+                    priceElements.forEach(el => {
+                        const dayVal = el.getAttribute('data-day');
+                        if (dayVal) el.textContent = '$' + dayVal;
+                    });
+                    billingLabels.forEach(el => {
+                        el.textContent = '/ event';
+                    });
+                }
+            };
 
             // Smooth anchor scroll
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {

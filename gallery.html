@@ -533,7 +533,7 @@
         </div>
 
         <div class="relative z-10 max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 w-full">
-            <div class="max-w-3xl">
+            <div class="max-w-4xl mx-auto text-center flex flex-col items-center">
                 <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full mb-6">
                     <span class="w-2 h-2 rounded-full bg-pink animate-pulse"></span>
                     <span class="text-white text-[10px] sm:text-xs font-semibold tracking-widest uppercase">500+ Events · 10 Years · One Crew</span>
@@ -544,10 +544,8 @@
                     <span class="text-gradient">Powered.</span>
                 </h1>
 
-              
-
                 <!-- Category filter chips -->
-                <div class="flex flex-wrap gap-2 sm:gap-3">
+                <div class="flex flex-wrap justify-center gap-2 sm:gap-3">
                     <button class="filter-chip active" data-filter="all">All</button>
                     <button class="filter-chip" data-filter="weddings">Weddings</button>
                     <button class="filter-chip" data-filter="festivals">Festivals</button>
@@ -642,9 +640,9 @@
 
             <!-- Masonry grid -->
             <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 auto-rows-[180px] sm:auto-rows-[220px]" id="gridContainer">
-
+                <!-- Tile 1: Summer Beats Main Stage (Festivals) -->
                 <div class="gal-tile col-span-2 row-span-2" data-cat="festivals">
-                    <img src="assests/concert_event.png" alt="Festival highlight">
+                    <img src="assests/concert_event.png" alt="Summer Beats Main Stage festival crowd">
                     <div class="gal-overlay"></div>
                     <div class="gal-label">
                         <span class="text-[10px] uppercase tracking-widest font-bold text-[#C084FC]">Festival · 2026</span>
@@ -652,93 +650,113 @@
                     </div>
                 </div>
 
+                <!-- Tile 2: Ballroom Wedding Reception (Weddings) -->
                 <div class="gal-tile" data-cat="weddings">
-                    <img src="assests/g1.jpg" alt="Wedding">
+                    <img src="assests/g1.jpg" alt="Ballroom wedding reception DJ mixing for dinner banquet">
                     <div class="gal-overlay"></div>
                     <div class="gal-label">
-                        <span class="text-[10px] uppercase tracking-widest font-bold text-[#C084FC]">Wedding</span>
-                        <p class="font-heading font-bold text-white text-sm mt-1">Sunset Beach</p>
+                        <span class="text-[10px] uppercase tracking-widest font-bold text-[#C084FC]">Wedding · Reception</span>
+                        <p class="font-heading font-bold text-white text-sm mt-1">Ballroom Reception &amp; DJ</p>
                     </div>
                 </div>
 
-                <div class="gal-tile" data-cat="clubs">
-                    <img src="assests/g2.jpg" alt="Club night">
-                    <div class="gal-overlay"></div>
-                    <div class="gal-label">
-                        <span class="text-[10px] uppercase tracking-widest font-bold text-[#C084FC]">Club</span>
-                        <p class="font-heading font-bold text-white text-sm mt-1">Rooftop Nights</p>
-                    </div>
-                </div>
-
-                <div class="gal-tile" data-cat="corporate">
-                    <img src="assests/s4.jpg" alt="Corporate">
-                    <div class="gal-overlay"></div>
-                    <div class="gal-label">
-                        <span class="text-[10px] uppercase tracking-widest font-bold text-[#C084FC]">Corporate</span>
-                        <p class="font-heading font-bold text-white text-sm mt-1">TechCorp Launch</p>
-                    </div>
-                </div>
-
-                <div class="gal-tile" data-cat="weddings">
-                    <img src="assests/corporate_event.png" alt="Wedding reception">
-                    <div class="gal-overlay"></div>
-                    <div class="gal-label">
-                        <span class="text-[10px] uppercase tracking-widest font-bold text-[#C084FC]">Wedding</span>
-                        <p class="font-heading font-bold text-white text-sm mt-1">First Dance</p>
-                    </div>
-                </div>
-
-                <div class="gal-tile col-span-2" data-cat="festivals">
-                    <img src="https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=1000&q=80" alt="Festival crowd">
-                    <div class="gal-overlay"></div>
-                    <div class="gal-label">
-                        <span class="text-[10px] uppercase tracking-widest font-bold text-[#C084FC]">Festival · 2025</span>
-                        <p class="font-heading font-bold text-white text-base mt-1">Riverside Stage</p>
-                    </div>
-                </div>
-
-                <div class="gal-tile" data-cat="clubs">
-                    <img src="assests/g3.jpg" alt="Club">
-                    <div class="gal-overlay"></div>
-                    <div class="gal-label">
-                        <span class="text-[10px] uppercase tracking-widest font-bold text-[#C084FC]">Club</span>
-                        <p class="font-heading font-bold text-white text-sm mt-1">Neon Nights</p>
-                    </div>
-                </div>
-
-                <div class="gal-tile" data-cat="corporate">
-                    <img src="assests/wedding_event.png" alt="Corporate gala">
-                    <div class="gal-overlay"></div>
-                    <div class="gal-label">
-                        <span class="text-[10px] uppercase tracking-widest font-bold text-[#C084FC]">Corporate</span>
-                        <p class="font-heading font-bold text-white text-sm mt-1">Annual Gala</p>
-                    </div>
-                </div>
-
-                <div class="gal-tile col-span-2" data-cat="weddings">
-                    <img src="assests/g5.jpg" alt="Wedding venue">
-                    <div class="gal-overlay"></div>
-                    <div class="gal-label">
-                        <span class="text-[10px] uppercase tracking-widest font-bold text-[#C084FC]">Wedding</span>
-                        <p class="font-heading font-bold text-white text-base mt-1">Garden Ceremony</p>
-                    </div>
-                </div>
-
+                <!-- Tile 3: Electric Arena Laser Show (Festivals) -->
                 <div class="gal-tile" data-cat="festivals">
-                    <img src="assests/g4.jpg" alt="Festival">
+                    <img src="assests/g2.jpg" alt="Electric EDM arena laser show with DJ overlooking crowd">
+                    <div class="gal-overlay"></div>
+                    <div class="gal-label">
+                        <span class="text-[10px] uppercase tracking-widest font-bold text-[#C084FC]">Festival · EDM</span>
+                        <p class="font-heading font-bold text-white text-sm mt-1">Electric Arena Laser Show</p>
+                    </div>
+                </div>
+
+                <!-- Tile 4: Main Stage Pyrotechnics (Festivals) -->
+                <div class="gal-tile" data-cat="festivals">
+                    <img src="assests/s4.jpg" alt="Main stage pyrotechnic rocket fireworks over concert festival">
+                    <div class="gal-overlay"></div>
+                    <div class="gal-label">
+                        <span class="text-[10px] uppercase tracking-widest font-bold text-[#C084FC]">Festival · FX</span>
+                        <p class="font-heading font-bold text-white text-sm mt-1">Main Stage Pyrotechnics</p>
+                    </div>
+                </div>
+
+                <!-- Tile 5: Annual Corporate Bash 2024 (Corporate) -->
+                <div class="gal-tile" data-cat="corporate">
+                    <img src="assests/corporate_event.png" alt="Annual Corporate Bash 2024 gala celebration with confetti shower">
+                    <div class="gal-overlay"></div>
+                    <div class="gal-label">
+                        <span class="text-[10px] uppercase tracking-widest font-bold text-[#C084FC]">Corporate · Gala</span>
+                        <p class="font-heading font-bold text-white text-sm mt-1">Annual Corporate Bash 2024</p>
+                    </div>
+                </div>
+
+                <!-- Tile 6: Global Beat Festival Headliner (Festivals) -->
+                <div class="gal-tile col-span-2" data-cat="festivals">
+                    <img src="assests/gallery_festival.png" alt="Global Beat Festival Headliner stage with fireworks and lasers">
+                    <div class="gal-overlay"></div>
+                    <div class="gal-label">
+                        <span class="text-[10px] uppercase tracking-widest font-bold text-[#C084FC]">Festival · Headliner</span>
+                        <p class="font-heading font-bold text-white text-base mt-1">Global Beat Headliner Live</p>
+                    </div>
+                </div>
+
+                <!-- Tile 7: Neon Nights DJ Booth (Clubs) -->
+                <div class="gal-tile" data-cat="clubs">
+                    <img src="assests/g3.jpg" alt="Club DJ booth with moving head violet lights">
+                    <div class="gal-overlay"></div>
+                    <div class="gal-label">
+                        <span class="text-[10px] uppercase tracking-widest font-bold text-[#C084FC]">Club Night</span>
+                        <p class="font-heading font-bold text-white text-sm mt-1">Neon Nights DJ Booth</p>
+                    </div>
+                </div>
+
+                <!-- Tile 8: Sunset Beach Wedding Ceremony & Toast (Weddings) -->
+                <div class="gal-tile" data-cat="weddings">
+                    <img src="assests/wedding_event.png" alt="Sunset beach wedding toast with bride, groom, and bridal party">
+                    <div class="gal-overlay"></div>
+                    <div class="gal-label">
+                        <span class="text-[10px] uppercase tracking-widest font-bold text-[#C084FC]">Wedding · Beach</span>
+                        <p class="font-heading font-bold text-white text-sm mt-1">Sunset Beach Ceremony &amp; Toast</p>
+                    </div>
+                </div>
+
+                <!-- Tile 9: Garden Pergola Wedding Reception (Weddings) -->
+                <div class="gal-tile col-span-2" data-cat="weddings">
+                    <img src="assests/g5.jpg" alt="Outdoor garden wedding dance under rustic pergola with warm string lights">
+                    <div class="gal-overlay"></div>
+                    <div class="gal-label">
+                        <span class="text-[10px] uppercase tracking-widest font-bold text-[#C084FC]">Wedding · Garden</span>
+                        <p class="font-heading font-bold text-white text-base mt-1">Garden Pergola First Dance</p>
+                    </div>
+                </div>
+
+                <!-- Tile 10: Night Stage Spark Drops (Festivals) -->
+                <div class="gal-tile" data-cat="festivals">
+                    <img src="assests/g4.jpg" alt="Festival DJ cheering with crowd and cold spark fountain explosion">
                     <div class="gal-overlay"></div>
                     <div class="gal-label">
                         <span class="text-[10px] uppercase tracking-widest font-bold text-[#C084FC]">Festival</span>
-                        <p class="font-heading font-bold text-white text-sm mt-1">Night Stage</p>
+                        <p class="font-heading font-bold text-white text-sm mt-1">Night Stage Spark Drops</p>
                     </div>
                 </div>
 
+                <!-- Tile 11: Laser Canopy & Dance Floor (Clubs) -->
                 <div class="gal-tile" data-cat="clubs">
-                    <img src="assests/s8.jpg" alt="Club lighting">
+                    <img src="assests/s8.jpg" alt="Nightclub rave with laser canopy beams and disco ball">
                     <div class="gal-overlay"></div>
                     <div class="gal-label">
-                        <span class="text-[10px] uppercase tracking-widest font-bold text-[#C084FC]">Club</span>
-                        <p class="font-heading font-bold text-white text-sm mt-1">LED Show</p>
+                        <span class="text-[10px] uppercase tracking-widest font-bold text-[#C084FC]">Club · Rave</span>
+                        <p class="font-heading font-bold text-white text-sm mt-1">Laser Canopy &amp; Dance Floor</p>
+                    </div>
+                </div>
+
+                <!-- Tile 12: VIP Acoustic Stage & Lounge (Corporate) -->
+                <div class="gal-tile" data-cat="corporate">
+                    <img src="assests/i1.jpg" alt="Corporate VIP live acoustic lounge stage with instruments and spotlight">
+                    <div class="gal-overlay"></div>
+                    <div class="gal-label">
+                        <span class="text-[10px] uppercase tracking-widest font-bold text-[#C084FC]">Corporate · Lounge</span>
+                        <p class="font-heading font-bold text-white text-sm mt-1">VIP Acoustic Stage &amp; Lounge</p>
                     </div>
                 </div>
             </div>

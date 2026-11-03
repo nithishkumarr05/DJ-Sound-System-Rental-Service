@@ -276,30 +276,16 @@
             animation: eq 1.1s ease-in-out infinite;
         }
 
-        /* ============ DJ CONTROLLERS — Horizontal Scroll Cards ============ */
-        .dj-scroll {
-            display: flex;
-            gap: 1.25rem;
-            overflow-x: auto;
-            padding-bottom: 1rem;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: thin;
-        }
-        .dj-scroll::-webkit-scrollbar { height: 6px; }
-        .dj-scroll::-webkit-scrollbar-thumb {
-            background: linear-gradient(90deg, #A855F7, #EC4899);
-            border-radius: 6px;
-        }
+        /* ============ DJ CONTROLLERS — Responsive Grid Cards ============ */
         .dj-card {
-            min-width: 260px;
-            flex-shrink: 0;
-            scroll-snap-align: start;
             background: var(--color-card-bg);
             border: 1px solid var(--color-border);
             border-radius: 1.5rem;
             overflow: hidden;
             transition: all 0.35s ease;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
         }
         .dj-card:hover {
             border-color: var(--color-accent);
@@ -376,18 +362,20 @@
             box-shadow: 0 25px 50px -18px rgba(168, 85, 247, 0.5);
         }
 
-        /* ============ LIGHTING — Small Icon Tile Grid ============ */
-        .light-tile {
+        /* ============ LIGHTING — Visual Equipment Cards ============ */
+        .light-card {
             background: var(--color-card-bg);
             border: 1px solid var(--color-border);
             border-radius: 1.25rem;
-            padding: 1.25rem;
+            overflow: hidden;
             transition: all 0.35s ease;
+            display: flex;
+            flex-direction: column;
         }
-        .light-tile:hover {
+        .light-card:hover {
             border-color: var(--color-accent);
-            transform: translateY(-4px);
-            box-shadow: 0 15px 30px -14px rgba(168, 85, 247, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -15px rgba(168, 85, 247, 0.35);
         }
 
         /* Marquee */
@@ -540,7 +528,7 @@
         </div>
 
         <div class="relative z-10 max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 w-full">
-            <div class="max-w-3xl">
+            <div class="max-w-4xl mx-auto text-center flex flex-col items-center">
                 <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full mb-6">
                     <span class="w-2 h-2 rounded-full bg-pink animate-pulse"></span>
                     <span class="text-white text-[10px] sm:text-xs font-semibold tracking-widest uppercase">250+ Pieces · Fully Serviced · Ready To Ship</span>
@@ -552,10 +540,8 @@
                     <span class="text-gradient">The Night.</span>
                 </h1>
 
-              
-
                 <!-- Quick category nav -->
-                <div class="flex flex-wrap gap-2 sm:gap-3 mb-10">
+                <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-10">
                     <a href="#controllers" class="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-xs sm:text-sm hover:bg-white/20 transition">
                         <i class="fas fa-compact-disc mr-1.5 text-[#C084FC]"></i> DJ Controllers
                     </a>
@@ -573,11 +559,11 @@
                     </a>
                 </div>
 
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="contact.html" class="book-btn px-8 py-4 rounded-full text-sm sm:text-base text-center">
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-4 w-full sm:w-auto">
+                    <a href="contact.html" class="book-btn px-8 py-4 rounded-full text-sm sm:text-base text-center w-full sm:w-auto">
                         <i class="fas fa-calendar-check mr-2"></i> Rent Equipment
                     </a>
-                    <a href="packages.html" class="px-8 py-4 rounded-full border-2 border-white/40 text-white font-semibold text-sm sm:text-base hover:bg-white/10 hover:border-white transition text-center">
+                    <a href="packages.html" class="px-8 py-4 rounded-full border-2 border-white/40 text-white font-semibold text-sm sm:text-base hover:bg-white/10 hover:border-white transition text-center w-full sm:w-auto">
                         <i class="fas fa-box-open mr-2"></i> View Packages
                     </a>
                 </div>
@@ -624,88 +610,101 @@
     </section>
 
     <!-- ============================================================
-         SECTION 2 · DJ CONTROLLERS — Horizontal Scroll
+         SECTION 2 · DJ CONTROLLERS — User-Friendly Grid Layout
     ============================================================ -->
     <section class="section-pad bg-background transition-colors" id="controllers">
         <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
                 <div>
-                    <span class="text-accent text-xs font-bold uppercase tracking-[0.25em]">DJ Controllers</span>
+                    <span class="text-accent text-xs font-bold uppercase tracking-[0.25em]">DJ Controllers & Mixers</span>
                     <h2 class="font-display text-4xl sm:text-5xl md:text-6xl text-primary-text mt-3">
                         Club-Ready <span class="text-gradient">Decks</span>
                     </h2>
                 </div>
-                <p class="text-secondary-text text-sm max-w-xs sm:text-right">Scroll →</p>
+                <div class="inline-flex items-center gap-2 bg-hover border border-border px-3.5 py-1.5 rounded-full text-xs font-semibold text-secondary-text">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span>5 Pro DJ Rigs In Stock</span>
+                </div>
             </div>
 
-            <!-- Horizontal scroll cards -->
-            <div class="dj-scroll">
-                <div class="dj-card">
-                    <div class="h-44 overflow-hidden">
-                        <img src="assests/e1.jpg" alt="Pioneer CDJ-3000" class="w-full h-full object-cover">
+            <!-- Responsive, User-Friendly Multi-Column Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5 sm:gap-6">
+                <!-- Deck 1 -->
+                <div class="dj-card group">
+                    <div class="h-48 sm:h-52 relative overflow-hidden">
+                        <img src="assests/e1.jpg" alt="Pioneer CDJ-3000" class="w-full h-full object-cover group-hover:scale-106 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 text-[9px] uppercase tracking-widest font-bold px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-white border border-white/10">Flagship</span>
                     </div>
-                    <div class="p-5">
+                    <div class="p-5 flex flex-col flex-grow">
                         <h3 class="font-heading font-bold text-base text-primary-text mb-1">Pioneer CDJ-3000</h3>
-                        <p class="text-xs text-secondary-text mb-3">Club-standard media player</p>
-                        <div class="flex items-center justify-between">
+                        <p class="text-xs text-secondary-text mb-4">Industry standard multi-player with 9" touch display</p>
+                        <div class="flex items-center justify-between mt-auto pt-3 border-t border-border">
                             <span class="text-accent text-xs font-bold">From $79/day</span>
-                            <a href="contact.html" class="text-primary-text text-xs font-bold hover:text-accent transition">Rent →</a>
+                            <a href="contact.html" class="inline-flex items-center gap-1 text-primary-text text-xs font-bold hover:text-accent transition">Rent <i class="fas fa-arrow-right text-[10px]"></i></a>
                         </div>
                     </div>
                 </div>
 
-                <div class="dj-card">
-                    <div class="h-44 overflow-hidden">
-                        <img src="assests/e2.jpg" alt="DJM-900 mixer" class="w-full h-full object-cover">
+                <!-- Deck 2 -->
+                <div class="dj-card group">
+                    <div class="h-48 sm:h-52 relative overflow-hidden">
+                        <img src="assests/e2.jpg" alt="DJM-900 mixer" class="w-full h-full object-cover group-hover:scale-106 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 text-[9px] uppercase tracking-widest font-bold px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-white border border-white/10">4-Channel</span>
                     </div>
-                    <div class="p-5">
+                    <div class="p-5 flex flex-col flex-grow">
                         <h3 class="font-heading font-bold text-base text-primary-text mb-1">DJM-900 Nexus</h3>
-                        <p class="text-xs text-secondary-text mb-3">4-channel digital mixer</p>
-                        <div class="flex items-center justify-between">
+                        <p class="text-xs text-secondary-text mb-4">4-channel club mixer with Beat FX and Sound Color FX</p>
+                        <div class="flex items-center justify-between mt-auto pt-3 border-t border-border">
                             <span class="text-accent text-xs font-bold">From $69/day</span>
-                            <a href="contact.html" class="text-primary-text text-xs font-bold hover:text-accent transition">Rent →</a>
+                            <a href="contact.html" class="inline-flex items-center gap-1 text-primary-text text-xs font-bold hover:text-accent transition">Rent <i class="fas fa-arrow-right text-[10px]"></i></a>
                         </div>
                     </div>
                 </div>
 
-                <div class="dj-card">
-                    <div class="h-44 overflow-hidden">
-                        <img src="assests/e3.jpg" alt="DDJ-FLX10" class="w-full h-full object-cover">
+                <!-- Deck 3 -->
+                <div class="dj-card group">
+                    <div class="h-48 sm:h-52 relative overflow-hidden">
+                        <img src="assests/e3.jpg" alt="DDJ-FLX10" class="w-full h-full object-cover group-hover:scale-106 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 text-[9px] uppercase tracking-widest font-bold px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-white border border-white/10">All-In-One</span>
                     </div>
-                    <div class="p-5">
+                    <div class="p-5 flex flex-col flex-grow">
                         <h3 class="font-heading font-bold text-base text-primary-text mb-1">DDJ-FLX10</h3>
-                        <p class="text-xs text-secondary-text mb-3">4-channel all-in-one</p>
-                        <div class="flex items-center justify-between">
+                        <p class="text-xs text-secondary-text mb-4">4-channel performance controller with live Track Separation</p>
+                        <div class="flex items-center justify-between mt-auto pt-3 border-t border-border">
                             <span class="text-accent text-xs font-bold">From $59/day</span>
-                            <a href="contact.html" class="text-primary-text text-xs font-bold hover:text-accent transition">Rent →</a>
+                            <a href="contact.html" class="inline-flex items-center gap-1 text-primary-text text-xs font-bold hover:text-accent transition">Rent <i class="fas fa-arrow-right text-[10px]"></i></a>
                         </div>
                     </div>
                 </div>
 
-                <div class="dj-card">
-                    <div class="h-44 overflow-hidden">
-                        <img src="assests/e4.jpg" alt="Turntables" class="w-full h-full object-cover">
+                <!-- Deck 4 -->
+                <div class="dj-card group">
+                    <div class="h-48 sm:h-52 relative overflow-hidden">
+                        <img src="assests/e4.jpg" alt="Turntables" class="w-full h-full object-cover group-hover:scale-106 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 text-[9px] uppercase tracking-widest font-bold px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-white border border-white/10">Direct Drive</span>
                     </div>
-                    <div class="p-5">
+                    <div class="p-5 flex flex-col flex-grow">
                         <h3 class="font-heading font-bold text-base text-primary-text mb-1">Technics SL-1200</h3>
-                        <p class="text-xs text-secondary-text mb-3">Professional vinyl turntable</p>
-                        <div class="flex items-center justify-between">
+                        <p class="text-xs text-secondary-text mb-4">Legendary professional direct-drive vinyl turntable</p>
+                        <div class="flex items-center justify-between mt-auto pt-3 border-t border-border">
                             <span class="text-accent text-xs font-bold">From $49/day</span>
-                            <a href="contact.html" class="text-primary-text text-xs font-bold hover:text-accent transition">Rent →</a>
+                            <a href="contact.html" class="inline-flex items-center gap-1 text-primary-text text-xs font-bold hover:text-accent transition">Rent <i class="fas fa-arrow-right text-[10px]"></i></a>
                         </div>
                     </div>
                 </div>
 
-                <div class="dj-card">
-                    <div class="h-44 overflow-hidden">
-                        <img src="assests/e5.jpg" alt="Controller" class="w-full h-full object-cover">
+                <!-- Deck 5 -->
+                <div class="dj-card group">
+                    <div class="h-48 sm:h-52 relative overflow-hidden">
+                        <img src="assests/e5.jpg" alt="Controller" class="w-full h-full object-cover group-hover:scale-106 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 text-[9px] uppercase tracking-widest font-bold px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-white border border-white/10">Serato</span>
                     </div>
-                    <div class="p-5">
+                    <div class="p-5 flex flex-col flex-grow">
                         <h3 class="font-heading font-bold text-base text-primary-text mb-1">DDJ-1000 SRT</h3>
-                        <p class="text-xs text-secondary-text mb-3">Serato-ready controller</p>
-                        <div class="flex items-center justify-between">
+                        <p class="text-xs text-secondary-text mb-4">Dedicated Serato DJ Pro 4-channel controller with full jog wheels</p>
+                        <div class="flex items-center justify-between mt-auto pt-3 border-t border-border">
                             <span class="text-accent text-xs font-bold">From $59/day</span>
-                            <a href="contact.html" class="text-primary-text text-xs font-bold hover:text-accent transition">Rent →</a>
+                            <a href="contact.html" class="inline-flex items-center gap-1 text-primary-text text-xs font-bold hover:text-accent transition">Rent <i class="fas fa-arrow-right text-[10px]"></i></a>
                         </div>
                     </div>
                 </div>
@@ -890,7 +889,7 @@
     </section>
 
     <!-- ============================================================
-         SECTION 6 · LIGHTING EQUIPMENT — Small Icon Tile Grid
+         SECTION 6 · LIGHTING EQUIPMENT — Visual Equipment Cards
     ============================================================ -->
     <section class="section-pad bg-background transition-colors" id="lighting">
         <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
@@ -902,59 +901,108 @@
                 <p class="text-secondary-text text-base">Everything you need to turn a room into a stage.</p>
             </div>
 
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
-                <!-- Tile 1 -->
-                <div class="light-tile text-center">
-                    <div class="w-12 h-12 mx-auto rounded-xl flex items-center justify-center mb-3" style="background:rgba(168,85,247,0.12);">
-                        <i class="fas fa-lightbulb text-accent"></i>
+            <!-- High-Quality Visual Equipment Cards Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-5">
+                <!-- Lighting 1: Moving Heads -->
+                <div class="light-card group">
+                    <div class="h-36 sm:h-40 relative overflow-hidden">
+                        <img src="assests/h2.jpg" alt="Moving Head Beam Fixture" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div>
+                        <span class="absolute top-2.5 left-2.5 text-[9px] uppercase tracking-widest font-bold px-2 py-0.5 rounded-full bg-white/20 backdrop-blur-md text-white">Beam / Spot</span>
                     </div>
-                    <p class="font-heading font-bold text-xs text-primary-text">Moving Heads</p>
-                    <p class="text-[10px] text-secondary-text mt-1">$59/day</p>
+                    <div class="p-4 flex flex-col flex-grow">
+                        <h3 class="font-heading font-bold text-sm text-primary-text mb-0.5">Moving Heads</h3>
+                        <p class="text-[11px] text-secondary-text mb-3 leading-snug">Sharpy 360° pan & tilt beams</p>
+                        <div class="flex items-center justify-between mt-auto pt-2.5 border-t border-border">
+                            <span class="text-accent text-xs font-bold">From $59/day</span>
+                            <a href="contact.html" class="text-primary-text text-[11px] font-bold hover:text-accent transition">Rent →</a>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Tile 2 -->
-                <div class="light-tile text-center">
-                    <div class="w-12 h-12 mx-auto rounded-xl flex items-center justify-center mb-3" style="background:rgba(236,72,153,0.12);">
-                        <i class="fas fa-circle text-pink"></i>
+                <!-- Lighting 2: Wash Lights -->
+                <div class="light-card group">
+                    <div class="h-36 sm:h-40 relative overflow-hidden">
+                        <img src="assests/s6.jpg" alt="Stage Wash Lights" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div>
+                        <span class="absolute top-2.5 left-2.5 text-[9px] uppercase tracking-widest font-bold px-2 py-0.5 rounded-full bg-white/20 backdrop-blur-md text-white">RGBW Flood</span>
                     </div>
-                    <p class="font-heading font-bold text-xs text-primary-text">Wash Lights</p>
-                    <p class="text-[10px] text-secondary-text mt-1">$39/day</p>
+                    <div class="p-4 flex flex-col flex-grow">
+                        <h3 class="font-heading font-bold text-sm text-primary-text mb-0.5">Wash Lights</h3>
+                        <p class="text-[11px] text-secondary-text mb-3 leading-snug">Wide-angle saturated color wash</p>
+                        <div class="flex items-center justify-between mt-auto pt-2.5 border-t border-border">
+                            <span class="text-accent text-xs font-bold">From $39/day</span>
+                            <a href="contact.html" class="text-primary-text text-[11px] font-bold hover:text-accent transition">Rent →</a>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Tile 3 -->
-                <div class="light-tile text-center">
-                    <div class="w-12 h-12 mx-auto rounded-xl flex items-center justify-center mb-3" style="background:rgba(139,92,246,0.12);">
-                        <i class="fas fa-bars text-accent"></i>
+                <!-- Lighting 3: LED Bars -->
+                <div class="light-card group">
+                    <div class="h-36 sm:h-40 relative overflow-hidden">
+                        <img src="assests/g3.jpg" alt="LED Pixel Batten Bars" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div>
+                        <span class="absolute top-2.5 left-2.5 text-[9px] uppercase tracking-widest font-bold px-2 py-0.5 rounded-full bg-white/20 backdrop-blur-md text-white">Pixel Batten</span>
                     </div>
-                    <p class="font-heading font-bold text-xs text-primary-text">LED Bars</p>
-                    <p class="text-[10px] text-secondary-text mt-1">$29/day</p>
+                    <div class="p-4 flex flex-col flex-grow">
+                        <h3 class="font-heading font-bold text-sm text-primary-text mb-0.5">LED Bars</h3>
+                        <p class="text-[11px] text-secondary-text mb-3 leading-snug">Linear stage & wall wash chase</p>
+                        <div class="flex items-center justify-between mt-auto pt-2.5 border-t border-border">
+                            <span class="text-accent text-xs font-bold">From $29/day</span>
+                            <a href="contact.html" class="text-primary-text text-[11px] font-bold hover:text-accent transition">Rent →</a>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Tile 4 -->
-                <div class="light-tile text-center">
-                    <div class="w-12 h-12 mx-auto rounded-xl flex items-center justify-center mb-3" style="background:rgba(168,85,247,0.12);">
-                        <i class="fas fa-sun text-accent"></i>
+                <!-- Lighting 4: Uplights -->
+                <div class="light-card group">
+                    <div class="h-36 sm:h-40 relative overflow-hidden">
+                        <img src="assests/s7.jpg" alt="Wireless Architectural Uplighting" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div>
+                        <span class="absolute top-2.5 left-2.5 text-[9px] uppercase tracking-widest font-bold px-2 py-0.5 rounded-full bg-white/20 backdrop-blur-md text-white">Wireless</span>
                     </div>
-                    <p class="font-heading font-bold text-xs text-primary-text">Uplights</p>
-                    <p class="text-[10px] text-secondary-text mt-1">$15/day</p>
+                    <div class="p-4 flex flex-col flex-grow">
+                        <h3 class="font-heading font-bold text-sm text-primary-text mb-0.5">Uplights</h3>
+                        <p class="text-[11px] text-secondary-text mb-3 leading-snug">12hr battery perimeter glow</p>
+                        <div class="flex items-center justify-between mt-auto pt-2.5 border-t border-border">
+                            <span class="text-accent text-xs font-bold">From $15/day</span>
+                            <a href="contact.html" class="text-primary-text text-[11px] font-bold hover:text-accent transition">Rent →</a>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Tile 5 -->
-                <div class="light-tile text-center">
-                    <div class="w-12 h-12 mx-auto rounded-xl flex items-center justify-center mb-3" style="background:rgba(236,72,153,0.12);">
-                        <i class="fas fa-cloud text-pink"></i>
+                <!-- Lighting 5: Haze / Fog -->
+                <div class="light-card group">
+                    <div class="h-36 sm:h-40 relative overflow-hidden">
+                        <img src="assests/sb.jpg" alt="Atmospheric Haze and Fog Machine" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div>
+                        <span class="absolute top-2.5 left-2.5 text-[9px] uppercase tracking-widest font-bold px-2 py-0.5 rounded-full bg-white/20 backdrop-blur-md text-white">Atmospheric</span>
                     </div>
-                    <p class="font-heading font-bold text-xs text-primary-text">Haze / Fog</p>
-                    <p class="text-[10px] text-secondary-text mt-1">$49/day</p>
+                    <div class="p-4 flex flex-col flex-grow">
+                        <h3 class="font-heading font-bold text-sm text-primary-text mb-0.5">Haze / Fog</h3>
+                        <p class="text-[11px] text-secondary-text mb-3 leading-snug">Laser beam enhancer & low fog</p>
+                        <div class="flex items-center justify-between mt-auto pt-2.5 border-t border-border">
+                            <span class="text-accent text-xs font-bold">From $49/day</span>
+                            <a href="contact.html" class="text-primary-text text-[11px] font-bold hover:text-accent transition">Rent →</a>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Tile 6 -->
-                <div class="light-tile text-center">
-                    <div class="w-12 h-12 mx-auto rounded-xl flex items-center justify-center mb-3" style="background:rgba(139,92,246,0.12);">
-                        <i class="fas fa-tv text-accent"></i>
+                <!-- Lighting 6: LED Walls -->
+                <div class="light-card group">
+                    <div class="h-36 sm:h-40 relative overflow-hidden">
+                        <img src="assests/s8.jpg" alt="Modular HD LED Video Panels" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div>
+                        <span class="absolute top-2.5 left-2.5 text-[9px] uppercase tracking-widest font-bold px-2 py-0.5 rounded-full bg-white/20 backdrop-blur-md text-white">HD Video</span>
                     </div>
-                    <p class="font-heading font-bold text-xs text-primary-text">LED Walls</p>
-                    <p class="text-[10px] text-secondary-text mt-1">Call</p>
+                    <div class="p-4 flex flex-col flex-grow">
+                        <h3 class="font-heading font-bold text-sm text-primary-text mb-0.5">LED Walls</h3>
+                        <p class="text-[11px] text-secondary-text mb-3 leading-snug">P3.91 modular concert panels</p>
+                        <div class="flex items-center justify-between mt-auto pt-2.5 border-t border-border">
+                            <span class="text-accent text-xs font-bold">Custom Call</span>
+                            <a href="contact.html" class="text-primary-text text-[11px] font-bold hover:text-accent transition">Rent →</a>
+                        </div>
+                    </div>
                 </div>
             </div>
 

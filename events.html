@@ -262,100 +262,92 @@
         }
         .pulse-dot { animation: pulseDot 2s ease-in-out infinite; }
 
-        /* ============ SECTION 2 · WEDDING — Vertical Split with number list ============ */
-        .wed-feature {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            padding: 1rem;
-            border-radius: 1rem;
+        /* ============ REDESIGNED EVENTS SYSTEM ============ */
+        .event-card {
             background: var(--color-card-bg);
             border: 1px solid var(--color-border);
-            transition: all 0.3s ease;
-        }
-        .wed-feature:hover {
-            border-color: var(--color-accent);
-            transform: translateX(6px);
-        }
-        [dir="rtl"] .wed-feature:hover { transform: translateX(-6px); }
-
-        /* ============ SECTION 3 · BIRTHDAY — Image Collage ============ */
-        .bday-tile {
-            position: relative;
+            border-radius: 1.75rem;
             overflow: hidden;
-            border-radius: 1.25rem;
-            transition: transform 0.4s ease;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .bday-tile:hover { transform: scale(1.03); }
-        .bday-tile img {
-            transition: transform 0.7s ease;
-        }
-        .bday-tile:hover img { transform: scale(1.08); }
-        .bday-tile::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(10,10,15,0.85) 0%, transparent 60%);
-        }
-        .bday-tile .caption {
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            padding: 1rem 1.25rem;
-            z-index: 2;
-            color: white;
+        .event-card:hover {
+            border-color: var(--color-accent);
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px -15px rgba(168, 85, 247, 0.25);
         }
 
-        /* ============ SECTION 4 · CORPORATE — Dark Panel + Row List ============ */
-        .corp-row {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1.25rem;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-            transition: all 0.3s ease;
-        }
-        .corp-row:last-child { border-bottom: none; }
-        .corp-row:hover {
-            background: rgba(168,85,247,0.08);
-            padding-left: 1.75rem;
-        }
-        [dir="rtl"] .corp-row:hover { padding-left: 1.25rem; padding-right: 1.75rem; }
-
-        /* ============ SECTION 5 · COLLEGE — Bento Grid ============ */
-        .college-tile {
+        .upcoming-card {
             background: var(--color-card-bg);
             border: 1px solid var(--color-border);
             border-radius: 1.5rem;
-            padding: 1.5rem;
+            overflow: hidden;
             transition: all 0.35s ease;
+            display: flex;
+            flex-direction: column;
         }
-        .college-tile:hover {
+        .upcoming-card:hover {
             border-color: var(--color-accent);
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px -18px rgba(168, 85, 247, 0.3);
-        }
-        .college-tile.dark {
-            background: linear-gradient(135deg, #0A0A0F 0%, #1E1B4B 100%);
-            color: white;
-            border: none;
-        }
-        .college-tile.dark:hover {
-            box-shadow: 0 25px 50px -18px rgba(168, 85, 247, 0.5);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px -12px rgba(168, 85, 247, 0.3);
         }
 
-        /* ============ SECTION 6 · PRIVATE — Minimal Centered Chips ============ */
-        .private-chip {
-            padding: 1rem 1.5rem;
-            border-radius: 1.25rem;
+        .event-badge {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 0.35rem 0.75rem;
+            border-radius: 9999px;
+            background: rgba(168, 85, 247, 0.12);
+            color: var(--color-accent);
+            border: 1px solid rgba(168, 85, 247, 0.25);
+        }
+
+        .spec-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.3rem 0.65rem;
+            border-radius: 0.6rem;
+            background: var(--color-hover);
+            border: 1px solid var(--color-border);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--color-primary-text);
+        }
+
+        /* FAQ details */
+        details.faq-item {
             background: var(--color-card-bg);
             border: 1px solid var(--color-border);
+            border-radius: 1rem;
+            overflow: hidden;
             transition: all 0.3s ease;
-            text-align: center;
         }
-        .private-chip:hover {
+        details.faq-item:hover {
             border-color: var(--color-accent);
-            background: var(--color-hover);
-            transform: translateY(-4px);
+        }
+        details.faq-item summary {
+            list-style: none;
+            cursor: pointer;
+            padding: 1.25rem 1.5rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        details.faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+        details.faq-item[open] summary .faq-icon {
+            transform: rotate(180deg);
+            color: var(--color-accent);
+        }
+        details.faq-item .faq-answer {
+            padding: 0 1.5rem 1.25rem 1.5rem;
+            color: var(--color-secondary-text);
+            font-size: 0.925rem;
+            line-height: 1.6;
         }
 
         /* Marquee */
@@ -499,7 +491,7 @@
         <div class="absolute bottom-32 left-1/3 w-2 h-2 rounded-full bg-[#A855F7] pulse-dot" style="animation-delay: 1.5s;"></div>
 
         <div class="relative z-10 max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 w-full">
-            <div class="max-w-3xl">
+            <div class="max-w-4xl mx-auto text-center flex flex-col items-center">
                 <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full mb-6">
                     <span class="w-2 h-2 rounded-full bg-pink animate-pulse"></span>
                     <span class="text-white text-[10px] sm:text-xs font-semibold tracking-widest uppercase">Weddings · Birthdays · Corporate · College · Private</span>
@@ -511,33 +503,55 @@
                     <span class="text-gradient">Soundtrack.</span>
                 </h1>
 
-               
                 <!-- Quick category nav -->
-                <div class="flex flex-wrap gap-2 sm:gap-3 mb-10">
-                    <a href="#wedding" class="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-xs sm:text-sm hover:bg-white/20 transition">
-                        <i class="fas fa-ring mr-1.5 text-[#C084FC]"></i> Wedding
+                <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-10">
+                    <a href="#upcoming" class="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-xs sm:text-sm hover:bg-white/20 transition">
+                        <i class="fas fa-calendar-day mr-1.5 text-pink"></i> Upcoming Showcases
                     </a>
-                    <a href="#birthday" class="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-xs sm:text-sm hover:bg-white/20 transition">
-                        <i class="fas fa-cake-candles mr-1.5 text-[#C084FC]"></i> Birthday
+                    <a href="#wedding" class="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-xs sm:text-sm hover:bg-white/20 transition">
+                        <i class="fas fa-ring mr-1.5 text-[#C084FC]"></i> Weddings
                     </a>
                     <a href="#corporate" class="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-xs sm:text-sm hover:bg-white/20 transition">
                         <i class="fas fa-briefcase mr-1.5 text-[#C084FC]"></i> Corporate
+                    </a>
+                    <a href="#festivals" class="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-xs sm:text-sm hover:bg-white/20 transition">
+                        <i class="fas fa-music mr-1.5 text-pink"></i> Festivals
                     </a>
                     <a href="#college" class="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-xs sm:text-sm hover:bg-white/20 transition">
                         <i class="fas fa-graduation-cap mr-1.5 text-[#C084FC]"></i> College
                     </a>
                     <a href="#private" class="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-xs sm:text-sm hover:bg-white/20 transition">
-                        <i class="fas fa-champagne-glasses mr-1.5 text-[#C084FC]"></i> Private
+                        <i class="fas fa-champagne-glasses mr-1.5 text-[#C084FC]"></i> Private Parties
                     </a>
                 </div>
 
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="contact.html" class="book-btn px-8 py-4 rounded-full text-sm sm:text-base text-center">
-                        <i class="fas fa-calendar-check mr-2"></i> Book Your Event
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-4 w-full sm:w-auto mb-10">
+                    <a href="#wedding" class="book-btn px-8 py-4 rounded-full text-sm sm:text-base text-center w-full sm:w-auto">
+                        <i class="fas fa-calendar-check mr-2"></i> Explore Event Services
                     </a>
-                    <a href="packages.html" class="px-8 py-4 rounded-full border-2 border-white/40 text-white font-semibold text-sm sm:text-base hover:bg-white/10 hover:border-white transition text-center">
-                        <i class="fas fa-box-open mr-2"></i> View Packages
+                    <a href="#upcoming" class="px-8 py-4 rounded-full border-2 border-white/40 text-white font-semibold text-sm sm:text-base hover:bg-white/10 hover:border-white transition text-center w-full sm:w-auto">
+                        <i class="fas fa-ticket mr-2"></i> Upcoming Showcases
                     </a>
+                </div>
+
+                <!-- Trust signals -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-3xl mx-auto pt-6 border-t border-white/10 text-white/80 text-xs">
+                    <div class="flex items-center justify-center gap-2 text-center">
+                        <i class="fas fa-award text-[#C084FC]"></i>
+                        <span>500+ SoCal Events Powered</span>
+                    </div>
+                    <div class="flex items-center justify-center gap-2 text-center">
+                        <i class="fas fa-truck-fast text-pink"></i>
+                        <span>Free LA County Delivery</span>
+                    </div>
+                    <div class="flex items-center justify-center gap-2 text-center">
+                        <i class="fas fa-headphones text-[#C084FC]"></i>
+                        <span>Pro Sound Engineers</span>
+                    </div>
+                    <div class="flex items-center justify-center gap-2 text-center">
+                        <i class="fas fa-shield-halved text-pink"></i>
+                        <span>$2M Insured &amp; Redundant Rig</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -549,380 +563,740 @@
             <div class="flex items-center gap-8 sm:gap-12 px-6">
                 <span class="font-display text-base sm:text-xl text-white tracking-widest">WEDDINGS</span>
                 <span class="text-white/60">◆</span>
-                <span class="font-display text-base sm:text-xl text-white tracking-widest">BIRTHDAYS</span>
+                <span class="font-display text-base sm:text-xl text-white tracking-widest">CORPORATE GALAS</span>
                 <span class="text-white/60">◆</span>
-                <span class="font-display text-base sm:text-xl text-white tracking-widest">CORPORATE</span>
+                <span class="font-display text-base sm:text-xl text-white tracking-widest">CONCERTS &amp; FESTIVALS</span>
                 <span class="text-white/60">◆</span>
-                <span class="font-display text-base sm:text-xl text-white tracking-widest">COLLEGE</span>
+                <span class="font-display text-base sm:text-xl text-white tracking-widest">COLLEGE BASHES</span>
                 <span class="text-white/60">◆</span>
-                <span class="font-display text-base sm:text-xl text-white tracking-widest">PRIVATE</span>
+                <span class="font-display text-base sm:text-xl text-white tracking-widest">PRIVATE PARTIES</span>
+                <span class="text-white/60">◆</span>
+                <span class="font-display text-base sm:text-xl text-white tracking-widest">LIVE AUDIO ENGINEERING</span>
                 <span class="text-white/60">◆</span>
             </div>
             <div class="flex items-center gap-8 sm:gap-12 px-6" aria-hidden="true">
                 <span class="font-display text-base sm:text-xl text-white tracking-widest">WEDDINGS</span>
                 <span class="text-white/60">◆</span>
-                <span class="font-display text-base sm:text-xl text-white tracking-widest">BIRTHDAYS</span>
+                <span class="font-display text-base sm:text-xl text-white tracking-widest">CORPORATE GALAS</span>
                 <span class="text-white/60">◆</span>
-                <span class="font-display text-base sm:text-xl text-white tracking-widest">CORPORATE</span>
+                <span class="font-display text-base sm:text-xl text-white tracking-widest">CONCERTS &amp; FESTIVALS</span>
                 <span class="text-white/60">◆</span>
-                <span class="font-display text-base sm:text-xl text-white tracking-widest">COLLEGE</span>
+                <span class="font-display text-base sm:text-xl text-white tracking-widest">COLLEGE BASHES</span>
                 <span class="text-white/60">◆</span>
-                <span class="font-display text-base sm:text-xl text-white tracking-widest">PRIVATE</span>
+                <span class="font-display text-base sm:text-xl text-white tracking-widest">PRIVATE PARTIES</span>
+                <span class="text-white/60">◆</span>
+                <span class="font-display text-base sm:text-xl text-white tracking-widest">LIVE AUDIO ENGINEERING</span>
                 <span class="text-white/60">◆</span>
             </div>
         </div>
     </section>
 
     <!-- ============================================================
-         SECTION 2 · WEDDING EVENTS — Split with numbered list
+         SECTION 2 · UPCOMING EVENTS & LIVE SHOWCASE CALENDAR
     ============================================================ -->
-    <section class="section-pad bg-background transition-colors" id="wedding">
+    <section class="section-pad bg-hover transition-colors" id="upcoming">
         <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
 
-                <!-- Left: Heading -->
-                <div class="lg:col-span-5 lg:sticky lg:top-28">
-                    <span class="text-accent text-xs font-bold uppercase tracking-[0.25em]">Event 01</span>
-                    <h2 class="font-display text-5xl sm:text-6xl md:text-7xl text-primary-text mt-3 mb-5 leading-none">
-                        Wedding
-                    </h2>
-                    <p class="text-secondary-text text-base leading-relaxed mb-6">
-                        From the first dance to the last song — sound and lighting designed around your love story.
-                    </p>
-
-                    <div class="flex items-baseline gap-2 mb-6">
-                        <span class="font-display text-4xl sm:text-5xl text-gradient leading-none">$899</span>
-                        <span class="text-secondary-text text-sm">/ event</span>
-                    </div>
-
-                    <a href="contact.html" class="inline-flex items-center gap-2 book-btn px-7 py-3.5 rounded-full text-sm">
-                        Book Wedding <i class="fas fa-arrow-right text-xs"></i>
-                    </a>
-                </div>
-
-                <!-- Right: Feature list -->
-                <div class="lg:col-span-7 space-y-3">
-                    <div class="wed-feature">
-                        <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(168,85,247,0.12);">
-                            <i class="fas fa-bell text-accent text-sm"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-heading font-bold text-base text-primary-text mb-1">Ceremony Audio</p>
-                            <p class="text-secondary-text text-sm">Clip-on mics, gentle PA, outdoor acoustic tuning.</p>
-                        </div>
-                    </div>
-
-                    <div class="wed-feature">
-                        <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(236,72,153,0.12);">
-                            <i class="fas fa-music text-pink text-sm"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-heading font-bold text-base text-primary-text mb-1">Reception DJ + MC</h3>
-                            <p class="text-secondary-text text-sm">Live mixing, bilingual MC, timeline cues handled.</p>
-                        </div>
-                    </div>
-
-                    <div class="wed-feature">
-                        <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(139,92,246,0.12);">
-                            <i class="fas fa-wand-magic-sparkles text-accent text-sm"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-heading font-bold text-base text-primary-text mb-1">Full Lighting Design</h3>
-                            <p class="text-secondary-text text-sm">Uplighting, moving heads, first-dance spotlight.</p>
-                        </div>
-                    </div>
-
-                    <div class="wed-feature">
-                        <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(168,85,247,0.12);">
-                            <i class="fas fa-camera text-accent text-sm"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-heading font-bold text-base text-primary-text mb-1">Coordination Support</h3>
-                            <p class="text-secondary-text text-sm">We sync with your planner for cue-perfect timing.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================
-         SECTION 3 · BIRTHDAY PARTIES — Image Collage
-    ============================================================ -->
-    <section class="section-pad bg-hover transition-colors" id="birthday">
-        <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
                 <div>
-                    <span class="text-accent text-xs font-bold uppercase tracking-[0.25em]">Event 02</span>
-                    <h2 class="font-display text-4xl sm:text-5xl md:text-6xl text-primary-text mt-3">
-                        Birthday <span class="text-gradient">Parties</span>
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/20 mb-3">
+                        <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+                        <span class="text-accent text-[11px] font-bold uppercase tracking-widest">Live Sound In Action</span>
+                    </div>
+                    <h2 class="font-display text-4xl sm:text-5xl md:text-6xl text-primary-text leading-none">
+                        Upcoming Showcases &amp; <span class="text-gradient">Production Schedule</span>
                     </h2>
                 </div>
+                <p class="text-secondary-text text-sm sm:text-base max-w-md">
+                    Catch BeatBox concert sound, architectural uplighting, and pro DJ rigs live across Southern California. Experience our acoustics in real-world venues.
+                </p>
             </div>
 
-            <!-- Theory content -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-card border border-border p-8 rounded-3xl">
-                    <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6" style="background:rgba(168,85,247,0.12);">
-                        <i class="fas fa-volume-up text-accent text-xl"></i>
-                    </div>
-                    <h3 class="font-heading font-bold text-xl text-primary-text mb-4">Scalable Sound Design</h3>
-                    <p class="text-secondary-text leading-relaxed">
-                        We tailor the acoustic footprint from intimate living rooms to large rented halls, ensuring the bass hits right on the dancefloor without overwhelming the conversation areas.
-                    </p>
-                </div>
-                <div class="bg-card border border-border p-8 rounded-3xl">
-                    <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6" style="background:rgba(236,72,153,0.12);">
-                        <i class="fas fa-lightbulb text-pink text-xl"></i>
-                    </div>
-                    <h3 class="font-heading font-bold text-xl text-primary-text mb-4">Lighting Psychology</h3>
-                    <p class="text-secondary-text leading-relaxed">
-                        Using color theory and dynamic DMX programming, we seamlessly shift the mood from a relaxed cocktail hour setting to peak, vibrant dancefloor energy as the night progresses.
-                    </p>
-                </div>
-                <div class="bg-card border border-border p-8 rounded-3xl">
-                    <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-6" style="background:rgba(139,92,246,0.12);">
-                        <i class="fas fa-compact-disc text-accent text-xl"></i>
-                    </div>
-                    <h3 class="font-heading font-bold text-xl text-primary-text mb-4">Demographic Curation</h3>
-                    <p class="text-secondary-text leading-relaxed">
-                        Expertly balancing modern hits with timeless classics and maintaining clean edits when necessary, we keep all generations engaged and the dancefloor packed all night long.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
+            <!-- 4 Upcoming Event Cards Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
-    <!-- ============================================================
-         SECTION 4 · CORPORATE EVENTS — Dark Panel + Row List
-    ============================================================ -->
-    <section class="section-pad bg-background transition-colors" id="corporate">
-        <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
-
-                <!-- Left dark panel -->
-                <div class="lg:col-span-5 rounded-3xl p-8 sm:p-10 relative overflow-hidden" style="background:linear-gradient(135deg,#0A0A0F 0%,#1E1B4B 100%);">
-                    <div class="absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl" style="background:radial-gradient(circle, rgba(168,85,247,0.35) 0%, transparent 70%);"></div>
-
-                    <div class="relative z-10 flex flex-col h-full">
-                        <span class="text-[#C084FC] text-xs font-bold uppercase tracking-[0.25em]">Event 03</span>
-                        <h2 class="font-display text-5xl sm:text-6xl text-white mt-3 mb-5 leading-none">
-                            Corporate
-                        </h2>
-                        <p class="text-gray-300 text-sm sm:text-base leading-relaxed mb-8">
-                            Product launches, annual galas, holiday parties, team celebrations — professional sound and branded visuals to match.
-                        </p>
-
-                        <div class="mt-auto pt-6 border-t border-white/10">
-                            <p class="text-[10px] uppercase tracking-widest text-gray-400 font-bold mb-1">Starting At</p>
-                            <p class="font-display text-4xl text-gradient leading-none">$749</p>
-                            <p class="text-xs text-gray-400 mt-2">Fully branded AV + MC + DJ</p>
+                <!-- Upcoming 1 -->
+                <div class="upcoming-card group">
+                    <div class="h-48 relative overflow-hidden">
+                        <img src="assests/gallery_festival.png" alt="SoCal Electronic Sunset Festival" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+                        <div class="absolute top-3 left-3 bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-lg text-white text-[11px] font-bold">
+                            <i class="fas fa-calendar-alt mr-1 text-pink"></i> NOV 14, 2026
                         </div>
+                        <span class="absolute top-3 right-3 px-2 py-0.5 rounded-full bg-pink/80 text-white text-[10px] font-extrabold uppercase">Festival</span>
                     </div>
-                </div>
-
-                <!-- Right row list -->
-                <div class="lg:col-span-7 rounded-3xl bg-card border border-border overflow-hidden">
-                    <div class="corp-row">
-                        <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(168,85,247,0.12);">
-                            <i class="fas fa-tv text-accent text-sm"></i>
-                        </div>
-                        <div class="flex-1">
-                            <h3 class="font-heading font-bold text-sm text-primary-text mb-0.5">LED Wall &amp; Brand Visuals</h3>
-                            <p class="text-xs text-secondary-text">Custom logos, product videos, and countdown loops.</p>
-                        </div>
-                    </div>
-                    <div class="corp-row">
-                        <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(236,72,153,0.12);">
-                            <i class="fas fa-microphone text-pink text-sm"></i>
-                        </div>
-                        <div class="flex-1">
-                            <h3 class="font-heading font-bold text-sm text-primary-text mb-0.5">Presenter Mics &amp; PA</h3>
-                            <p class="text-xs text-secondary-text">Lavalier, handheld, and panel mic setups.</p>
-                        </div>
-                    </div>
-                    <div class="corp-row">
-                        <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(139,92,246,0.12);">
-                            <i class="fas fa-glass-cheers text-accent text-sm"></i>
-                        </div>
-                        <div class="flex-1">
-                            <h3 class="font-heading font-bold text-sm text-primary-text mb-0.5">Cocktail Hour DJ</h3>
-                            <p class="text-xs text-secondary-text">Curated background sets at the right volume.</p>
-                        </div>
-                    </div>
-                    <div class="corp-row">
-                        <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(168,85,247,0.12);">
-                            <i class="fas fa-user-tie text-accent text-sm"></i>
-                        </div>
-                        <div class="flex-1">
-                            <h3 class="font-heading font-bold text-sm text-primary-text mb-0.5">Bilingual MC</h3>
-                            <p class="text-xs text-secondary-text">Awards, announcements, and agenda transitions.</p>
-                        </div>
-                    </div>
-                    <div class="corp-row">
-                        <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(236,72,153,0.12);">
-                            <i class="fas fa-lightbulb text-pink text-sm"></i>
-                        </div>
-                        <div class="flex-1">
-                            <h3 class="font-heading font-bold text-sm text-primary-text mb-0.5">Branded Uplighting</h3>
-                            <p class="text-xs text-secondary-text">Colors matched to your company palette.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================
-         SECTION 5 · COLLEGE EVENTS — Bento Grid
-    ============================================================ -->
-    <section class="section-pad bg-hover transition-colors" id="college">
-        <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-12">
-                <span class="text-accent text-xs font-bold uppercase tracking-[0.25em]">Event 04</span>
-                <h2 class="font-display text-4xl sm:text-5xl md:text-6xl text-primary-text mt-3 mb-3">
-                    College <span class="text-gradient">Events</span>
-                </h2>
-                <p class="text-secondary-text text-base">Frat parties, formals, homecoming, and spring festivals — built for big crowds and bigger energy.</p>
-            </div>
-
-            <!-- Bento grid -->
-            <div class="grid grid-cols-1 md:grid-cols-6 gap-4">
-
-                <!-- Big featured dark tile -->
-                <div class="college-tile dark md:col-span-4">
-                    <div class="flex flex-col justify-between h-full min-h-[220px]">
-                        <div class="w-12 h-12 rounded-xl flex items-center justify-center bg-white/10 backdrop-blur-sm">
-                            <i class="fas fa-graduation-cap text-white text-lg"></i>
-                        </div>
+                    <div class="p-5 flex flex-col flex-grow justify-between">
                         <div>
-                            <h3 class="font-display text-3xl sm:text-4xl text-white mb-2">Festival-Scale Rigs</h3>
-                            <p class="text-white/75 text-sm leading-relaxed max-w-md">Full Funktion-One systems sized for 500–1,500 students. Perfect for formals, festivals, and tailgates.</p>
+                            <div class="flex items-center gap-1.5 text-xs text-secondary-text mb-1">
+                                <i class="fas fa-location-dot text-accent"></i>
+                                <span>Huntington Beach Boardwalk, CA</span>
+                            </div>
+                            <h3 class="font-heading font-bold text-lg text-primary-text mb-2">SoCal Electronic Sunset Fest</h3>
+                            <p class="text-xs text-secondary-text mb-4 leading-relaxed">
+                                Funktion-One line array deployment powering 2,500+ fans with lasers, stage haze, and DJ riser.
+                            </p>
+                            <div class="flex flex-wrap gap-1.5 mb-4">
+                                <span class="spec-pill">14,000W Rig</span>
+                                <span class="spec-pill">Lasers + Pyro</span>
+                                <span class="spec-pill">2,500+ Cap</span>
+                            </div>
+                        </div>
+                        <div class="pt-3 border-t border-border flex items-center justify-between">
+                            <span class="text-xs font-bold text-accent">Status: Locked</span>
+                            <a href="contact.html?event=festival-similar" class="text-xs font-bold text-primary-text hover:text-accent transition">Book Similar →</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Small tile -->
-                <div class="college-tile md:col-span-2">
-                    <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-4" style="background:rgba(168,85,247,0.12);">
-                        <i class="fas fa-bolt text-accent"></i>
+                <!-- Upcoming 2 -->
+                <div class="upcoming-card group">
+                    <div class="h-48 relative overflow-hidden">
+                        <img src="assests/corporate_event.png" alt="TechPulse Annual Corporate Gala" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+                        <div class="absolute top-3 left-3 bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-lg text-white text-[11px] font-bold">
+                            <i class="fas fa-calendar-alt mr-1 text-pink"></i> NOV 21, 2026
+                        </div>
+                        <span class="absolute top-3 right-3 px-2 py-0.5 rounded-full bg-accent/80 text-white text-[10px] font-extrabold uppercase">Corporate</span>
                     </div>
-                    <h3 class="font-heading font-bold text-base text-primary-text mb-2">Fast Load-In</h3>
-                    <p class="text-secondary-text text-sm">Setup in under 90 minutes — campus-ready.</p>
+                    <div class="p-5 flex flex-col flex-grow justify-between">
+                        <div>
+                            <div class="flex items-center gap-1.5 text-xs text-secondary-text mb-1">
+                                <i class="fas fa-location-dot text-accent"></i>
+                                <span>Grand Ballroom, DTLA</span>
+                            </div>
+                            <h3 class="font-heading font-bold text-lg text-primary-text mb-2">TechPulse 2026 Annual Gala</h3>
+                            <p class="text-xs text-secondary-text mb-4 leading-relaxed">
+                                Complete dual LED wall installation, wireless presenter audio, speech tuning, and awards DJ setup.
+                            </p>
+                            <div class="flex flex-wrap gap-1.5 mb-4">
+                                <span class="spec-pill">Dual LED Walls</span>
+                                <span class="spec-pill">Wireless Mics</span>
+                                <span class="spec-pill">800 Guests</span>
+                            </div>
+                        </div>
+                        <div class="pt-3 border-t border-border flex items-center justify-between">
+                            <span class="text-xs font-bold text-accent">Status: Locked</span>
+                            <a href="contact.html?event=corporate-similar" class="text-xs font-bold text-primary-text hover:text-accent transition">Book Similar →</a>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Small tiles row -->
-                <div class="college-tile md:col-span-2">
-                    <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-4" style="background:rgba(236,72,153,0.12);">
-                        <i class="fas fa-headphones text-pink"></i>
+                <!-- Upcoming 3 -->
+                <div class="upcoming-card group">
+                    <div class="h-48 relative overflow-hidden">
+                        <img src="assests/wedding_event.png" alt="Pacific Coast Bridal Showcase" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+                        <div class="absolute top-3 left-3 bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-lg text-white text-[11px] font-bold">
+                            <i class="fas fa-calendar-alt mr-1 text-pink"></i> DEC 05, 2026
+                        </div>
+                        <span class="absolute top-3 right-3 px-2 py-0.5 rounded-full bg-pink/80 text-white text-[10px] font-extrabold uppercase">Wedding</span>
                     </div>
-                    <h3 class="font-heading font-bold text-base text-primary-text mb-2">Student DJ Collab</h3>
-                    <p class="text-secondary-text text-sm">We rig the system — your student DJ performs on it.</p>
+                    <div class="p-5 flex flex-col flex-grow justify-between">
+                        <div>
+                            <div class="flex items-center gap-1.5 text-xs text-secondary-text mb-1">
+                                <i class="fas fa-location-dot text-accent"></i>
+                                <span>Santa Monica Beachfront, CA</span>
+                            </div>
+                            <h3 class="font-heading font-bold text-lg text-primary-text mb-2">Pacific Coast Bridal Showcase</h3>
+                            <p class="text-xs text-secondary-text mb-4 leading-relaxed">
+                                Live demonstration of outdoor ceremony acoustic dispersion, lapel mics, and wireless banquet uplighting.
+                            </p>
+                            <div class="flex flex-wrap gap-1.5 mb-4">
+                                <span class="spec-pill">Dual-Zone PA</span>
+                                <span class="spec-pill">12x Uplights</span>
+                                <span class="spec-pill">Live Demo</span>
+                            </div>
+                        </div>
+                        <div class="pt-3 border-t border-border flex items-center justify-between">
+                            <span class="text-xs font-bold text-pink">Open to Couples</span>
+                            <a href="contact.html?event=wedding-demo" class="text-xs font-bold text-primary-text hover:text-pink transition">RSVP Free →</a>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="college-tile md:col-span-2">
-                    <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-4" style="background:rgba(139,92,246,0.12);">
-                        <i class="fas fa-shield-halved text-accent"></i>
+                <!-- Upcoming 4 -->
+                <div class="upcoming-card group">
+                    <div class="h-48 relative overflow-hidden">
+                        <img src="assests/g4.jpg" alt="Westwood Campus Winter Bash" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+                        <div class="absolute top-3 left-3 bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-lg text-white text-[11px] font-bold">
+                            <i class="fas fa-calendar-alt mr-1 text-pink"></i> DEC 18, 2026
+                        </div>
+                        <span class="absolute top-3 right-3 px-2 py-0.5 rounded-full bg-accent/80 text-white text-[10px] font-extrabold uppercase">College</span>
                     </div>
-                    <h3 class="font-heading font-bold text-base text-primary-text mb-2">Fully Insured</h3>
-                    <p class="text-secondary-text text-sm">Meets campus event requirements &amp; safety codes.</p>
+                    <div class="p-5 flex flex-col flex-grow justify-between">
+                        <div>
+                            <div class="flex items-center gap-1.5 text-xs text-secondary-text mb-1">
+                                <i class="fas fa-location-dot text-accent"></i>
+                                <span>UCLA Quad Pavilion, Westwood</span>
+                            </div>
+                            <h3 class="font-heading font-bold text-lg text-primary-text mb-2">Westwood Winter Campus Bash</h3>
+                            <p class="text-xs text-secondary-text mb-4 leading-relaxed">
+                                High-output 5,600W club sound with double subwoofers, cold spark fountains, and student DJ support.
+                            </p>
+                            <div class="flex flex-wrap gap-1.5 mb-4">
+                                <span class="spec-pill">5,600W Sound</span>
+                                <span class="spec-pill">Cold Sparks</span>
+                                <span class="spec-pill">1,500 Students</span>
+                            </div>
+                        </div>
+                        <div class="pt-3 border-t border-border flex items-center justify-between">
+                            <span class="text-xs font-bold text-accent">Status: Locked</span>
+                            <a href="contact.html?event=college-similar" class="text-xs font-bold text-primary-text hover:text-accent transition">Book Similar →</a>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="college-tile md:col-span-2">
-                    <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-4" style="background:rgba(168,85,247,0.12);">
-                        <i class="fas fa-tags text-accent"></i>
-                    </div>
-                    <h3 class="font-heading font-bold text-base text-primary-text mb-2">Student Rates</h3>
-                    <p class="text-secondary-text text-sm">Discounted pricing for student orgs &amp; clubs.</p>
-                </div>
-
-                <!-- Wide CTA tile -->
-                <div class="college-tile md:col-span-6 text-center" style="background:linear-gradient(135deg,#A855F7,#EC4899);border:none;">
-                    <div class="py-4">
-                        <h3 class="font-display text-2xl sm:text-3xl text-white mb-2">Planning a campus event?</h3>
-                        <p class="text-white/85 text-sm mb-5 max-w-md mx-auto">Let's talk about your crowd size, venue, and vibe — we'll build the right rig for you.</p>
-                        <a href="contact.html" class="inline-flex items-center gap-2 px-7 py-3.5 bg-white text-[#0F172A] rounded-full font-bold text-sm hover:bg-gray-100 transition">
-                            <i class="fas fa-comments"></i> Get a Student Quote
-                        </a>
-                    </div>
-                </div>
             </div>
+
         </div>
     </section>
 
     <!-- ============================================================
-         SECTION 6 · PRIVATE PARTIES — Minimal Centered Chips
+         SECTION 3 · DETAILED EVENT SHOWCASE CATEGORIES (WITH IMAGES)
     ============================================================ -->
-    <section class="section-pad bg-background transition-colors" id="private">
+    <div id="event-showcase" class="space-y-16 py-16">
+
+        <!-- 1. WEDDING SHOWCASE -->
+        <section class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8" id="wedding">
+            <div class="event-card p-6 sm:p-10 lg:p-12">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+
+                    <!-- Visual Imagery Left -->
+                    <div class="lg:col-span-6 grid grid-cols-2 gap-3 sm:gap-4">
+                        <div class="rounded-2xl overflow-hidden h-64 sm:h-80 shadow-lg relative group">
+                            <img src="assests/wedding_event.png" alt="Sunset beach wedding ceremony and toast" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                            <span class="absolute bottom-3 left-3 text-white text-xs font-bold"><i class="fas fa-heart text-pink mr-1"></i> Ceremony &amp; Vows</span>
+                        </div>
+                        <div class="rounded-2xl overflow-hidden h-64 sm:h-80 shadow-lg relative group">
+                            <img src="assests/g1.jpg" alt="Indoor ballroom wedding reception with DJ" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                            <span class="absolute bottom-3 left-3 text-white text-xs font-bold"><i class="fas fa-music text-accent mr-1"></i> Reception Banquet &amp; DJ</span>
+                        </div>
+                    </div>
+
+                    <!-- Details & Booking Right -->
+                    <div class="lg:col-span-6 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="event-badge">Event 01 · Weddings &amp; Galas</span>
+                                <span class="text-xs text-secondary-text font-semibold"><i class="fas fa-users mr-1"></i> 50–400 Guests</span>
+                            </div>
+                            <h2 class="font-display text-4xl sm:text-5xl text-primary-text mb-3 leading-none">
+                                Wedding <span class="text-gradient">Celebrations</span>
+                            </h2>
+                            <p class="text-secondary-text text-sm sm:text-base leading-relaxed mb-6">
+                                From the whisper-soft vows at the ceremony to a packed, high-energy dance floor under intelligent lighting. Our dual-zone systems and dedicated engineers guarantee zero audio drops and zero feedback screech.
+                            </p>
+
+                            <!-- Specs & Inclusions -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6 text-xs sm:text-sm">
+                                <div class="flex items-start gap-2">
+                                    <i class="fas fa-check-circle text-pink mt-0.5"></i>
+                                    <span class="text-secondary-text"><strong>Dual-Zone Audio:</strong> Ceremony PA + Party Rig</span>
+                                </div>
+                                <div class="flex items-start gap-2">
+                                    <i class="fas fa-check-circle text-pink mt-0.5"></i>
+                                    <span class="text-secondary-text"><strong>2x Wireless Lapel Mics:</strong> For Vows &amp; Officiant</span>
+                                </div>
+                                <div class="flex items-start gap-2">
+                                    <i class="fas fa-check-circle text-pink mt-0.5"></i>
+                                    <span class="text-secondary-text"><strong>12x Wireless Uplights:</strong> Custom palette glow</span>
+                                </div>
+                                <div class="flex items-start gap-2">
+                                    <i class="fas fa-check-circle text-pink mt-0.5"></i>
+                                    <span class="text-secondary-text"><strong>Dedicated Sound Tech (10h):</strong> Planner Sync</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Price & Action -->
+                        <div class="pt-6 border-t border-border flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                            <div>
+                                <span class="text-[11px] uppercase tracking-wider text-secondary-text font-bold block">All-Inclusive Wedding Rig</span>
+                                <span class="font-display text-3xl sm:text-4xl text-gradient leading-none">$899</span>
+                                <span class="text-xs text-secondary-text ml-1">/ full event</span>
+                            </div>
+                            <div class="flex gap-3">
+                                <a href="contact.html?event=wedding" class="book-btn px-7 py-3 rounded-full text-xs sm:text-sm font-bold shadow-md">
+                                    <i class="fas fa-calendar-check mr-1.5"></i> Book Wedding Rig
+                                </a>
+                                <a href="packages.html#wedding" class="px-5 py-3 rounded-full border border-border text-primary-text hover:bg-hover text-xs sm:text-sm font-semibold transition">
+                                    Package Specs →
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. CORPORATE SHOWCASE -->
+        <section class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8" id="corporate">
+            <div class="event-card p-6 sm:p-10 lg:p-12">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+
+                    <!-- Details & Booking Left -->
+                    <div class="lg:col-span-6 order-2 lg:order-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="event-badge">Event 02 · Corporate &amp; Summits</span>
+                                <span class="text-xs text-secondary-text font-semibold"><i class="fas fa-users mr-1"></i> 100–1,000+ Guests</span>
+                            </div>
+                            <h2 class="font-display text-4xl sm:text-5xl text-primary-text mb-3 leading-none">
+                                Corporate <span class="text-gradient">Galas &amp; Summits</span>
+                            </h2>
+                            <p class="text-secondary-text text-sm sm:text-base leading-relaxed mb-6">
+                                Flawless presentation audiovisuals, modular HD LED video walls, crystal-clear Q&amp;A microphones, and branded atmospheric lighting. We transition effortlessly from formal executive keynotes to celebratory cocktail hours.
+                            </p>
+
+                            <!-- Specs & Inclusions -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6 text-xs sm:text-sm">
+                                <div class="flex items-start gap-2">
+                                    <i class="fas fa-check-circle text-accent mt-0.5"></i>
+                                    <span class="text-secondary-text"><strong>Modular P3.91 LED Wall:</strong> Keynotes &amp; video</span>
+                                </div>
+                                <div class="flex items-start gap-2">
+                                    <i class="fas fa-check-circle text-accent mt-0.5"></i>
+                                    <span class="text-secondary-text"><strong>Shure Axient Mics:</strong> Handheld, lav &amp; podium</span>
+                                </div>
+                                <div class="flex items-start gap-2">
+                                    <i class="fas fa-check-circle text-accent mt-0.5"></i>
+                                    <span class="text-secondary-text"><strong>Branded Uplighting:</strong> Hex-matched to brand</span>
+                                </div>
+                                <div class="flex items-start gap-2">
+                                    <i class="fas fa-check-circle text-accent mt-0.5"></i>
+                                    <span class="text-secondary-text"><strong>Dedicated FOH Techs:</strong> Slide &amp; audio cues</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Price & Action -->
+                        <div class="pt-6 border-t border-border flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                            <div>
+                                <span class="text-[11px] uppercase tracking-wider text-secondary-text font-bold block">Corporate Starting Rate</span>
+                                <span class="font-display text-3xl sm:text-4xl text-gradient leading-none">$749</span>
+                                <span class="text-xs text-secondary-text ml-1">/ event</span>
+                            </div>
+                            <div class="flex gap-3">
+                                <a href="contact.html?event=corporate" class="book-btn px-7 py-3 rounded-full text-xs sm:text-sm font-bold shadow-md">
+                                    <i class="fas fa-calendar-check mr-1.5"></i> Book Corporate AV
+                                </a>
+                                <a href="contact.html?custom=corporate" class="px-5 py-3 rounded-full border border-border text-primary-text hover:bg-hover text-xs sm:text-sm font-semibold transition">
+                                    2h Custom Quote →
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Visual Imagery Right -->
+                    <div class="lg:col-span-6 order-1 lg:order-2 grid grid-cols-2 gap-3 sm:gap-4">
+                        <div class="rounded-2xl overflow-hidden h-64 sm:h-80 shadow-lg relative group">
+                            <img src="assests/corporate_event.png" alt="Annual Corporate Bash 2024 celebration with confetti" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                            <span class="absolute bottom-3 left-3 text-white text-xs font-bold"><i class="fas fa-champagne-glasses text-accent mr-1"></i> Annual Gala Bash</span>
+                        </div>
+                        <div class="rounded-2xl overflow-hidden h-64 sm:h-80 shadow-lg relative group">
+                            <img src="assests/i1.jpg" alt="VIP Acoustic Lounge stage setup" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                            <span class="absolute bottom-3 left-3 text-white text-xs font-bold"><i class="fas fa-microphone-lines text-pink mr-1"></i> VIP Showcase Lounge</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. FESTIVALS & CONCERTS SHOWCASE -->
+        <section class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8" id="festivals">
+            <div class="event-card p-6 sm:p-10 lg:p-12">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+
+                    <!-- Visual Imagery Left -->
+                    <div class="lg:col-span-6 grid grid-cols-2 gap-3 sm:gap-4">
+                        <div class="rounded-2xl overflow-hidden h-64 sm:h-80 shadow-lg relative group">
+                            <img src="assests/concert_event.png" alt="Festival main stage crowd with laser lights" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                            <span class="absolute bottom-3 left-3 text-white text-xs font-bold"><i class="fas fa-bolt text-accent mr-1"></i> Main Stage Line Array</span>
+                        </div>
+                        <div class="rounded-2xl overflow-hidden h-64 sm:h-80 shadow-lg relative group">
+                            <img src="assests/s4.jpg" alt="Stage pyrotechnics and cold sparks" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                            <span class="absolute bottom-3 left-3 text-white text-xs font-bold"><i class="fas fa-fire-flame-curved text-pink mr-1"></i> Pyro &amp; Cold Sparks</span>
+                        </div>
+                    </div>
+
+                    <!-- Details & Booking Right -->
+                    <div class="lg:col-span-6 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="event-badge">Event 03 · Festivals &amp; Arenas</span>
+                                <span class="text-xs text-secondary-text font-semibold"><i class="fas fa-users mr-1"></i> 500–2,500+ Attendees</span>
+                            </div>
+                            <h2 class="font-display text-4xl sm:text-5xl text-primary-text mb-3 leading-none">
+                                Festivals &amp; <span class="text-gradient">Concerts</span>
+                            </h2>
+                            <p class="text-secondary-text text-sm sm:text-base leading-relaxed mb-6">
+                                Touring-grade Funktion-One line arrays, dual 18" sub-bass walls, computer-synchronized moving head beam lights, and heavy atmospheric haze. We power outdoor festivals and amphitheaters with pristine acoustic power.
+                            </p>
+
+                            <!-- Specs & Inclusions -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6 text-xs sm:text-sm">
+                                <div class="flex items-start gap-2">
+                                    <i class="fas fa-check-circle text-pink mt-0.5"></i>
+                                    <span class="text-secondary-text"><strong>Funktion-One Array:</strong> 14,000W+ Peak</span>
+                                </div>
+                                <div class="flex items-start gap-2">
+                                    <i class="fas fa-check-circle text-pink mt-0.5"></i>
+                                    <span class="text-secondary-text"><strong>4x Dual 18" Subs:</strong> Earth-shaking low end</span>
+                                </div>
+                                <div class="flex items-start gap-2">
+                                    <i class="fas fa-check-circle text-pink mt-0.5"></i>
+                                    <span class="text-secondary-text"><strong>Pioneer CDJ-3000 + DJM-A9:</strong> Pro console</span>
+                                </div>
+                                <div class="flex items-start gap-2">
+                                    <i class="fas fa-check-circle text-pink mt-0.5"></i>
+                                    <span class="text-secondary-text"><strong>2 Certified Engineers:</strong> FOH Sound &amp; Light</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Price & Action -->
+                        <div class="pt-6 border-t border-border flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                            <div>
+                                <span class="text-[11px] uppercase tracking-wider text-secondary-text font-bold block">Concert Rig Starting At</span>
+                                <span class="font-display text-3xl sm:text-4xl text-gradient leading-none">$1,299</span>
+                                <span class="text-xs text-secondary-text ml-1">/ event</span>
+                            </div>
+                            <div class="flex gap-3">
+                                <a href="contact.html?event=festival" class="book-btn px-7 py-3 rounded-full text-xs sm:text-sm font-bold shadow-md">
+                                    <i class="fas fa-crown mr-1.5"></i> Book Festival Rig
+                                </a>
+                                <a href="equipment.html" class="px-5 py-3 rounded-full border border-border text-primary-text hover:bg-hover text-xs sm:text-sm font-semibold transition">
+                                    Explore Gear →
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. COLLEGE & CAMPUS BASHES -->
+        <section class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8" id="college">
+            <div class="event-card p-6 sm:p-10 lg:p-12">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+
+                    <!-- Details & Booking Left -->
+                    <div class="lg:col-span-6 order-2 lg:order-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="event-badge">Event 04 · College &amp; Campus</span>
+                                <span class="text-xs text-secondary-text font-semibold"><i class="fas fa-users mr-1"></i> 300–1,500 Students</span>
+                            </div>
+                            <h2 class="font-display text-4xl sm:text-5xl text-primary-text mb-3 leading-none">
+                                College Bashes &amp; <span class="text-gradient">Greek Life</span>
+                            </h2>
+                            <p class="text-secondary-text text-sm sm:text-base leading-relaxed mb-6">
+                                Frat formals, tailgate sound systems, homecoming rallies, and spring festivals. High-impact sub-bass, rapid 90-minute load-in, student DJ support, and full $2M liability insurance compliance for campus permits.
+                            </p>
+
+                            <!-- Specs & Inclusions -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6 text-xs sm:text-sm">
+                                <div class="flex items-start gap-2">
+                                    <i class="fas fa-check-circle text-accent mt-0.5"></i>
+                                    <span class="text-secondary-text"><strong>5,600W High-Output Rig:</strong> Double 18" subs</span>
+                                </div>
+                                <div class="flex items-start gap-2">
+                                    <i class="fas fa-check-circle text-accent mt-0.5"></i>
+                                    <span class="text-secondary-text"><strong>Student DJ Ready:</strong> Plug-and-play decks</span>
+                                </div>
+                                <div class="flex items-start gap-2">
+                                    <i class="fas fa-check-circle text-accent mt-0.5"></i>
+                                    <span class="text-secondary-text"><strong>90-Min Campus Load-In:</strong> Fast strike</span>
+                                </div>
+                                <div class="flex items-start gap-2">
+                                    <i class="fas fa-check-circle text-accent mt-0.5"></i>
+                                    <span class="text-secondary-text"><strong>Campus Insured:</strong> Meets permit regulations</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Price & Action -->
+                        <div class="pt-6 border-t border-border flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                            <div>
+                                <span class="text-[11px] uppercase tracking-wider text-secondary-text font-bold block">Student Org Discount Rate</span>
+                                <span class="font-display text-3xl sm:text-4xl text-gradient leading-none">$599</span>
+                                <span class="text-xs text-secondary-text ml-1">/ event</span>
+                            </div>
+                            <div class="flex gap-3">
+                                <a href="contact.html?event=college" class="book-btn px-7 py-3 rounded-full text-xs sm:text-sm font-bold shadow-md">
+                                    <i class="fas fa-graduation-cap mr-1.5"></i> Get Student Quote
+                                </a>
+                                <a href="contact.html?permit=help" class="px-5 py-3 rounded-full border border-border text-primary-text hover:bg-hover text-xs sm:text-sm font-semibold transition">
+                                    Permit Support →
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Visual Imagery Right -->
+                    <div class="lg:col-span-6 order-1 lg:order-2 grid grid-cols-2 gap-3 sm:gap-4">
+                        <div class="rounded-2xl overflow-hidden h-64 sm:h-80 shadow-lg relative group">
+                            <img src="assests/g4.jpg" alt="Student DJ with hands up on stage with cold sparks" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                            <span class="absolute bottom-3 left-3 text-white text-xs font-bold"><i class="fas fa-bolt text-accent mr-1"></i> Campus Festival Stage</span>
+                        </div>
+                        <div class="rounded-2xl overflow-hidden h-64 sm:h-80 shadow-lg relative group">
+                            <img src="assests/s8.jpg" alt="Laser canopy rave dance floor" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                            <span class="absolute bottom-3 left-3 text-white text-xs font-bold"><i class="fas fa-compact-disc text-pink mr-1"></i> Nightclub Rave Rig</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. BIRTHDAY & PRIVATE PARTIES -->
+        <section class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8" id="private" data-alias="birthday">
+            <div class="event-card p-6 sm:p-10 lg:p-12">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+
+                    <!-- Visual Imagery Left -->
+                    <div class="lg:col-span-6 grid grid-cols-2 gap-3 sm:gap-4">
+                        <div class="rounded-2xl overflow-hidden h-64 sm:h-80 shadow-lg relative group">
+                            <img src="assests/g5.jpg" alt="Couples dancing under rustic pergola with string lights" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                            <span class="absolute bottom-3 left-3 text-white text-xs font-bold"><i class="fas fa-heart text-pink mr-1"></i> Backyard &amp; Pergola</span>
+                        </div>
+                        <div class="rounded-2xl overflow-hidden h-64 sm:h-80 shadow-lg relative group">
+                            <img src="assests/g3.jpg" alt="Club DJ booth with neon lights" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                            <span class="absolute bottom-3 left-3 text-white text-xs font-bold"><i class="fas fa-cake-candles text-accent mr-1"></i> Milestone Bash Setup</span>
+                        </div>
+                    </div>
+
+                    <!-- Details & Booking Right -->
+                    <div class="lg:col-span-6 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="event-badge">Event 05 · Birthdays &amp; Private</span>
+                                <span class="text-xs text-secondary-text font-semibold"><i class="fas fa-users mr-1"></i> 25–150 Guests</span>
+                            </div>
+                            <h2 class="font-display text-4xl sm:text-5xl text-primary-text mb-3 leading-none">
+                                Birthdays &amp; <span class="text-gradient">Private Parties</span>
+                            </h2>
+                            <p class="text-secondary-text text-sm sm:text-base leading-relaxed mb-6">
+                                Milestone 21st, 30th, 40th birthdays, anniversaries, rooftop cocktail hours, and backyard celebrations. Scalable acoustic footprints that deliver punchy bass on the dance floor without overwhelming conversation zones.
+                            </p>
+
+                            <!-- Specs & Inclusions -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6 text-xs sm:text-sm">
+                                <div class="flex items-start gap-2">
+                                    <i class="fas fa-check-circle text-pink mt-0.5"></i>
+                                    <span class="text-secondary-text"><strong>1,800W Compact Sound:</strong> 2x 12" tops + 15" sub</span>
+                                </div>
+                                <div class="flex items-start gap-2">
+                                    <i class="fas fa-check-circle text-pink mt-0.5"></i>
+                                    <span class="text-secondary-text"><strong>Wireless Handheld Mic:</strong> For toasts &amp; speeches</span>
+                                </div>
+                                <div class="flex items-start gap-2">
+                                    <i class="fas fa-check-circle text-pink mt-0.5"></i>
+                                    <span class="text-secondary-text"><strong>Sound-Active LED Bar:</strong> Multi-color pulse</span>
+                                </div>
+                                <div class="flex items-start gap-2">
+                                    <i class="fas fa-check-circle text-pink mt-0.5"></i>
+                                    <span class="text-secondary-text"><strong>Free LA Delivery &amp; Setup:</strong> Plug &amp; play</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Price & Action -->
+                        <div class="pt-6 border-t border-border flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                            <div>
+                                <span class="text-[11px] uppercase tracking-wider text-secondary-text font-bold block">Private Party Starting At</span>
+                                <span class="font-display text-3xl sm:text-4xl text-gradient leading-none">$399</span>
+                                <span class="text-xs text-secondary-text ml-1">/ event</span>
+                            </div>
+                            <div class="flex gap-3">
+                                <a href="contact.html?event=birthday" class="book-btn px-7 py-3 rounded-full text-xs sm:text-sm font-bold shadow-md">
+                                    <i class="fas fa-calendar-check mr-1.5"></i> Book Private Party
+                                </a>
+                                <a href="packages.html#basic" class="px-5 py-3 rounded-full border border-border text-primary-text hover:bg-hover text-xs sm:text-sm font-semibold transition">
+                                    View Basic Rig →
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- ============================================================
+         SECTION 4 · EVENT PRODUCTION WORKFLOW
+    ============================================================ -->
+    <section class="section-pad bg-hover transition-colors" id="workflow">
         <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-12">
-                <span class="text-accent text-xs font-bold uppercase tracking-[0.25em]">Event 05</span>
-                <h2 class="font-display text-4xl sm:text-5xl md:text-6xl text-primary-text mt-3 mb-3">
-                    Private <span class="text-gradient">Parties</span>
+
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <span class="text-accent text-xs font-bold uppercase tracking-[0.25em]">Precision Execution</span>
+                <h2 class="font-display text-4xl sm:text-5xl md:text-6xl text-primary-text mt-2 mb-3 leading-none">
+                    How We Power Your <span class="text-gradient">Event Flawlessly</span>
                 </h2>
-                <p class="text-secondary-text text-base">Anniversaries, engagement parties, reunions, retirement bashes — whatever you're celebrating, we bring the energy.</p>
+                <p class="text-secondary-text text-base sm:text-lg">
+                    Every event is acoustically engineered, pre-tested, and supported on-site from initial load-in to post-midnight strike.
+                </p>
             </div>
 
-            <!-- Centered chip grid -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 max-w-4xl mx-auto">
-                <div class="private-chip">
-                    <i class="fas fa-heart text-accent text-xl mb-3"></i>
-                    <p class="font-heading font-bold text-sm text-primary-text">Engagements</p>
+            <!-- 4-Step Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                <div class="bg-card border border-border p-7 rounded-3xl flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl flex items-center justify-center bg-accent/10 text-accent font-display text-2xl mb-6">01</div>
+                        <h3 class="font-heading font-bold text-lg text-primary-text mb-2">Acoustic Venue Audit</h3>
+                        <p class="text-secondary-text text-xs sm:text-sm leading-relaxed">
+                            We analyze room dimensions, ceiling height, reflection points, and noise curfews to calculate speaker angles and subwoofer counts.
+                        </p>
+                    </div>
+                    <span class="text-accent text-xs font-bold mt-6">Zero Dead Zones →</span>
                 </div>
-                <div class="private-chip">
-                    <i class="fas fa-champagne-glasses text-pink text-xl mb-3"></i>
-                    <p class="font-heading font-bold text-sm text-primary-text">Anniversaries</p>
+
+                <div class="bg-card border border-border p-7 rounded-3xl flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl flex items-center justify-center bg-pink/10 text-pink font-display text-2xl mb-6">02</div>
+                        <h3 class="font-heading font-bold text-lg text-primary-text mb-2">Custom Rig Blueprint</h3>
+                        <p class="text-secondary-text text-xs sm:text-sm leading-relaxed">
+                            We select precise wireless mic frequencies, moving head lighting cues, and power requirements to build a personalized technical rider.
+                        </p>
+                    </div>
+                    <span class="text-pink text-xs font-bold mt-6">Tailored Rider →</span>
                 </div>
-                <div class="private-chip">
-                    <i class="fas fa-people-group text-accent text-xl mb-3"></i>
-                    <p class="font-heading font-bold text-sm text-primary-text">Reunions</p>
+
+                <div class="bg-card border border-border p-7 rounded-3xl flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl flex items-center justify-center bg-accent/10 text-accent font-display text-2xl mb-6">03</div>
+                        <h3 class="font-heading font-bold text-lg text-primary-text mb-2">Early Setup &amp; Soundcheck</h3>
+                        <p class="text-secondary-text text-xs sm:text-sm leading-relaxed">
+                            Our crew arrives 2–3 hours early at no extra cost to load in, route cables cleanly, and tune EQ before guests arrive.
+                        </p>
+                    </div>
+                    <span class="text-accent text-xs font-bold mt-6">Complimentary Arrival →</span>
                 </div>
-                <div class="private-chip">
-                    <i class="fas fa-house-chimney text-pink text-xl mb-3"></i>
-                    <p class="font-heading font-bold text-sm text-primary-text">Backyard</p>
+
+                <div class="bg-card border border-border p-7 rounded-3xl flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl flex items-center justify-center bg-pink/10 text-pink font-display text-2xl mb-6">04</div>
+                        <h3 class="font-heading font-bold text-lg text-primary-text mb-2">Live Show Engineering</h3>
+                        <p class="text-secondary-text text-xs sm:text-sm leading-relaxed">
+                            Certified engineers actively monitor vocal gain, adjust dancefloor decibels, manage DMX lighting, and execute smooth teardown.
+                        </p>
+                    </div>
+                    <span class="text-pink text-xs font-bold mt-6">Zero Downtime →</span>
                 </div>
-                <div class="private-chip">
-                    <i class="fas fa-cocktail text-accent text-xl mb-3"></i>
-                    <p class="font-heading font-bold text-sm text-primary-text">Cocktail Hours</p>
-                </div>
-                <div class="private-chip">
-                    <i class="fas fa-crown text-pink text-xl mb-3"></i>
-                    <p class="font-heading font-bold text-sm text-primary-text">Milestone Bash</p>
-                </div>
-                <div class="private-chip">
-                    <i class="fas fa-music text-accent text-xl mb-3"></i>
-                    <p class="font-heading font-bold text-sm text-primary-text">Listening Party</p>
-                </div>
-                <div class="private-chip">
-                    <i class="fas fa-glass-cheers text-pink text-xl mb-3"></i>
-                    <p class="font-heading font-bold text-sm text-primary-text">Retirement</p>
-                </div>
+
             </div>
 
-            <!-- Info strip -->
-            <div class="mt-14 max-w-4xl mx-auto rounded-3xl p-6 sm:p-8 bg-hover border border-border">
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
-                    <div>
-                        <p class="font-display text-3xl text-gradient leading-none">Any Size</p>
-                        <p class="text-[10px] uppercase tracking-widest text-secondary-text mt-2">20 to 500 guests</p>
-                    </div>
-                    <div>
-                        <p class="font-display text-3xl text-gradient leading-none">Any Vibe</p>
-                        <p class="text-[10px] uppercase tracking-widest text-secondary-text mt-2">Chill to full party</p>
-                    </div>
-                    <div>
-                        <p class="font-display text-3xl text-gradient leading-none">Anywhere</p>
-                        <p class="text-[10px] uppercase tracking-widest text-secondary-text mt-2">Home, rooftop, venue</p>
-                    </div>
-                </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 5 · EVENT PRODUCTION FAQS
+    ============================================================ -->
+    <section class="section-pad bg-background transition-colors" id="faq">
+        <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-accent text-xs font-bold uppercase tracking-[0.25em]">Event Planning Help</span>
+                <h2 class="font-display text-4xl sm:text-5xl md:text-6xl text-primary-text mt-2 mb-3">
+                    Frequently Asked <span class="text-gradient">Questions</span>
+                </h2>
+                <p class="text-secondary-text text-base">Answers to common logistical questions about venue permits, power, load-in, and equipment backup.</p>
             </div>
 
-            <!-- Final CTA -->
-            <div class="mt-12 text-center">
-                <a href="contact.html" class="inline-flex items-center gap-2 book-btn px-8 py-4 rounded-full text-sm font-bold">
-                    <i class="fas fa-calendar-check"></i> Book Your Private Event
+            <!-- FAQ List -->
+            <div class="space-y-4 max-w-3xl mx-auto">
+
+                <details class="faq-item group">
+                    <summary>
+                        <span class="text-primary-text text-sm sm:text-base font-semibold">How far in advance should we reserve equipment for our event?</span>
+                        <i class="fas fa-chevron-down faq-icon text-xs text-secondary-text transition-transform duration-300"></i>
+                    </summary>
+                    <div class="faq-answer">
+                        We recommend reserving <strong>3 to 6 months in advance</strong> for peak wedding season (May through October) and corporate holiday galas (November/December). For private parties and club nights, we can often accommodate bookings within 1 to 2 weeks subject to equipment availability.
+                    </div>
+                </details>
+
+                <details class="faq-item group">
+                    <summary>
+                        <span class="text-primary-text text-sm sm:text-base font-semibold">Are setup, soundcheck, and strike times billed into our rental hours?</span>
+                        <i class="fas fa-chevron-down faq-icon text-xs text-secondary-text transition-transform duration-300"></i>
+                    </summary>
+                    <div class="faq-answer">
+                        No, never! Our technician arrival, physical load-in, cable masking, and room acoustic soundcheck are <strong>100% complimentary</strong> and completed well before your guests enter. Your contracted technician hours only start when your event officially begins.
+                    </div>
+                </details>
+
+                <details class="faq-item group">
+                    <summary>
+                        <span class="text-primary-text text-sm sm:text-base font-semibold">Can our guest DJ, student performer, or live band plug into the rig?</span>
+                        <i class="fas fa-chevron-down faq-icon text-xs text-secondary-text transition-transform duration-300"></i>
+                    </summary>
+                    <div class="faq-answer">
+                        Yes! All BeatBox systems feature universal XLR, 1/4", and digital inputs. Guest DJs can easily dock their laptop or USB drives, and live acoustic acts can patch into our mixing console. Our on-site sound engineer manages the levels to keep transitions seamless.
+                    </div>
+                </details>
+
+                <details class="faq-item group">
+                    <summary>
+                        <span class="text-primary-text text-sm sm:text-base font-semibold">What power requirements are needed, and do you supply generators?</span>
+                        <i class="fas fa-chevron-down faq-icon text-xs text-secondary-text transition-transform duration-300"></i>
+                    </summary>
+                    <div class="faq-answer">
+                        Standard packages operate efficiently on standard 120V / 15-20A wall outlets. For outdoor festivals, beachfront ceremonies, or remote parks without grid power, we supply whisper-quiet inverter power generators with surge suppression as an affordable add-on.
+                    </div>
+                </details>
+
+                <details class="faq-item group">
+                    <summary>
+                        <span class="text-primary-text text-sm sm:text-base font-semibold">Are you insured for university campuses, public parks, and luxury venues?</span>
+                        <i class="fas fa-chevron-down faq-icon text-xs text-secondary-text transition-transform duration-300"></i>
+                    </summary>
+                    <div class="faq-answer">
+                        Yes. BeatBox carries comprehensive <strong>$2,000,000 commercial general liability insurance</strong>. We regularly provide Certificates of Insurance (COI) naming your venue, university, or city park as additionally insured at zero extra charge.
+                    </div>
+                </details>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 6 · INSTANT EVENT BOOKING & QUOTE BANNER
+    ============================================================ -->
+    <section class="py-16 bg-gradient-to-r from-[#A855F7] via-[#EC4899] to-[#A855F7] text-white" id="book-event">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="font-display text-4xl sm:text-5xl md:text-6xl text-white mb-4">
+                Ready to Lock In Your Event Soundtrack?
+            </h2>
+            <p class="text-white/90 text-base sm:text-lg max-w-2xl mx-auto mb-8">
+                Tell us your date, venue location, and expected crowd size. Our chief sound engineer will send an exact, transparent quote within 2 hours.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="contact.html" class="px-8 py-4 bg-white text-[#0F172A] rounded-full font-bold text-sm sm:text-base hover:bg-gray-100 transition shadow-xl">
+                    <i class="fas fa-calendar-check mr-2"></i> Request Free Event Quote
                 </a>
-                <p class="text-secondary-text text-xs mt-4">Free consultation · Free LA delivery · On-site technician included</p>
+                <a href="tel:2135550188" class="px-8 py-4 border-2 border-white text-white rounded-full font-bold text-sm sm:text-base hover:bg-white/10 transition">
+                    <i class="fas fa-phone mr-2"></i> Call (213) 555-0188
+                </a>
             </div>
         </div>
     </section>
@@ -957,10 +1331,11 @@
                     <h4 class="font-heading font-bold text-white text-sm uppercase tracking-widest mb-4">Events</h4>
                     <ul class="space-y-2.5 text-sm">
                         <li><a href="#wedding" class="text-white/70 hover:text-[#C084FC] transition">Weddings</a></li>
-                        <li><a href="#birthday" class="text-white/70 hover:text-[#C084FC] transition">Birthdays</a></li>
-                        <li><a href="#corporate" class="text-white/70 hover:text-[#C084FC] transition">Corporate</a></li>
-                        <li><a href="#college" class="text-white/70 hover:text-[#C084FC] transition">College</a></li>
-                        <li><a href="#private" class="text-white/70 hover:text-[#C084FC] transition">Private</a></li>
+                        <li><a href="#corporate" class="text-white/70 hover:text-[#C084FC] transition">Corporate Galas</a></li>
+                        <li><a href="#festivals" class="text-white/70 hover:text-[#C084FC] transition">Festivals &amp; Concerts</a></li>
+                        <li><a href="#college" class="text-white/70 hover:text-[#C084FC] transition">College Bashes</a></li>
+                        <li><a href="#private" class="text-white/70 hover:text-[#C084FC] transition">Private &amp; Birthdays</a></li>
+                        <li><a href="#upcoming" class="text-white/70 hover:text-[#C084FC] transition">Upcoming Showcases</a></li>
                     </ul>
                 </div>
 
